@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PK95 Landing</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      padding-top: 100px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .button {
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 10px;
+      padding: 20px 30px;
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .button img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .scattered-images img {
+      position: absolute;
+      width: 60px;
+      opacity: 0.5;
+    }
+
+    .img1 { top: 50px; left: 30px; }
+    .img2 { top: 300px; right: 50px; }
+    .img3 { bottom: 100px; left: 80px; }
+  </style>
+</head>
+<body>
+
+  <div class="scattered-images">
+    <img src="decor1.png" class="img1" alt="">
+    <img src="decor2.png" class="img2" alt="">
+    <img src="decor3.png" class="img3" alt="">
+  </div>
+
+  <div class="container">
+    <h1>Selamat Datang di PK95</h1>
+    <p>Silakan pilih salah satu link untuk masuk ke platform</p>
+
+    <div class="buttons">
+      <a href="https://example1.com" class="button">
+        <img src="icon1.png" alt="">
+        Masuk Situs 1
+      </a>
+      <a href="https://example2.com" class="button">
+        <img src="icon2.png" alt="">
+        Masuk Situs 2
+      </a>
+      <a href="https://example3.com" class="button">
+        <img src="icon3.png" alt="">
+        Masuk Situs 3
+      </a>
+    </div>
+  </div>
+</body>
+</html>
