@@ -1,97 +1,50 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PK95 Landing</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Instant AI Stock Check</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
+      height: 100vh;
+      background: linear-gradient(180deg,#071025,#081227);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: #fff;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-
-    .container {
-      padding: 80px 20px;
+    .box {
+      max-width: 400px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .button {
-      background-color: rgba(0, 0, 0, 0.6);
+    h1 { font-size: 1.6rem; margin-bottom: 12px; }
+    p { color: #aab5c3; font-size: 0.9rem; margin-bottom: 25px; }
+    button {
+      background: linear-gradient(180deg,#ffd166,#f2b400);
       border: none;
-      border-radius: 10px;
-      padding: 20px 30px;
-      font-size: 20px;
-      color: #fff;
+      border-radius: 12px;
+      padding: 15px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #07203a;
       cursor: pointer;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      transition: background 0.3s;
-      width: 80%;
-      max-width: 320px;
-      justify-content: center;
+      box-shadow: 0 8px 20px rgba(242,180,0,0.25);
     }
-
-    .button img {
-      width: 48px;  /* 加大图标尺寸 */
-      height: 48px;
-      margin-right: 12px;
-    }
-
-    .button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .scattered-images img {
-      position: absolute;
-      width: 60px;
-      opacity: 0.5;
-    }
-
-    .img1 { top: 50px; left: 30px; }
-    .img2 { top: 300px; right: 50px; }
-    .img3 { bottom: 100px; left: 80px; }
   </style>
 </head>
 <body>
-
-  <div class="scattered-images">
-    <img src="decor1.png" class="img1" alt="">
-    <img src="decor2.png" class="img2" alt="">
-    <img src="decor3.png" class="img3" alt="">
-  </div>
-
-  <div class="container">
-    <h1>Selamat Datang di PK95</h1>
-    <p>Silakan pilih salah satu link untuk masuk ke platform</p>
-
-    <div class="buttons">
-      <a href="https://goo.su/WPnAdj3" class="button">
-        <img src="icon1.png" alt="">
-        👉 PK95: Daftarkan nomor HP dan klaim angpao Rp888–Rp8.888!
-      </a>
-      <a href="https://goo.su/RtgLw" class="button">
-        <img src="icon2.png" alt="">
-        👉 PK95 VIP Room: Masuk dan langsung dapat Rp888–Rp8.888!
-      </a>
-      <a href="https://goo.su/ceIitGT" class="button">
-        <img src="icon3.png" alt="">
-       👉 Gabung channel Telegram untuk ikut undian HP dari PK95!
-      </a>
-    </div>
+  <div class="box">
+    <h1>Instant AI Stock Check</h1>
+    <p>Click below to start your instant stock test powered by AI</p>
+    <button onclick="window.location.href='https://www.youtube.com'">
+      Start Instant Test
+    </button>
   </div>
 </body>
 </html>
