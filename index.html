@@ -1,50 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Instant AI Stock Check</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Stock Diagnosis</title>
   <style>
-    body {
+    /* --- 页面布局 --- */
+    html, body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(180deg,#071025,#081227);
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg,#0c0f29,#161b40);
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      overflow: hidden;
     }
-    .box {
-      max-width: 400px;
+    /* --- 背景动态条纹 --- */
+    .stripes {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.05) 0 2px,
+        transparent 2px 20px
+      );
+      animation: move 20s linear infinite;
+      z-index: 0;
+    }
+    @keyframes move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50%, -50%); }
+    }
+
+    /* --- 中心卡片 --- */
+    .card {
+      z-index: 1;
       background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     }
-    h1 { font-size: 1.6rem; margin-bottom: 12px; }
-    p { color: #aab5c3; font-size: 0.9rem; margin-bottom: 25px; }
+    .card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #b9c2d3;
+      margin-bottom: 25px;
+    }
+
+    /* --- 输入框 --- */
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    /* --- 按钮 --- */
     button {
-      background: linear-gradient(180deg,#ffd166,#f2b400);
+      width: 100%;
+      padding: 15px;
       border: none;
       border-radius: 12px;
-      padding: 15px 25px;
-      font-size: 1rem;
+      background: linear-gradient(135deg,#ffd166,#f2b400);
+      color: #222;
       font-weight: bold;
-      color: #07203a;
+      font-size: 1.1rem;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(242,180,0,0.25);
+      transition: 0.2s;
+      box-shadow: 0 8px 25px rgba(242,180,0,0.25);
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(242,180,0,0.4);
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>Instant AI Stock Check</h1>
-    <p>Click below to start your instant stock test powered by AI</p>
-    <button onclick="window.location.href='https://loudiye.pages.dev/'">
-      Start Instant Test
-    </button>
+  <div class="stripes"></div>
+
+  <div class="card">
+    <h1>AI Stock Diagnosis</h1>
+    <p>Enter any company name or stock symbol below to start instant analysis</p>
+    <input type="text" id="stockInput" placeholder="e.g. AAPL, TSLA, MSFT">
+    <button onclick="startAnalysis()">Start AI Analysis</button>
   </div>
+
+  <script>
+    function startAnalysis() {
+      const stock = document.getElementById('stockInput').value.trim();
+      if (!stock) {
+        alert('Please enter a stock symbol or company name.');
+        return;
+      }
+      // ⚡ 模拟AI分析，然后跳转
+      window.location.href = 'https://www.youtube.com';
+    }
+  </script>
 </body>
 </html>
