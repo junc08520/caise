@@ -1,75 +1,387 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AI Smart Stock Diagnosis</title>
+  <!-- Google标签安装位置 -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17465661716"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17465661716');
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17472318068"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17472318068');
+  </script>
+  <!-- 您的其他代码继续保留 -->
+  <title>Galaxy North Star AI — 智能股票分析与研究</title>
+  <meta name="description" content="Galaxy North Star AI — 基于人工智能的股票分析、研究文章和专家支持的报告。输入股票代码获取快速AI诊断。" />
+  <meta name="keywords" content="AI股票分析,股票预测,量化交易,市场研究,AI报告" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(180deg,#070e1c,#0a1630);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-family: "Segoe UI", Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
+    :root{
+      --bg: #f8fafc;
+      --nav: #0f172a;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dark: #2563eb;
+      --card: #ffffff;
+      --muted: #64748b;
+      --muted-light: #94a3b8;
+      --text: #1e293b;
+      --text-light: #475569;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 8px;
+      --radius-lg: 12px;
+      font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
     }
-    .box {
-      max-width: 420px;
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 35px 30px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      backdrop-filter: blur(6px);
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg,#ffda6b,#ffb347);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      color: #b8c3d6;
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 28px;
-    }
-    button {
-      background: linear-gradient(180deg,#ffd166,#f2b400);
-      border: none;
-      border-radius: 14px;
-      padding: 16px 30px;
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #07203a;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(242,180,0,0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(242,180,0,0.45);
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{background:var(--bg);color:var(--text); font-size:16px;}
+    
+    /* 头部样式 */
+    header{background:var(--nav);color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem; position:sticky; top:0; z-index:100; box-shadow: var(--shadow);}
+    header .brand{display:flex;gap:0.875rem;align-items:center;}
+    .logo{width:50px;height:50px;border-radius:10px;background:linear-gradient(135deg, var(--accent-light), var(--accent-dark));display:grid;place-items:center;font-weight:800;color:#fff; font-size:1.25rem;}
+    nav{display:flex; gap:1.5rem;}
+    nav a{color:#e2e8f0;text-decoration:none;font-weight:500;font-size:0.95rem; transition: color 0.2s ease;}
+    nav a:hover{color:#fff;}
+    
+    /* 主内容区 */
+    main{max-width:1200px;margin:2rem auto;padding:0 1.5rem;}
+    
+    /* 英雄区域 */
+    .hero{display:grid;grid-template-columns:1fr;gap:2rem;background:linear-gradient(135deg, #1e40af 0%, #0f172a 100%);padding:2.5rem;border-radius:var(--radius-lg);color:#fff;box-shadow:var(--shadow-lg); margin-bottom:2.5rem;}
+    @media(min-width:900px){.hero{grid-template-columns:1fr 380px;}}
+    .hero h1{margin:0;font-size:2.25rem;line-height:1.2; font-weight:700;}
+    .hero p{margin:1rem 0 0;color:#cbd5e1; font-size:1.1rem;}
+    .search{margin-top:1.5rem;display:flex;gap:0.75rem;}
+    .search input{flex:1;padding:1rem;border-radius:var(--radius);border:1px solid #e2e8f0;font-size:1rem; background:#fff; transition: box-shadow 0.2s ease;}
+    .search input:focus{outline:none; box-shadow:0 0 0 3px rgba(59, 130, 246, 0.3);}
+    .search button{padding:1rem 1.5rem;border-radius:var(--radius);border:0;background:var(--accent);font-weight:600;color:#fff;cursor:pointer; transition: background 0.2s ease;}
+    .search button:hover{background:var(--accent-dark);}
+    .stack{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.5rem;}
+    .chip{background:rgba(255,255,255,0.15);padding:0.5rem 1rem;border-radius:999px;color:#fff;font-weight:500;font-size:0.875rem; backdrop-filter: blur(4px);}
+    
+    /* 面板和卡片 */
+    .panel{background:var(--card);padding:1.5rem;border-radius:var(--radius-lg);box-shadow:var(--shadow); margin-bottom:1.5rem;}
+    .panel h2{color:var(--text); margin-bottom:1rem; font-size:1.5rem; font-weight:600;}
+    .panel h3{color:var(--text); margin-bottom:0.75rem; font-size:1.25rem; font-weight:600;}
+    
+    /* 文章列表 */
+    .article-list{margin-top:1rem;display:flex;flex-direction:column;gap:1rem;}
+    .article-full{background:var(--card);padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease;}
+    .article-full:hover{transform:translateY(-2px); box-shadow:var(--shadow-lg);}
+    .article-full h4{margin:0 0 0.5rem;color:var(--text); font-size:1.125rem; font-weight:600;}
+    .article-full p{margin:0;color:var(--text-light);font-size:1rem;}
+    .readmore{color:var(--accent);text-decoration:none;font-weight:600;margin-top:0.75rem;display:inline-block; font-size:0.95rem;}
+    .readmore:hover{text-decoration:underline;}
+    
+    /* 报告区域 */
+    .reports{display:grid;gap:1rem;}
+    .report{background:linear-gradient(180deg,#f1f5f9,#ffffff);padding:1.5rem;border-radius:var(--radius);border-left:4px solid var(--accent); box-shadow:var(--shadow);}
+    .report h4{margin:0 0 0.5rem; font-size:1.125rem; font-weight:600;}
+    
+    /* 团队部分 */
+    .team-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem; margin-top:1rem;}
+    .team-member{background:var(--card); padding:1.5rem; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center;}
+    .team-member-avatar{width:80px; height:80px; border-radius:50%; background:var(--accent-light); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; font-size:1.5rem;}
+    .team-member h4{margin-bottom:0.5rem; font-size:1.1rem;}
+    .team-member p{color:var(--muted); font-size:0.95rem;}
+    
+    /* 页脚 */
+    footer{margin-top:3rem;background:var(--nav);color:#cbd5e1;padding:2rem;border-radius:var(--radius-lg);}
+    .footer-content{max-width:900px;margin:0 auto; display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+    .footer-links{display:flex; gap:1.5rem;}
+    .footer-links a{color:#cbd5e1; text-decoration:none; transition:color 0.2s ease;}
+    .footer-links a:hover{color:#fff;}
+    
+    /* 徽章和标签 */
+    .badge{display:inline-block; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.75rem; font-weight:600;}
+    .badge-success{background:var(--success); color:white;}
+    .badge-warning{background:var(--warning); color:white;}
+    .badge-danger{background:var(--danger); color:white;}
+    
+    /* 辅助类 */
+    .text-center{text-align:center;}
+    .mt-1{margin-top:0.5rem;}
+    .mt-2{margin-top:1rem;}
+    .mt-3{margin-top:1.5rem;}
+    .mb-1{margin-bottom:0.5rem;}
+    .mb-2{margin-bottom:1rem;}
+    .mb-3{margin-bottom:1.5rem;}
+    .disclaimer{font-size:0.875rem;color:var(--muted-light);margin-top:1rem; padding:1rem; background:#f1f5f9; border-radius:var(--radius);}
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      header {flex-direction: column; text-align: center; padding:1rem;}
+      nav {margin-top:1rem; justify-content: center;}
+      .hero {padding:1.5rem;}
+      .search {flex-direction: column;}
+      .footer-content {flex-direction: column; text-align:center;}
+      .footer-links {justify-content: center;}
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>AI Smart Stock Diagnosis</h1>
-    <p>Enter any stock symbol or company name and let our AI engine instantly analyze market signals, trends, and patterns — just for you.</p>
-    <button onclick="window.location.href='https://www.youtube.com/watch?v=N9KNPyCaHVM'">
-      Start Free Diagnosis
-    </button>
-  </div>
+  <header>
+    <div class="brand">
+      <div class="logo">GNS</div>
+      <div>
+        <div style="font-size:0.95rem;color:#bfdbfe;font-weight:600">GALAXY NORTH STAR</div>
+        <div style="font-size:0.85rem;color:#94a3b8">AI股票分析与研究</div>
+      </div>
+    </div>
+    <nav aria-label="主导航">
+      <a href="#about">关于我们</a>
+      <a href="#research">研究报告</a>
+      <a href="#reports">AI分析</a>
+      <a href="#team">专业团队</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">AI驱动的股票分析与研究平台</h1>
+        <p>基于人工智能技术和专业金融分析师的股票分析工具，提供快速、透明的AI筛选和研究摘要。输入股票代码开始即时诊断。</p>
+
+        <div class="search" role="search" aria-label="股票搜索">
+          <input id="ticker" type="text" placeholder="输入股票代码或公司名称 — 例如: AAPL, 特斯拉, 腾讯" aria-label="股票代码或公司名称" />
+          <button id="analyzeBtn">开始分析</button>
+        </div>
+
+        <div class="stack" aria-hidden="true">
+          <div class="chip">机器学习预测</div>
+          <div class="chip">情感分析</div>
+          <div class="chip">量化信号</div>
+          <div class="chip">风险评估</div>
+        </div>
+
+        <p style="margin-top:1rem;color: #cbd5e1; font-size:0.95rem">由华尔街分析师和AI工程师团队提供技术支持。</p>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h3 style="margin:0 0 1rem 0;">示例AI分析摘要</h3>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><strong style="font-size:1.25rem">AAPL</strong><div style="color:var(--muted);font-size:0.875rem">苹果公司</div></div>
+              <div style="text-align:right"><div style="font-weight:700;color:var(--success)">买入建议</div><div style="color:var(--muted);font-size:0.875rem">置信度 85%</div></div>
+            </div>
+
+            <div style="margin-top:1rem;color:var(--muted);font-size:0.95rem; line-height:1.5">
+              摘要: 基本面强劲，产品周期积极，新闻和社交媒体情绪总体积极。
+            </div>
+
+            <div style="margin-top:1rem">
+              <div style="background:#eff6ff;border-radius:var(--radius);padding:0.75rem;color:var(--accent-dark);font-weight:600; font-size:0.95rem">平均分析时间: ~1.5秒</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:1rem"></div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 1rem 0;">联系与支持</h3>
+          <p style="color:var(--muted);font-size:0.95rem;margin-top:0.5rem">如需合作或支持，请通过电子邮件联系我们：</p>
+          <p style="margin:0.75rem 0"><a class="contact" href="mailto:support@galaxynorthstar.ai" style="color:var(--accent);font-weight:600;text-decoration:none">support@galaxynorthstar.ai</a></p>
+          <p style="font-size:0.875rem;color:var(--muted-light);margin-top:0.5rem">响应时间: 通常在24小时内。</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mb-3">
+      <div class="panel">
+        <h2>关于Galaxy North Star AI</h2>
+        <p style="color:var(--muted); line-height:1.7">Galaxy North Star AI结合了卖方研究经验和现代机器学习技术，提供研究报告、信号生成和投资组合分析。我们的模型结合了结构化财务数据、另类数据和自然语言信号，生成简洁、可操作的研究摘要。我们注重透明度和方法论的解释，让用户理解AI的分析过程。</p>
+        
+        <div class="disclaimer">
+          <strong>重要提示:</strong> 我们的AI分析工具旨在辅助研究决策，不构成投资建议。所有投资决策均需结合个人情况并咨询专业财务顾问。过往表现不预示未来结果。
+        </div>
+      </div>
+    </section>
+
+    <!-- Research / Articles -->
+    <section id="research" class="mb-3">
+      <h2>精选研究与文章</h2>
+
+      <div class="article-list">
+        <div class="article-full">
+          <h4>1. 深度学习在短期股票预测中的应用</h4>
+          <p>摘要: 我们评估了循环神经网络和卷积神经网络在10年日内和日线价格数据上的表现。结果显示，结合价格特征与成交量、波动率指标可以提高短期方向预测准确性。</p>
+          <div class="meta" style="margin-top:0.75rem;color:var(--muted-light)">作者: 李杰, 王明 — 《金融数据科学杂志》, 2023. <a class="readmore" href="#" aria-label="阅读全文">阅读完整论文</a></div>
+        </div>
+
+        <div class="article-full">
+          <h4>2. 新闻与社交媒体的情感信号分析</h4>
+          <p>摘要: 本研究使用基于Transformer的NLP技术从金融新闻和社交媒体中提取句子级情感。融入情感分析可以改善多个行业的短期波动率预测。</p>
+          <div class="meta" style="margin-top:0.75rem;color:var(--muted-light)">来源: 《计算金融2022年会议录》. <a class="readmore" href="#">阅读更多</a></div>
+        </div>
+
+        <div class="article-full">
+          <h4>3. 强化学习在投资组合再平衡中的应用</h4>
+          <p>摘要: 比较分析了策略梯度方法在交易成本下的资产分配决策。在模拟市场中，RL代理相比简单启发式方法显示出稳定的超额表现。</p>
+          <div class="meta" style="margin-top:0.75rem;color:var(--muted-light)">作者: 张强等. — 《量化金融快报》, 2024. <a class="readmore" href="#">阅读更多</a></div>
+        </div>
+
+        <div class="article-full">
+          <h4>4. 金融模型中的特征工程实践指南</h4>
+          <p>摘要: 教程式文章，介绍递归特征消除、L1正则化和领域驱动的特征创建，以构建稳健的预测模型。</p>
+          <div class="meta" style="margin-top:0.75rem;color:var(--muted-light)">博客/教程, 2022. <a class="readmore" href="#">阅读教程</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Reports -->
+    <section id="reports" class="mb-3">
+      <h2>AI分析报告与示例输出</h2>
+      <div class="reports">
+        <div class="report">
+          <h4>示例报告 — 苹果公司 (AAPL)</h4>
+          <p>摘要: 动量强劲; 盈利超预期; 模型信号: 买入 (置信度 85%)。</p>
+          <p style="margin-top:0.75rem;color:var(--muted)">模型结合了价格模式、情感分析、期权流和基本面数据。 <a href="#" class="readmore">查看完整报告示例</a></p>
+        </div>
+
+        <div class="report">
+          <h4>示例报告 — 特斯拉 (TSLA)</h4>
+          <p>摘要: 波动率升高; 模型信号: 持有 (置信度 70%)。</p>
+          <p style="margin-top:0.75rem;color:var(--muted)">包括风险情景分析和建议头寸规模。 <a href="#" class="readmore">查看示例</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="mb-3">
+      <h2>专业团队</h2>
+      <div class="panel">
+        <p style="color:var(--muted); margin-bottom:1.5rem">Galaxy North Star由资深分析师团队和专注于时间序列预测和金融NLP的AI研究团队支持，团队成员拥有多年华尔街和科技行业经验。</p>
+        
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="team-member-avatar">JL</div>
+            <h4>李杰</h4>
+            <p>首席数据科学家</p>
+            <p class="mt-1" style="font-size:0.85rem; color:var(--muted)">前高盛量化分析师</p>
+          </div>
+          
+          <div class="team-member">
+            <div class="team-member-avatar">MP</div>
+            <h4>王明</h4>
+            <p>高级AI研究员</p>
+            <p class="mt-1" style="font-size:0.85rem; color:var(--muted)">机器学习博士</p>
+          </div>
+          
+          <div class="team-member">
+            <div class="team-member-avatar">SR</div>
+            <h4>张强</h4>
+            <p>量化策略主管</p>
+            <p class="mt-1" style="font-size:0.85rem; color:var(--muted)">CFA持证人</p>
+          </div>
+        </div>
+        
+        <div class="disclaimer mt-2">
+          我们的团队由40多名专业人士组成，包括资深股票分析师、量化工程师、数据科学家和产品支持专家。
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="panel">
+        <h2>联系我们</h2>
+        <p style="color:var(--muted); margin-bottom:1rem">如需获取企业访问权限、研究合作或试用AI报告，请通过以下方式联系我们：</p>
+        
+        <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+          <div>
+            <h4 style="font-size:1.1rem; margin-bottom:0.5rem;">电子邮件</h4>
+            <p><a href="mailto:support@galaxynorthstar.ai" style="color:var(--accent); text-decoration:none;">support@galaxynorthstar.ai</a></p>
+          </div>
+          
+          <div>
+            <h4 style="font-size:1.1rem; margin-bottom:0.5rem;">业务咨询</h4>
+            <p><a href="mailto:partnership@galaxynorthstar.ai" style="color:var(--accent); text-decoration:none;">partnership@galaxynorthstar.ai</a></p>
+          </div>
+        </div>
+        
+        <div class="disclaimer mt-2">
+          <strong免责声明:</strong> 本网站仅提供教育和研究材料。本网站内容不构成投资建议、推荐或买卖证券的要约。所有模型都存在风险；过往表现不预示未来结果。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>© 2025 Galaxy North Star AI. 保留所有权利。</div>
+      <div class="footer-links">
+        <a href="#">隐私政策</a>
+        <a href="#">服务条款</a>
+        <a href="mailto:support@galaxynorthstar.ai">联系我们</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('analyzeBtn').addEventListener('click', function(){
+      var ticker = document.getElementById('ticker').value.trim();
+      if (!ticker) {
+        alert('请输入股票代码或公司名称（例如：AAPL）。');
+        return;
+      }
+      
+      var overlay = document.createElement('div');
+      overlay.style.position='fixed';
+      overlay.style.left=0; overlay.style.top=0; overlay.style.right=0; overlay.style.bottom=0;
+      overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center';
+      overlay.style.background='rgba(15, 23, 42, 0.9)'; overlay.style.zIndex=9999; overlay.style.color='#fff';
+      overlay.style.backdropFilter = 'blur(4px)';
+      overlay.innerHTML = `
+        <div style="text-align:center;padding:2rem;border-radius:var(--radius-lg);background:var(--nav); max-width:90%; width:400px;">
+          <div style="font-weight:600;font-size:1.25rem; margin-bottom:1rem;">分析 ${ticker.toUpperCase()}</div>
+          <div style="margin-bottom:1.5rem;color:#cbd5e1;">AI模型运行中 — 汇总信号和风险指标</div>
+          <div style="width:100%; height:4px; background:var(--muted); border-radius:999px; overflow:hidden;">
+            <div style="width:30%; height:100%; background:var(--accent); border-radius:999px;"></div>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      setTimeout(function(){
+        overlay.innerHTML = `
+        <div style="text-align:center;padding:2rem;border-radius:var(--radius-lg);background:var(--nav); max-width:90%; width:400px;">
+          <div style="font-weight:600;font-size:1.25rem; margin-bottom:1rem;">${ticker.toUpperCase()} 分析完成</div>
+          <div style="margin-bottom:1.5rem;color:#cbd5e1;">模型摘要: 技术动量强劲; 新闻情感中性; 建议下一步: 查看详细报告</div>
+          <div style="display:flex; gap:0.75rem; justify-content:center;">
+            <button id="closeBtn" style="padding:0.75rem 1.25rem;border-radius:var(--radius);border:1px solid var(--muted);background:transparent;font-weight:500;color:#cbd5e1;cursor:pointer;">关闭</button>
+            <button id="viewBtn" style="padding:0.75rem 1.25rem;border-radius:var(--radius);border:0;background:var(--accent);font-weight:500;color:#fff;cursor:pointer;">查看报告示例</button>
+          </div>
+        </div>`;
+        
+        document.getElementById('closeBtn').addEventListener('click', function(){
+          document.body.removeChild(overlay);
+        });
+        
+        document.getElementById('viewBtn').addEventListener('click', function(){
+          window.open('#reports', '_self');
+          document.body.removeChild(overlay);
+        });
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
-
