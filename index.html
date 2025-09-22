@@ -4,25 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Stock Prediction | 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background: #f9fafb; margin: 0; color: #111827; }
-    header { background: #1e293b; color: white; text-align: center; padding: 40px 20px; }
-    header h1 { font-size: 2rem; margin-bottom: 10px; }
-    header p { font-size: 1rem; color: #cbd5e1; }
-    .container { max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
-    .container h2 { margin-bottom: 10px; color: #1e293b; }
-    .container p { color: #4b5563; margin-bottom: 20px; }
-    .input-box { display: flex; border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
-    .input-box input { flex: 1; border: none; padding: 14px; font-size: 1rem; }
-    .input-box button { background: #2563eb; color: white; border: none; padding: 14px 20px; cursor: pointer; font-size: 1rem; }
-    .input-box button:hover { background: #1d4ed8; }
-    footer { margin-top: 50px; text-align: center; color: #6b7280; font-size: 0.9rem; padding: 20px; }
-    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000; }
-    .modal-content { background:white; padding:30px; border-radius:10px; text-align:center; width:90%; max-width:400px; }
-    .progress-bar { width:100%; background:#e5e7eb; border-radius:8px; margin:20px 0; }
-    .progress-fill { width:0; height:20px; background:#2563eb; border-radius:8px; transition:width 0.3s; }
-    .whatsapp-btn { background:#25D366; color:white; padding:14px 18px; display:inline-flex; align-items:center; gap:8px; border-radius:8px; text-decoration:none; font-weight:600; margin-top:20px; }
-    .whatsapp-btn:hover { background:#128C7E; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #312e81);
+      color: #f8fafc;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+    header p {
+      font-size: 1rem;
+      color: #cbd5e1;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #f1f5f9;
+    }
+    .container p {
+      color: #e2e8f0;
+      margin-bottom: 25px;
+    }
+    .input-box {
+      display: flex;
+      border: 1px solid #475569;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      background: #0f172a;
+    }
+    .input-box input {
+      flex: 1;
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      background: transparent;
+      color: #f8fafc;
+    }
+    .input-box input::placeholder {
+      color: #94a3b8;
+    }
+    .input-box button {
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .input-box button:hover {
+      background: linear-gradient(90deg, #1d4ed8, #6d28d9);
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      padding: 20px;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.7);
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+    .modal-content {
+      background: rgba(30,41,59,0.95);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .modal-content h3 {
+      color: #f8fafc;
+      margin-bottom: 20px;
+    }
+    /* Progress bar */
+    .progress-bar {
+      width: 100%;
+      background: #1e293b;
+      border-radius: 12px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0;
+      height: 18px;
+      background: linear-gradient(90deg, #3b82f6, #9333ea, #f43f5e);
+      background-size: 300% 100%;
+      animation: gradientShift 3s infinite;
+      transition: width 0.3s;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* WhatsApp Btn */
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 14px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: 0.3s;
+    }
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -38,17 +165,17 @@
 
 <header>
   <h1>2025 AI Stock Prediction</h1>
-  <p>Smart AI system assisting in stock analysis</p>
+  <p>Cutting-edge AI system for smarter market analysis</p>
 </header>
 
 <div class="container">
-  <h2>Stock Price Prediction</h2>
-  <p>Enter your stock code or company name. The AI system will process the data quickly and show you insights.</p>
+  <h2>Stock Price Analysis</h2>
+  <p>Enter your stock code or company name. Our AI engine will process and deliver insights in seconds.</p>
   <div class="input-box">
     <input type="text" id="stockInput" placeholder="Enter company name or ticker symbol">
     <button id="analyzeBtn">Start Analysis</button>
   </div>
-  <p><strong>Currently 46,863 users</strong> are exploring reports for free!</p>
+  <p><strong>46,863 users</strong> are exploring reports right now.</p>
 </div>
 
 <footer>
@@ -58,20 +185,19 @@
 <!-- Modal -->
 <div class="modal" id="loadingModal">
   <div class="modal-content">
-    <h3>Analyzing Data...</h3>
+    <h3>Analyzing with AI...</h3>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <p>Please wait while we process your request.</p>
+    <p>Please wait while our system processes your request.</p>
   </div>
 </div>
 
 <!-- WhatsApp Result -->
 <div class="modal" id="wsModal">
   <div class="modal-content">
-    <h3>Full Report Available</h3>
-    <p>Get the complete AI insights directly on WhatsApp.</p>
-    <a href="https://wa.me/1234567890?text=Hello%2C%20please%20send%20me%20the%20AI%20stock%20report%20[LandingPage]" target="_blank" class="whatsapp-btn">
-      <i>📲</i> Get Report on WhatsApp
-    </a>
+    <h3>Full AI Report Ready</h3>
+    <p>Receive the complete analysis instantly via WhatsApp.</p>
+    <a href="https://wa.me/1234567890?text=Hello%2C%20please%20send%20me%20the%20AI%20stock%20report%20[LandingPage]" 
+       target="_blank" class="whatsapp-btn">📲 Get Report on WhatsApp</a>
   </div>
 </div>
 
@@ -97,7 +223,7 @@
         loadingModal.style.display = 'none';
         wsModal.style.display = 'flex';
       }
-    }, 300);
+    }, 400);
   });
 
   window.addEventListener('click', (e) => {
