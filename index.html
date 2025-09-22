@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumStock AI | Advanced Market Analysis</title>
+    <title>Quantum Analytics AI | Advanced Stock Analysis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,10 +16,10 @@
             --gray: #64748b;
             --gray-light: #e2e8f0;
             --card-bg: #ffffff;
-            --header-bg: rgba(15, 23, 42, 0.98);
+            --header-bg: rgba(15, 23, 42, 0.95);
             --gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            --neon-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
         }
 
         * {
@@ -100,11 +100,11 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            border-radius: 0 0 20px 20px;
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
@@ -130,31 +130,18 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             font-weight: 800;
+            background: linear-gradient(to right, #fff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-size: 1.4rem;
+        .hero p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
             color: #cbd5e1;
-            font-weight: 300;
-        }
-
-        .accuracy-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .accuracy-badge span {
-            color: var(--secondary);
-            font-weight: 700;
         }
 
         .search-box {
@@ -162,7 +149,7 @@
             max-width: 600px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
+            border-radius: 12px;
             padding: 5px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -200,46 +187,28 @@
             background: var(--primary-dark);
         }
 
-        .hero-description {
-            max-width: 700px;
-            margin: 30px auto 0;
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .user-count {
-            margin-top: 40px;
-            font-size: 1.1rem;
-            color: #cbd5e1;
-        }
-
-        .user-count strong {
-            color: var(--secondary);
-        }
-
-        /* Features Section */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 20px;
-            margin: 40px 0;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
-        .feature-item {
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 25px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
+            gap: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .feature-item i {
+        .feature i {
             color: var(--secondary);
-            font-size: 24px;
+            font-size: 20px;
         }
 
         /* Cards Section */
@@ -260,7 +229,7 @@
 
         .card {
             background: var(--card-bg);
-            border-radius: var(--border-radius);
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -290,7 +259,6 @@
         .card-text {
             color: var(--gray);
             margin-bottom: 20px;
-            line-height: 1.6;
         }
 
         .card-footer {
@@ -338,7 +306,7 @@
             background: var(--dark);
             color: white;
             padding: 70px 0;
-            border-radius: var(--border-radius);
+            border-radius: 20px;
             margin: 50px 0;
             text-align: center;
         }
@@ -352,7 +320,6 @@
             max-width: 600px;
             margin: 0 auto 30px;
             color: #cbd5e1;
-            line-height: 1.6;
         }
 
         .whatsapp-btn {
@@ -366,7 +333,6 @@
             align-items: center;
             gap: 10px;
             transition: background 0.3s;
-            margin: 10px;
         }
 
         .whatsapp-btn:hover {
@@ -404,16 +370,6 @@
             color: white;
         }
 
-        .disclaimer {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-top: 20px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* Modal */
         .modal {
             display: none;
@@ -432,7 +388,7 @@
         .modal-content {
             background: white;
             padding: 40px;
-            border-radius: var(--border-radius);
+            border-radius: 16px;
             max-width: 500px;
             width: 90%;
             text-align: center;
@@ -460,7 +416,6 @@
         .modal-text {
             margin-bottom: 30px;
             color: var(--gray);
-            line-height: 1.6;
         }
 
         /* Responsive */
@@ -480,10 +435,6 @@
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
             .search-box {
                 flex-direction: column;
                 background: transparent;
@@ -496,7 +447,7 @@
             }
             
             .features {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
             
             .footer-content {
@@ -513,7 +464,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <span>QuantumStock AI</span>
+                <span>Quantum Analytics AI</span>
             </div>
             <nav>
                 <ul>
@@ -529,43 +480,26 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>2025 AI-Powered Stock Prediction</h1>
-            <p class="hero-subtitle">Advanced machine learning for market analysis</p>
-            
-            <div class="accuracy-badge">
-                Predictive accuracy up to <span>89.7%</span> based on historical backtesting
-            </div>
+            <h1>AI-Powered Stock Analysis</h1>
+            <p>Advanced machine learning algorithms combined with Wall Street expertise to deliver actionable investment insights</p>
             
             <div class="search-box">
-                <input type="text" class="search-input" placeholder="Enter company name or stock symbol">
-                <button class="search-btn" id="analyzeBtn">Start Analysis</button>
-            </div>
-            
-            <p class="hero-description">
-                Our AI algorithms analyze market data, financial statements, and alternative data sources 
-                to generate predictive insights. Enter a stock symbol above to receive a comprehensive analysis.
-            </p>
-            
-            <div class="user-count">
-                <strong>42,819</strong> investors have generated reports this week
+                <input type="text" class="search-input" placeholder="Enter any stock, company, or sector for instant AI insights">
+                <button class="search-btn" id="analyzeBtn">Analyze Now</button>
             </div>
             
             <div class="features">
-                <div class="feature-item">
+                <div class="feature">
+                    <i class="fas fa-brain"></i>
+                    <span>Neural Network Forecasting</span>
+                </div>
+                <div class="feature">
                     <i class="fas fa-chart-bar"></i>
-                    <span>Market Analysis</span>
+                    <span>Quantitative Analysis</span>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-users"></i>
-                    <span>Shareholder Analysis</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-flask"></i>
-                    <span>Component Analysis</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Comprehensive Reports</span>
+                <div class="feature">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Sentiment Analysis</span>
                 </div>
             </div>
         </div>
@@ -573,85 +507,82 @@
 
     <!-- Main Content -->
     <main class="container">
-        <!-- Reports Section -->
-        <section id="reports">
-            <h2 class="section-title">Sample Analysis Reports</h2>
+        <!-- Features Section -->
+        <section id="features">
+            <h2 class="section-title">How Quantum Analytics Works</h2>
             <div class="cards">
                 <div class="card">
                     <div class="card-header">
-                        <h3>AAPL - Apple Inc.</h3>
+                        <h3>Data Aggregation</h3>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Our AI models indicate a positive outlook for AAPL with strong buy signals from technical indicators and positive sentiment analysis.</p>
-                        <ul style="color: var(--gray); margin-left: 20px; margin-bottom: 20px;">
-                            <li>87% confidence rating</li>
-                            <li>Positive earnings momentum</li>
-                            <li>Strong technical indicators</li>
-                        </ul>
+                        <p class="card-text">Our system collects and processes millions of data points from financial statements, market data, news sources, and alternative data sets.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-outline">View Details</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-header">
-                        <h3>TSLA - Tesla Inc.</h3>
+                        <h3>AI Analysis</h3>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Analysis shows mixed signals with high volatility expected. Our AI recommends a cautious approach with close monitoring.</p>
-                        <ul style="color: var(--gray); margin-left: 20px; margin-bottom: 20px;">
-                            <li>73% confidence rating</li>
-                            <li>High volatility expected</li>
-                            <li>Market sentiment neutral</li>
-                        </ul>
+                        <p class="card-text">Proprietary machine learning models identify patterns, correlations, and predictive signals that are invisible to traditional analysis.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-outline">View Details</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-header">
-                        <h3>MSFT - Microsoft Corporation</h3>
+                        <h3>Actionable Insights</h3>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Strong fundamentals with consistent growth patterns. AI analysis suggests favorable long-term prospects.</p>
-                        <ul style="color: var(--gray); margin-left: 20px; margin-bottom: 20px;">
-                            <li>91% confidence rating</li>
-                            <li>Stable growth pattern</li>
-                            <li>Positive market sentiment</li>
-                        </ul>
+                        <p class="card-text">Get clear, concise reports with buy/hold/sell recommendations, price targets, and risk assessments updated in real-time.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-outline">View Details</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works Section -->
-        <section id="research">
-            <h2 class="section-title">How Our AI Analysis Works</h2>
+        <!-- Reports Section -->
+        <section id="reports">
+            <h2 class="section-title">Sample AI Reports</h2>
             <div class="cards">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Data Aggregation</h3>
-                        <p class="card-text">Our system collects and processes millions of data points from financial statements, market data, news sources, and alternative data sets.</p>
+                        <h3 class="card-title">AAPL - Apple Inc.</h3>
+                        <p class="card-text">Strong buy signal with 89% confidence. Analysis indicates positive momentum from new product cycle and services growth.</p>
+                        <div class="card-footer" style="justify-content: flex-start;">
+                            <span style="background: var(--secondary); color: white; padding: 5px 10px; border-radius: 20px;">BUY</span>
+                            <span style="margin-left: 10px; color: var(--gray);">Confidence: 89%</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Machine Learning Analysis</h3>
-                        <p class="card-text">Proprietary algorithms identify patterns, correlations, and predictive signals that are invisible to traditional analysis.</p>
+                        <h3 class="card-title">TSLA - Tesla Inc.</h3>
+                        <p class="card-text">Hold recommendation with 76% confidence. High volatility expected due to market conditions and regulatory factors.</p>
+                        <div class="card-footer" style="justify-content: flex-start;">
+                            <span style="background: #f59e0b; color: white; padding: 5px 10px; border-radius: 20px;">HOLD</span>
+                            <span style="margin-left: 10px; color: var(--gray);">Confidence: 76%</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Actionable Insights</h3>
-                        <p class="card-text">Get clear, concise reports with data-driven recommendations, price targets, and risk assessments.</p>
+                        <h3 class="card-title">NVDA - NVIDIA Corp.</h3>
+                        <p class="card-text">Strong buy signal with 92% confidence. AI and data center growth driving exceptional performance and future outlook.</p>
+                        <div class="card-footer" style="justify-content: flex-start;">
+                            <span style="background: var(--secondary); color: white; padding: 5px 10px; border-radius: 20px;">BUY</span>
+                            <span style="margin-left: 10px; color: var(--gray);">Confidence: 92%</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -659,23 +590,18 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
-            <h2 class="contact-title">Access Complete Analysis Reports</h2>
-            <p class="contact-text">Connect with our analysts to receive detailed AI-generated stock analysis reports and personalized investment insights.</p>
-            <a href="https://wa.me/1234567890?text=Hello%20I%20would%20like%20to%20receive%20stock%20analysis" class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+            <h2 class="contact-title">Ready to Get Started?</h2>
+            <p class="contact-text">Contact our team of experts via WhatsApp for a personalized demonstration and free trial of our AI analysis platform.</p>
+            <a href="https://your-whatsapp-link-here" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contact on WhatsApp
             </a>
-            <p class="disclaimer">
-                Disclaimer: Our AI analysis is for informational purposes only and does not constitute investment advice. 
-                Past performance is not indicative of future results. Always conduct your own research and consider seeking 
-                advice from a qualified financial advisor before making investment decisions.
-            </p>
         </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <div class="copyright">© 2023 QuantumStock AI. All rights reserved.</div>
+            <div class="copyright">© 2023 Quantum Analytics AI. All rights reserved.</div>
             <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -689,13 +615,10 @@
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
             <h2 class="modal-title">Access Full Analysis Report</h2>
-            <p class="modal-text">To receive the complete AI analysis report for your selected stock, please contact our team via WhatsApp. Our analysts will provide you with the full report and answer any questions.</p>
-            <a href="https://wa.me/1234567890?text=Hello%20I%20would%20like%20to%20receive%20stock%20analysis" class="whatsapp-btn" target="_blank">
+            <p class="modal-text">To receive the complete AI analysis report for your selected stock, please contact us via WhatsApp. Our team will provide you with the full report and answer any questions.</p>
+            <a href="https://your-whatsapp-link-here" class="whatsapp-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i> Get Report via WhatsApp
             </a>
-            <p class="disclaimer" style="margin-top: 20px;">
-                Disclaimer: AI analysis is for informational purposes only and does not constitute financial advice.
-            </p>
         </div>
     </div>
 
