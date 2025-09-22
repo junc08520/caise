@@ -3,37 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>برنامج التوظيف الحصري 2025 - ابدأ في كسب المال من منزلك!</title>
+    <title>المنصة الذكية للدخل الإضافي - مشروع 2025</title>
     <style>
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2d3748;
+            --accent-gold: #d4af37;
+            --accent-green: #38a169;
+            --accent-red: #e53e3e;
+            --text-light: #f7fafc;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: var(--text-light);
             text-align: center;
             direction: rtl;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .header {
-            background: linear-gradient(to right, #2ecc71, #1abc9c);
-            color: white;
-            padding: 20px;
+            background: linear-gradient(90deg, var(--accent-gold) 0%, #f7ef8a 100%);
+            color: var(--primary-dark);
+            padding: 25px 20px;
             position: relative;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         .badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #e74c3c;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-red);
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -41,117 +60,123 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        h1 {
-            margin: 0;
-            font-size: 1.8em;
-        }
-        .benefit-box {
-            background: #fff9e6;
-            border: 2px dashed #f1c40f;
-            margin: 15px;
-            padding: 15px;
+        .countdown {
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 8px 15px;
             border-radius: 10px;
-        }
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        .steps {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .step {
-            background: #3498db;
-            color: white;
-            width: 90%;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 50px;
+            margin-top: 10px;
             font-weight: bold;
         }
-        .step-2 { background: #2ecc71; }
-        .step-3 { background: #9b59b6; }
-        .cta-button {
-            display: block;
-            background: linear-gradient(to right, #e74c3c, #c0392b);
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 20px;
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
             margin: 20px;
+            padding: 20px;
             border-radius: 15px;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s;
+            border-left: 5px solid var(--accent-green);
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        .reward-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin: 10px 0;
         }
-        .warning {
-            background: #e74c3c;
-            color: white;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
+        .progress-bar {
+            width: 90%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 20px auto;
+            overflow: hidden;
         }
-        .footer {
-            background: #34495e;
-            color: #ecf0f1;
+        .progress-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, var(--accent-green), #68d391);
+            border-radius: 10px;
+            animation: fill 2s ease-in-out;
+        }
+        @keyframes fill {
+            from { width: 0%; }
+            to { width: 75%; }
+        }
+        .info-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
             padding: 15px;
-            font-size: 0.8em;
+        }
+        .info-box {
+            background: rgba(255,  ize: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="badge">عاجل! الأماكن محدودة</div>
-            <h1>برنامج التوظيف الحصري 2025</h1>
-            <p>اكسب ما يصل إلى <span class="highlight">300,000 دينار عراقي</span> يوميًا من هاتفك!</p>
+            <div class="badge">عاجل 🔥</div>
+            <div class="logo">المنصة الذكية - مشروع 2025</div>
+            <div>أول منصة ذكية معتمدة للدخل الإضافي في العراق</div>
+            <div class="countdown">⏳ انتهى التسجيل لـ <span id="countdown-number">43</span> متقدم</div>
         </div>
 
-        <div class="benefit-box">
-            <h2>🎁 مكافأة التسجيل الحصري!</h2>
-            <p>سجل <span class="highlight">الآن</span> واحصل على:</p>
-            <p><strong>2,000 دينار</strong> مكافأة فورية!</p>
-            <p>+ <strong>685 دينار</strong> يوميًا لمدة 3 أيام!</p>
-            <p style="font-size: 1.3em; margin-top: 10px;">المجموع: <span class="highlight">4,055 دينار</span> مجانًا تمامًا!</p>
+        <div class="benefit-card">
+            <h2>مكافأة التسجيل الفوري 🎁</h2>
+            <div class="reward-amount">4,055 دينار</div>
+            <p>مجاني بالكامل عند إكمال التسجيل</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p>75% من المتقدمين قد حصلوا على مكافأتهم</p>
         </div>
 
-        <div class="steps">
-            <div class="step">1. سجل في البرنامج (30 ثانية)</div>
-            <div class="step step-2">2. احصل على مكافأتك الفورية</div>
-            <div class="step step-3">3. ابدأ في كسب المال من أول يوم</div>
+        <div class="info-panel">
+            <div class="info-box">
+                <div class="icon">💼</div>
+                <div>عمل منزلي</div>
+            </div>
+            <div class="info-box">
+                <div class="icon">⏱️</div>
+                <div>1-2 ساعة/يوم</div>
+            </div>
+            <div class="info-box">
+                <div class="icon">💰</div>
+                <div>20,000-300,000 د.ع/يوم</div>
+            </div>
+            <div class="info-box">
+                <div class="icon">📱</div>
+                <div>هاتف ذكي فقط</div>
+            </div>
         </div>
 
-        <a href="https://wa.me/964XXXXXXXXX?text=مرحبًا! أنا مهتم ببرنامج التوظيف 2025 وحصلت على الرابط من الإعلان." class="cta-button">
-            📲 اضغط هنا للتواصل عبر واتساب والبدء الآن!
+        <a href="https://wa.me/964XXXXXXXXX?text=مرحبًا! أنا مهتم بالمنصة الذكية 2025 وحصلت على الرابط من الإعلان." class="cta-button">
+            <span class="button-text">🚀 ابدأ الآن واحصل على مكافأتك</span>
+            <span class="button-subtext">التواصل فوري عبر واتساب مع مستشارنا</span>
         </a>
 
-        <div class="warning">
-            ⚠️ تحذير: هذه الفرصة حصرية ومحدودة بالعدد الأول من المتقدمين. قد يتم إغلاق التسجيل قريبًا.
-        </div>
-
-        <div style="padding: 15px; text-align: right;">
-            <h3>معلومات العمل:</h3>
-            <ul style="text-align: right; display: inline-block;">
-                <li>💼 نوع العمل: عبر الإنترنت (من المنزل)</li>
-                <li>⏰ وقت العمل: 1-2 ساعة يوميًا (مرن)</li>
-                <li>💰 الدخل: 20,000 - 300,000 دينار عراقي/يوم</li>
-                <li>📱 المتطلبات: هاتف ذكي + إنترنت</li>
-                <li>👥 الجنس: ذكور فقط</li>
-                <li>🎯 العمر: 25 - 55 سنة</li>
-            </ul>
+        <div class="trust-badges">
+            <div class="trust-item">🔒 مشروع معتمد</div>
+            <div class="trust-item">👥 5,327+ عضو مسجل</div>
+            <div class="trust-item">⭐ 4.9/5 تقييم</div>
         </div>
 
         <div class="footer">
-            © 2025 برنامج التوظيف المميز. جميع الحقوق محفوظة.
+            <p>© 2025 المنصة الذكية للدخل الإضافي. جميع الحقوق محفوظة.</p>
+            <p class="disclaimer">هذا المشروع مرخص ومعتمد وفقًا لقوانين العراق للعمل الإلكتروني</p>
         </div>
     </div>
+
+    <script>
+        // Countdown animation
+        let count = 43;
+        const countdownElement = document.getElementById('countdown-number');
+        setInterval(() => {
+            if (count > 0) {
+                count--;
+                countdownElement.textContent = count;
+            }
+        }, 5000);
+    </script>
 </body>
 </html>
