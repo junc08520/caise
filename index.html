@@ -1,9 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <!-- Google标签安装位置 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Stock Prediction | 2025</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9fafb; margin: 0; color: #111827; }
+    header { background: #1e293b; color: white; text-align: center; padding: 40px 20px; }
+    header h1 { font-size: 2rem; margin-bottom: 10px; }
+    header p { font-size: 1rem; color: #cbd5e1; }
+    .container { max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+    .container h2 { margin-bottom: 10px; color: #1e293b; }
+    .container p { color: #4b5563; margin-bottom: 20px; }
+    .input-box { display: flex; border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+    .input-box input { flex: 1; border: none; padding: 14px; font-size: 1rem; }
+    .input-box button { background: #2563eb; color: white; border: none; padding: 14px 20px; cursor: pointer; font-size: 1rem; }
+    .input-box button:hover { background: #1d4ed8; }
+    footer { margin-top: 50px; text-align: center; color: #6b7280; font-size: 0.9rem; padding: 20px; }
+    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000; }
+    .modal-content { background:white; padding:30px; border-radius:10px; text-align:center; width:90%; max-width:400px; }
+    .progress-bar { width:100%; background:#e5e7eb; border-radius:8px; margin:20px 0; }
+    .progress-fill { width:0; height:20px; background:#2563eb; border-radius:8px; transition:width 0.3s; }
+    .whatsapp-btn { background:#25D366; color:white; padding:14px 18px; display:inline-flex; align-items:center; gap:8px; border-radius:8px; text-decoration:none; font-weight:600; margin-top:20px; }
+    .whatsapp-btn:hover { background:#128C7E; }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17465661716"></script>
   <script>
@@ -12,292 +33,78 @@
     gtag('js', new Date());
     gtag('config', 'AW-17465661716');
   </script>
-  <!-- 您的其他代码继续保留 -->
-  <title>Galaxy North Star AI — Intelligent Stock Analysis</title>
-  <meta name="description" content="Galaxy North Star AI — AI-driven stock analysis, research articles and expert-backed reports. Enter a ticker to get a fast AI diagnosis." />
-  <meta name="keywords" content="AI stock analysis, stock prediction, quantitative trading, market research, AI reports" />
-  <style>
-    :root{
-      --bg:#f6f7fb;
-      --nav:#071025;
-      --accent:#ffd166;
-      --card:#ffffff;
-      --muted:#6b7480;
-      --shadow: 0 8px 30px rgba(2,6,23,0.08);
-      --radius:12px;
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#102028}
-    header{background:linear-gradient(90deg,#071025,#0b2340);color:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    header .brand{display:flex;gap:14px;align-items:center}
-    .logo{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff9b6b);display:grid;place-items:center;font-weight:800;color:#071025}
-    nav a{color:#cfe6ff;text-decoration:none;margin-left:18px;font-weight:600;font-size:14px}
-    main{max-width:1200px;margin:26px auto;padding:20px}
-    .hero{display:grid;grid-template-columns:1fr;gap:18px;background:linear-gradient(180deg, #082035, #0f2a45);padding:36px;border-radius:16px;color:#fff;box-shadow:var(--shadow)}
-    @media(min-width:900px){.hero{grid-template-columns:1fr 420px}}
-    .hero h1{margin:0;font-size:28px;line-height:1.05}
-    .hero p{margin:8px 0 0;color:#cfe6ff}
-    .search{margin-top:18px;display:flex;gap:10px}
-    .search input{flex:1;padding:14px;border-radius:10px;border:0;font-size:16px}
-    .search button{padding:14px 18px;border-radius:10px;border:0;background:var(--accent);font-weight:800;color:#071025;cursor:pointer}
-    .panel{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
-    .row{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
-    @media(min-width:900px){.row{grid-template-columns:2fr 1fr}}
-    /* articles */
-    .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-    .article{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(16,32,40,0.04)}
-    .article h3{margin:0 0 8px;font-size:16px;color:#07203a}
-    .article p{margin:0;color:var(--muted);font-size:14px}
-    .article .meta{margin-top:10px;font-size:13px;color:#8b97a3}
-    /* reports */
-    .reports{display:grid;gap:12px}
-    .report{background:linear-gradient(180deg,#f7f9fb,#ffffff);padding:14px;border-radius:10px;border-left:4px solid var(--accent)}
-    .stack{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .chip{background:#e9f2ff;padding:8px 10px;border-radius:999px;color:#08325a;font-weight:700;font-size:13px}
-    footer{margin-top:28px;background:#071025;color:#cbd6e6;padding:26px;border-radius:10px;text-align:center}
-    .contact a{color:var(--accent);font-weight:800;text-decoration:none}
-    .disclaimer{font-size:13px;color:#93a0ab;margin-top:14px}
-    /* article list long */
-    .article-list{margin-top:14px;display:flex;flex-direction:column;gap:12px}
-    .article-full{background:#fff;padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.04)}
-    .article-full h4{margin:0 0 6px;color:#07203a}
-    .article-full p{margin:0;color:#54636f;font-size:14px}
-    .readmore{color:#0b4da0;text-decoration:none;font-weight:700;margin-top:8px;display:inline-block}
-  </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo">GNS</div>
-      <div>
-        <div style="font-size:13px;color:#bfe1ff;font-weight:700">GALAXY NORTH STAR</div>
-        <div style="font-size:12px;color:#a6c9e6">AI Stock Analysis & Research</div>
-      </div>
-    </div>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#reports">AI Reports</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <h1 id="hero-title">AI-driven Stock Analysis & Research</h1>
-        <p>Fast, transparent AI screening and research summaries powered by domain experts and modern machine learning models. Enter a ticker to begin an instant diagnosis.</p>
+<header>
+  <h1>2025 AI Stock Prediction</h1>
+  <p>Smart AI system assisting in stock analysis</p>
+</header>
 
-        <div class="search" role="search" aria-label="Stock search">
-          <input id="ticker" type="text" placeholder="Enter ticker or company name — e.g. AAPL, Tesla, Microsoft" aria-label="Stock symbol or company name" />
-          <button id="analyzeBtn">Start Analysis</button>
-        </div>
+<div class="container">
+  <h2>Stock Price Prediction</h2>
+  <p>Enter your stock code or company name. The AI system will process the data quickly and show you insights.</p>
+  <div class="input-box">
+    <input type="text" id="stockInput" placeholder="Enter company name or ticker symbol">
+    <button id="analyzeBtn">Start Analysis</button>
+  </div>
+  <p><strong>Currently 46,863 users</strong> are exploring reports for free!</p>
+</div>
 
-        <div class="stack" aria-hidden="true">
-          <div class="chip">ML Forecasting</div>
-          <div class="chip">Sentiment NLP</div>
-          <div class="chip">Quant Signals</div>
-          <div class="chip">Risk Metrics</div>
-        </div>
+<footer>
+  <p>Disclaimer | Terms of Use | Privacy Policy</p>
+</footer>
 
-        <p style="margin-top:12px;color: #cfe6ff; font-size:13px">Supported by a team of 40 Wall Street analysts and AI engineers.</p>
-      </div>
+<!-- Modal -->
+<div class="modal" id="loadingModal">
+  <div class="modal-content">
+    <h3>Analyzing Data...</h3>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <p>Please wait while we process your request.</p>
+  </div>
+</div>
 
-      <aside>
-        <div class="panel">
-          <h3 style="margin:0;color:#07203a">Sample AI Snapshot</h3>
-          <div style="margin-top:12px">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div><strong style="font-size:18px">AAPL</strong><div style="color:var(--muted);font-size:13px">Apple Inc.</div></div>
-              <div style="text-align:right"><div style="font-weight:800;color:#0b4da0">BUY</div><div style="color:var(--muted);font-size:13px">Confidence 92%</div></div>
-            </div>
+<!-- WhatsApp Result -->
+<div class="modal" id="wsModal">
+  <div class="modal-content">
+    <h3>Full Report Available</h3>
+    <p>Get the complete AI insights directly on WhatsApp.</p>
+    <a href="https://wa.me/1234567890?text=Hello%2C%20please%20send%20me%20the%20AI%20stock%20report%20[LandingPage]" target="_blank" class="whatsapp-btn">
+      <i>📲</i> Get Report on WhatsApp
+    </a>
+  </div>
+</div>
 
-            <div style="margin-top:12px;color:var(--muted);font-size:14px">
-              Short summary: Strong fundamentals, positive product cycle, favorable sentiment across news and social signals.
-            </div>
+<script>
+  const analyzeBtn = document.getElementById('analyzeBtn');
+  const stockInput = document.getElementById('stockInput');
+  const loadingModal = document.getElementById('loadingModal');
+  const wsModal = document.getElementById('wsModal');
+  const progressFill = document.getElementById('progressFill');
 
-            <div style="margin-top:12px">
-              <div style="background:#eef6ff;border-radius:8px;padding:10px;color:#08325a;font-weight:700">Avg. analysis time: ~1.5s</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="height:16px"></div>
-
-        <div class="panel">
-          <h3 style="margin:0;color:#07203a">Contact & Support</h3>
-          <p style="color:var(--muted);font-size:14px;margin-top:8px">For partnership or support, reach us on Whatsapp:</p>
-          <p style="margin:10px 0"><a class="contact" href="https://lihi.cc/soc1n" target="_blank">WhatsApp</a></p>
-          <p style="font-size:12px;color:#92a3b5;margin-top:8px">Response time: typically within 24 hours.</p>
-        </div>
-      </aside>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="panel">
-        <h2>About Galaxy North Star AI</h2>
-        <p style="color:var(--muted)">Galaxy North Star AI combines decades of sell-side research experience with modern machine learning to offer research reports, signal generation, and portfolio-level analytics. Our models combine structured financial data, alternative data, and natural language signals to produce concise, actionable research summaries.</p>
-      </div>
-    </section>
-
-    <!-- Research / Articles -->
-    <section id="research">
-      <h2 style="margin-top:0">Selected Research & Articles</h2>
-
-      <!-- multiple article-full entries: many real-looking summaries with sources -->
-      <div class="article-list">
-        <div class="article-full">
-          <h4>1. Deep Neural Networks for Short-Term Stock Forecasting</h4>
-          <p>Abstract: We evaluate recurrent and convolutional architectures on 10 years of intraday and daily price data. Results show improved short-term directional accuracy when combining price features with volume and volatility indicators.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Authors: J. Li, M. Patel — Journal of Financial Data Science, 2023. <a class="readmore" href="#" aria-label="Read full article">Read full paper</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>2. Sentiment Signals from News & Social Media</h4>
-          <p>Abstract: This study uses transformer-based NLP to extract sentiment at sentence-level from financial news and social feeds. Incorporating sentiment improves short-horizon volatility forecasts across multiple sectors.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Source: Proceedings of Computational Finance 2022. <a class="readmore" href="#">Read more</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>3. Reinforcement Learning for Portfolio Rebalancing</h4>
-          <p>Abstract: A comparative analysis of policy gradient methods for allocation decisions under transaction costs. The RL agent shows stable outperformance versus simple heuristics in simulated markets.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Authors: S. Rivera et al. — Quantitative Finance Letters, 2024. <a class="readmore" href="#">Read more</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>4. Feature Engineering for Alpha Discovery</h4>
-          <p>Abstract: Discusses techniques to construct predictive signals from price, fundamental ratios, and order flow. Emphasis on cross-validation, leakage prevention, and robust evaluation.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Source: University Research Working Paper, 2021. <a class="readmore" href="#">Download</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>5. Cross-Market Correlation Analysis: Crypto vs. Equities</h4>
-          <p>Abstract: Investigates lead-lag relationships between major cryptocurrencies and technology stocks, highlighting times of increased co-movement during macro shocks.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Published: Market Microstructure Research, 2023. <a class="readmore" href="#">Read more</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>6. Explainable AI in Finance: SHAP & Model Interpretability</h4>
-          <p>Abstract: Presents best practices for applying SHAP values to tree and neural models to generate transparent feature attributions for portfolio managers.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Conference: Explainable AI for Finance, 2022. <a class="readmore" href="#">Details</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>7. Backtesting Frameworks and Robust Evaluation</h4>
-          <p>Abstract: Covers pitfalls in backtesting including survivorship bias, lookahead bias, and proper transaction cost modeling to ensure realistic performance estimates.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Source: Quantitative Methods Journal, 2020. <a class="readmore" href="#">Read paper</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>8. Macro-Factor Driven Asset Allocation</h4>
-          <p>Abstract: Evaluates multi-factor allocation strategies that adapt to regime changes using macroeconomic indicators and AI regime detection.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Source: Journal of Asset Management, 2021. <a class="readmore" href="#">Read more</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>9. Volatility Forecasting with GARCH and Machine Learning Hybrids</h4>
-          <p>Abstract: Compares parametric GARCH models with ML regressors for realized volatility forecasting and intraday risk estimation.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Authors: K. Zhou et al., 2019. <a class="readmore" href="#">Details</a></div>
-        </div>
-
-        <div class="article-full">
-          <h4>10. Practical Guide to Feature Selection in Financial Models</h4>
-          <p>Abstract: A tutorial-style article on recursive feature elimination, L1 regularization, and domain-driven feature creation for robust predictive models.</p>
-          <div class="meta" style="margin-top:8px;color:#7d8b95">Blog / Tutorial, 2022. <a class="readmore" href="#">Read tutorial</a></div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- AI Reports -->
-    <section id="reports">
-      <h2>AI Reports & Example Outputs</h2>
-      <div class="reports">
-        <div class="report">
-          <h4>Example Report — Apple Inc (AAPL)</h4>
-          <p>Summary: Momentum strong; earnings beat expectations; model signal: BUY (Confidence 92%).</p>
-          <p style="margin-top:8px;color:var(--muted)">Model combines price patterns, sentiment, options flow, and fundamentals. <a href="#" class="readmore">Download full report</a></p>
-        </div>
-
-        <div class="report">
-          <h4>Example Report — Tesla Inc (TSLA)</h4>
-          <p>Summary: Elevated volatility; model signal: HOLD (Confidence 68%).</p>
-          <p style="margin-top:8px;color:var(--muted)">Includes risk scenarios and suggested position sizing. <a href="#" class="readmore">Download</a></p>
-        </div>
-
-        <div class="report">
-          <h4>Example Report — Nvidia (NVDA)</h4>
-          <p>Summary: Strong technical breakout; model signal: ACCUMULATE (Confidence 88%).</p>
-          <p style="margin-top:8px;color:var(--muted)"><a href="#" class="readmore">Download sample</a></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section id="team">
-      <h2>Expert Team</h2>
-      <div class="panel">
-        <p style="color:var(--muted)">Galaxy North Star is backed by a team of 40 senior analysts with combined decades of experience on Wall Street, plus a core AI research team specializing in time-series forecasting and NLP for financial data.</p>
-        <ul style="color:var(--muted);margin-top:10px">
-          <li>Senior Equity Analysts (10+) — sector research & fundamental models</li>
-          <li>Quant Engineers (12) — model development & risk controls</li>
-          <li>Data Scientists (10) — feature engineering & NLP sentiment models</li>
-          <li>Product & Support (8) — deployment, UX, and client success</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="panel">
-        <h2>Contact & Get Started</h2>
-        <p style="color:var(--muted)">To request enterprise access, research partnerships, or trial the AI reports, contact us on Whatsapp:</p>
-        <p style="font-size:18px"><a class="contact" href="https://t.me/Aistockas" target="_blank">TG @Aistockas</a></p>
-        <div class="disclaimer">
-          <strong>Disclaimer:</strong> This site provides educational and research materials only. Nothing on this site is investment advice, a recommendation, or an offer to buy or sell securities. All models have risks; past performance is not indicative of future results.
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div style="max-width:900px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <div>© 2025 Galaxy North Star AI</div>
-        <div style="color:#a8c6e8">Built for research and education • Contact: <a href="https://t.me/Aistockas" class="contact" target="_blank">@Aistockas</a></div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Simple front-end behavior: fake analysis flow & open YouTube on completion (if desired)
-    document.getElementById('analyzeBtn').addEventListener('click', function(){
-      var ticker = document.getElementById('ticker').value.trim();
-      if (!ticker) {
-        alert('Please enter a stock symbol or company name (e.g., AAPL).');
-        return;
+  analyzeBtn.addEventListener('click', () => {
+    if (!stockInput.value.trim()) {
+      alert("Please enter a stock code or company name");
+      return;
+    }
+    loadingModal.style.display = 'flex';
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 20;
+      progressFill.style.width = progress + "%";
+      if (progress >= 100) {
+        clearInterval(interval);
+        loadingModal.style.display = 'none';
+        wsModal.style.display = 'flex';
       }
-      // show simple loading overlay
-      var overlay = document.createElement('div');
-      overlay.style.position='fixed';
-      overlay.style.left=0; overlay.style.top=0; overlay.style.right=0; overlay.style.bottom=0;
-      overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center';
-      overlay.style.background='rgba(2,6,23,0.6)'; overlay.style.zIndex=9999; overlay.style.color='#fff';
-      overlay.innerHTML = '<div style="text-align:center;padding:20px;border-radius:8px;background:linear-gradient(180deg,#071025,#0b1630)"><div style="font-weight:800;font-size:18px">Analyzing ' + ticker.toUpperCase() + '...</div><div style="margin-top:10px;color:#9fb6d9">AI models running — summarizing signals and risk metrics</div></div>';
-      document.body.appendChild(overlay);
+    }, 300);
+  });
 
-      // simulate analysis time, then show a result card and option to view more (opens YouTube as requested)
-      setTimeout(function(){
-        overlay.innerHTML = '<div style="text-align:center;padding:20px;border-radius:8px;background:linear-gradient(180deg,#071025,#0b1630)"><div style="font-weight:800;font-size:18px">Result ready for ' + ticker.toUpperCase() + '</div><div style="margin-top:10px;color:#9fb6d9">Model summary: Technical momentum strong; news sentiment neutral; recommended next step: review detailed report</div><div style="margin-top:14px"><button id="viewBtn" style="padding:10px 14px;border-radius:8px;border:0;background:var(--accent);font-weight:800;color:#071025;cursor:pointer">View Full Report</button></div></div>';
-        document.getElementById('viewBtn').addEventListener('click', function(){
-          // open YouTube (or replace with your actual report URL)
-          window.open('https://lihi.cc/soc1n','_blank');
-        });
-      }, 1800);
-    });
-  </script>
+  window.addEventListener('click', (e) => {
+    if (e.target === loadingModal) loadingModal.style.display = 'none';
+    if (e.target === wsModal) wsModal.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
