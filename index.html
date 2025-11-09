@@ -1,101 +1,521 @@
-// api/register.js
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Chương Trình Hỗ Trợ Sinh Viên Việt Nam - Đăng ký chính thức</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Chương trình hỗ trợ sinh viên năm 1 & năm 2 tại Việt Nam. Kết nối minh bạch qua nhà trường và bưu điện. Không thu phí. Đăng ký thông tin để được xem xét.">
+<style>
+:root {
+  --bg-grad: radial-gradient(circle at top, #0f172a 0, #020817 40%, #020817 100%);
+  --accent: #22c55e;
+  --accent-soft: rgba(34,197,94,0.25);
+  --accent2: #38bdf8;
+  --card-bg: rgba(9,9,11,0.82);
+  --border-subtle: rgba(148,163,253,0.16);
+  --radius-xl: 22px;
+  --radius-md: 14px;
+  --transition-fast: 0.2s ease;
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro", -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: #020817;
+  color: #e5e7eb;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.hero-wrap {
+  position: relative;
+  padding: 32px 18px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-bg {
+  position: fixed;
+  inset: -40px;
+  z-index: -1;
+  background: var(--bg-grad);
+  overflow: hidden;
+}
+.hero-orbit {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,253,0.08);
+  top: -120px;
+  right: -60px;
+  filter: blur(0.1px);
+  animation: spin 26s linear infinite;
+  opacity: 0.5;
+}
+.hero-glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: radial-gradient(circle,#22c55e33,#22c55e00);
+  top: 40px;
+  left: -40px;
+  filter: blur(1px);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.brand-label {
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+.brand-sub {
+  font-size: 11px;
+  color: #6b7280;
+}
+.brand-slot {
+  width: 140px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px dashed rgba(148,163,253,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #9ca3af;
+  backdrop-filter: blur(10px);
+  background: radial-gradient(circle at top,rgba(15,23,42,0.82),rgba(9,9,11,0.9));
+}
+
+.hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(320px,4fr);
+  gap: 22px;
+  align-items: flex-start;
+}
+@media (max-width: 840px) {
+  .hero-main { grid-template-columns: 1fr; }
+  header { flex-direction: column; align-items: flex-start; }
+}
+
+.hero-title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #f9fafb;
+}
+.hero-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top left, rgba(34,197,94,0.2), rgba(15,23,42,0.98));
+  border: 1px solid rgba(148,163,253,0.3);
+  font-size: 10px;
+  color: #bbf7d0;
+}
+.hero-highlight span.icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle,#22c55e,#166534);
+}
+.hero-lead {
+  font-size: 12px;
+  color: #9ca3af;
+  max-width: 540px;
+  margin: 8px 0 10px;
+}
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 12px;
+}
+.badge {
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 9px;
+  color: #9ca3af;
+  border: 1px solid rgba(75,85,99,0.7);
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.badge strong { color: var(--accent); font-weight:600; }
+.info-block {
+  padding: 10px 11px;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at top,rgba(15,23,42,0.98),rgba(2,6,23,0.98));
+  border: 1px solid rgba(75,85,99,0.7);
+  box-shadow: 0 16px 40px rgba(15,23,42,0.7);
+  font-size: 10px;
+  color:#9ca3af;
+}
+.info-block ul {
+  margin: 6px 0 0;
+  padding-left: 15px;
+}
+.info-block li { margin-bottom: 2px; }
+
+.form-card {
+  position: relative;
+  padding: 16px 14px 14px;
+  border-radius: var(--radius-xl);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 22px 60px rgba(15,23,42,0.9);
+  backdrop-filter: blur(20px);
+  transform-origin: top right;
+  animation: floatIn 0.8s cubic-bezier(.23,1.22,.19,1) 0.1s both;
+}
+@keyframes floatIn {
+  from { opacity:0; transform: translateY(16px) scale(.98); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+.form-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: #e5e7eb;
+}
+.form-sub {
+  font-size: 9px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+form {
+  display: grid;
+  gap: 8px;
+  font-size: 11px;
+}
+.label { font-weight: 500; margin-bottom: 2px; color: #e5e7eb; }
+.radio-row { display:flex; flex-wrap:wrap; gap:10px; font-size:10px; color:#cbd5f5;}
+.radio-row label { display:flex; align-items:center; gap:4px; cursor:pointer; }
+input[type="radio"], input[type="checkbox"] { accent-color: var(--accent); }
+
+input, select, textarea {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 9px;
+  border: 1px solid rgba(75,85,99,0.9);
+  background: rgba(2,6,23,0.96);
+  color: #e5e7eb;
+  font-size: 11px;
+  outline: none;
+  transition: border var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+input::placeholder, textarea::placeholder {
+  color: #6b7280;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent2);
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.25), 0 8px 22px rgba(15,23,42,0.9);
+  background: #020817;
+  transform: translateY(-1px);
+}
+.row-2 {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 8px;
+}
+@media (max-width: 640px) { .row-2 { grid-template-columns: 1fr; } }
+
+.consent {
+  display:flex;
+  gap:6px;
+  align-items:flex-start;
+  font-size:9px;
+  color:#9ca3af;
+}
+.btn-primary {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(to right,#22c55e,#38bdf8);
+  color:#020817;
+  font-weight:700;
+  font-size:11px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  box-shadow: 0 16px 40px rgba(22,163,74,0.55);
+  transition: all var(--transition-fast);
+}
+.btn-primary span.icon {
+  width:14px;height:14px;border-radius:999px;
+  background:#020817;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#22c55e;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:0 22px 70px rgba(22,163,74,0.8);
+}
+.status {
+  font-size:9px;
+  margin-top:6px;
+}
+.status.ok { color:#22c55e; }
+.status.err { color:#f97316; }
+.status.bad { color:#f97316; }
+
+.footer {
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 18px 18px;
+  font-size:8px;
+  color:#6b7280;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.footer span strong { color:#9ca3af; }
+
+</style>
+</head>
+<body>
+<div class="hero-bg">
+  <div class="hero-orbit"></div>
+  <div class="hero-glow"></div>
+</div>
+
+<div class="hero-wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-label">VIETNAM STUDENT SUPPORT PROGRAM</div>
+      <div class="brand-name">Chương Trình Hỗ Trợ Sinh Viên Việt Nam</div>
+      <div class="brand-sub">Kết nối chính thống &amp; minh bạch với sinh viên năm 1–2 qua nhà trường và bưu điện.</div>
+    </div>
+    <!-- 预留 LOGO / 机构图标插槽 -->
+    <div class="brand-slot">
+      Thêm logo &amp; đơn vị đối tác tại đây
+    </div>
+  </header>
+
+  <div class="hero-main">
+    <!-- 左侧介绍 -->
+    <section>
+      <div class="hero-highlight">
+        <span class="icon"></span>
+        Chỉ dành cho sinh viên Đại học năm 1 &amp; năm 2 (ngoài TP. Hồ Chí Minh)
+      </div>
+      <h1 class="hero-title">
+        Cơ hội nhận hỗ trợ học tập &amp; phát triển,<br/>được xác minh qua <span style="color:var(--accent)">nhà trường</span> &amp; <span style="color:var(--accent2)">bưu điện</span>.
+      </h1>
+      <p class="hero-lead">
+        Chương trình hướng đến sinh viên Việt Nam có tiềm năng và nhu cầu được hỗ trợ chính đáng:
+        hỗ trợ tài liệu, hoạt động học thuật, kỹ năng, một phần phụ cấp… Không thu bất kỳ khoản phí nào,
+        không tuyển dụng trá hình, không yêu cầu thông tin nhạy cảm.
+      </p>
+
+      <div class="badge-grid">
+        <div class="badge">✔ <strong>Không</strong> yêu cầu chuyển tiền</div>
+        <div class="badge">✔ Liên hệ qua <strong>trường</strong> hoặc <strong>bưu điện</strong></div>
+        <div class="badge">✔ Xác minh thông tin sinh viên thật</div>
+        <div class="badge">✔ Ưu tiên sinh viên ngoài TP. Hồ Chí Minh</div>
+      </div>
+
+      <div class="info-block">
+        <strong>Quy trình cơ bản:</strong>
+        <ul>
+          <li>Bạn khai báo thông tin thật: năm học, trường, địa chỉ nhận thư.</li>
+          <li>Bộ phận thẩm định đối chiếu với thông tin nhà trường / khu vực.</li>
+          <li>Nếu phù hợp, đơn vị tài trợ sẽ liên hệ qua trường hoặc gửi bưu phẩm/ thư thông báo.</li>
+        </ul>
+        <div style="margin-top:4px;color:#facc15;font-size:9px;">
+          Lưu ý: Không ghi trường hoặc địa chỉ thuộc TP. Hồ Chí Minh. Hồ sơ từ TP.HCM sẽ không được tiếp nhận.
+        </div>
+      </div>
+    </section>
+
+    <!-- 右侧报名表单 -->
+    <aside class="form-card">
+      <div class="form-title">Đăng ký tham gia chương trình chính thức</div>
+      <div class="form-sub">
+        Vui lòng trả lời trung thực. Thông tin sai lệch hoặc sử dụng địa chỉ/trường giả sẽ bị loại bỏ ngay lập tức.
+      </div>
+
+      <form id="regForm">
+        <!-- 必答问题1：年级 -->
+        <div>
+          <div class="label">1. Bạn là sinh viên năm nào? *</div>
+          <div class="radio-row">
+            <label><input type="radio" name="year" value="1" required> Đại học năm 1</label>
+            <label><input type="radio" name="year" value="2" required> Đại học năm 2</label>
+          </div>
+        </div>
+
+        <!-- 必答问题2：是否想收赞助 -->
+        <div>
+          <div class="label">2. Bạn có mong muốn được xem xét hỗ trợ/tài trợ? *</div>
+          <div class="radio-row">
+            <label><input type="radio" name="sponsor" value="Có" required> Có, tôi muốn được xem xét</label>
+            <label><input type="radio" name="sponsor" value="Không"> Không</label>
+          </div>
+        </div>
+
+        <!-- 基本信息 -->
+        <div>
+          <div class="label">Họ và tên đầy đủ *</div>
+          <input type="text" name="fullname" placeholder="Ghi đúng trên giấy tờ" required>
+        </div>
+
+        <div class="row-2">
+          <div>
+            <div class="label">Số điện thoại liên hệ *</div>
+            <input type="tel" name="phone" placeholder="SĐT cá nhân hoặc phụ huynh" required pattern="[0-9+ ]{8,}">
+          </div>
+          <div>
+            <div class="label">Email (không bắt buộc)</div>
+            <input type="email" name="email" placeholder="Email liên lạc (nếu có)">
+          </div>
+        </div>
+
+        <div>
+          <div class="label">Tên trường / Đại học đang theo học *</div>
+          <input type="text" name="school" placeholder="Ví dụ: Trường ĐH Ngoại Thương cơ sở Hà Nội" required>
+        </div>
+
+        <div class="row-2">
+          <div>
+            <div class="label">Tỉnh/Thành phố nơi trường tọa lạc *</div>
+            <input type="text" name="school_city" placeholder="Không ghi TP. Hồ Chí Minh" required>
+          </div>
+          <div>
+            <div class="label">Khoa/Ngành học (không bắt buộc)</div>
+            <input type="text" name="major" placeholder="Ví dụ: Kinh tế, CNTT, Luật...">
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div>
+            <div class="label">Mã số sinh viên (không bắt buộc)</div>
+            <input type="text" name="student_id" placeholder="Nếu muốn được xác minh nhanh hơn">
+          </div>
+          <div>
+            <div class="label">Địa chỉ nhận thư/bưu phẩm *</div>
+            <input type="text" name="mail_address" placeholder="Ghi rõ họ tên + địa chỉ nhận thư" required>
+          </div>
+        </div>
+
+        <div>
+          <div class="label">Nội dung mong muốn được hỗ trợ (tùy chọn)</div>
+          <textarea name="note" rows="2" placeholder="Ví dụ: học bổng, tài liệu ôn tập, hỗ trợ tham gia hội thảo, phụ cấp đi lại..."></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="agree" required>
+          <label for="agree">
+            Tôi cam kết thông tin trên là đúng sự thật, hiểu rằng chương trình có thể kiểm tra với nhà trường/
+            địa phương, và đồng ý được liên hệ qua trường, email hoặc bưu điện. Tôi hiểu chương trình không yêu cầu bất kỳ khoản phí nào.
+          </label>
+        </div>
+
+        <div id="status" class="status"></div>
+        <button type="submit" class="btn-primary">
+          Gửi đăng ký chính thức
+          <span class="icon">➜</span>
+        </button>
+      </form>
+    </aside>
+  </div>
+</div>
+
+<div class="footer">
+  <span>© 2025 Chương Trình Hỗ Trợ Sinh Viên Việt Nam. <strong>Không</strong> phải tuyển dụng đa cấp, không xin phí, không yêu cầu thông tin ngân hàng.</span>
+  <span>Thông tin chỉ dùng cho mục đích thẩm định &amp; liên lạc chính thức qua trường/bưu điện.</span>
+</div>
+
+<script>
+// 关键词禁止 TP.HCM / HCM / Hồ Chí Minh 等
+const forbidden = [
+  'ho chi minh','hồ chí minh','tp.hcm','tp hcm','hcm',
+  'thành phố hồ chí minh','sài gòn','sai gon','胡志明','胡志明市'
+];
+
+function containsForbidden(str) {
+  if (!str) return false;
+  const t = str.toLowerCase();
+  return forbidden.some(k => t.includes(k));
+}
+
+const form = document.getElementById('regForm');
+const statusBox = document.getElementById('status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  statusBox.textContent = '';
+  statusBox.className = 'status';
+
+  const fd = new FormData(form);
+  const data = Object.fromEntries(fd.entries());
+
+  // 前端校验：必须选 sponsor= Có
+  if (data.sponsor !== 'Có') {
+    statusBox.className = 'status bad';
+    statusBox.textContent = 'Chỉ tiếp nhận hồ sơ thực sự mong muốn được xem xét hỗ trợ (chọn "Có").';
+    return;
   }
+
+  // 校验必填
+  if (!data.year || !data.fullname || !data.phone || !data.school || !data.school_city || !data.mail_address) {
+    statusBox.className = 'status err';
+    statusBox.textContent = 'Vui lòng điền đầy đủ các mục bắt buộc.';
+    return;
+  }
+
+  // 禁止 TP.HCM
+  if (containsForbidden(data.school) || containsForbidden(data.school_city)) {
+    statusBox.className = 'status bad';
+    statusBox.textContent = 'Rất tiếc, chương trình hiện không áp dụng cho các trường thuộc TP. Hồ Chí Minh.';
+    return;
+  }
+
+  statusBox.className = 'status';
+  statusBox.textContent = 'Đang gửi đăng ký, vui lòng đợi...';
 
   try {
-    const body = req.body || {};
-    const {
-      year,
-      sponsor,
-      fullname,
-      phone,
-      email,
-      school,
-      school_city,
-      major,
-      student_id,
-      mail_address,
-      note
-    } = body;
-
-    // 基本校验
-    if (!year || !sponsor || !fullname || !phone || !school || !school_city || !mail_address) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    if (sponsor !== 'Có') {
-      return res.status(400).json({ error: 'Only applicants who opt-in for support are accepted' });
-    }
-
-    // 禁止 TP.HCM / Hồ Chí Minh 等
-    const forbidden = [
-      'ho chi minh','hồ chí minh','tp.hcm','tp hcm','hcm',
-      'thành phố hồ chí minh','sài gòn','sai gon','胡志明','胡志明市'
-    ];
-    const lower = (s) => (s || '').toString().toLowerCase();
-
-    if (forbidden.some(k => lower(school).includes(k) || lower(school_city).includes(k))) {
-      return res.status(400).json({ error: 'Not eligible for Ho Chi Minh City institutions' });
-    }
-
-    const time = new Date().toISOString();
-
-    // 1) 打日志（在 Vercel Logs 中查看，做审计 & 备份）
-    console.log('VN_STUDENT_APPLICATION', {
-      time,
-      year,
-      sponsor,
-      fullname,
-      phone,
-      email,
-      school,
-      school_city,
-      major,
-      student_id,
-      mail_address,
-      note: note || ''
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
-
-    // 2) 可选：发送到 Telegram（推荐给你团队用）
-    // 在 Vercel 项目环境变量中设置：
-    // TELEGRAM_BOT_TOKEN = xxxxxx
-    // TELEGRAM_CHAT_ID = xxxxxx
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-
-    if (botToken && chatId) {
-      const text =
-`📥 Hồ sơ sinh viên mới (Chương trình Hỗ Trợ SV VN)
-Thời gian: ${time}
-Năm học: ${year === '1' ? 'Đại học năm 1' : 'Đại học năm 2'}
-Mong muốn hỗ trợ: ${sponsor}
-Họ tên: ${fullname}
-SĐT: ${phone}
-Email: ${email || '-'}
-Trường: ${school}
-Tỉnh/TP của trường: ${school_city}
-Ngành/Khoa: ${major || '-'}
-MSSV: ${student_id || '-'}
-Địa chỉ nhận thư/bưu phẩm: ${mail_address}
-Nhu cầu hỗ trợ: ${note || '-'}
-
-⚠ Liên hệ chỉ qua: nhà trường / email xác minh / bưu điện. Không yêu cầu chuyển tiền hay cung cấp thông tin NH.`;
-
-      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text })
-      });
+    const j = await res.json();
+    if (!res.ok || !j.ok) {
+      throw new Error(j.error || 'Lỗi máy chủ');
     }
-
-    // 3) 将来可在这里接数据库 / Google Sheet
-
-    return res.status(200).json({ ok: true });
+    statusBox.className = 'status ok';
+    statusBox.textContent = 'Cảm ơn bạn. Hồ sơ đã được ghi nhận. Đơn vị phụ trách sẽ chỉ liên hệ qua kênh chính thức.';
+    form.reset();
   } catch (err) {
-    console.error('REGISTER_ERROR', err);
-    return res.status(500).json({ error: 'Server error' });
+    console.error(err);
+    statusBox.className = 'status err';
+    statusBox.textContent = 'Không gửi được. Vui lòng thử lại sau hoặc kiểm tra kết nối.';
   }
-}
+});
+</script>
+</body>
+</html>
