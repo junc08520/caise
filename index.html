@@ -1,151 +1,101 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Đăng ký Nhận Hỗ Trợ - Phiên Bản Kiểm Tra</title>
-<style>
-  body{font-family:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;background:#f7faf9;color:#0f172a;margin:0;padding:24px}
-  .container{max-width:880px;margin:0 auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,0.06)}
-  h1{margin:0 0 8px;font-size:22px;color:#08332f}
-  p.lead{margin:0 0 16px;color:#475569}
-  form{display:grid;gap:10px}
-  label{font-weight:600;font-size:13px;color:#0f172a}
-  input,select,textarea{padding:10px;border-radius:8px;border:1px solid #e6edf0;background:#fbfeff;font-size:14px}
-  .row{display:flex;gap:10px}
-  .row > *{flex:1}
-  .small{font-size:12px;color:#6b7280}
-  .error{color:#b91c1c;font-weight:600;margin-top:6px}
-  .btn{background:#0f766e;color:#fff;padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
-  .note{font-size:12px;color:#0f766e;margin-top:8px}
-  .success{color:#15803d;font-weight:600}
-</style>
-</head>
-<body>
-  <div class="container">
-    <h1>Đăng ký nhận hỗ trợ (Bản thử nghiệm)</h1>
-    <p class="lead">Chương trình dành cho sinh viên Đại học năm 1 &amp; năm 2. Vui lòng cung cấp thông tin chính xác — tổ chức sẽ liên hệ thông qua trường hoặc gửi thư bưu điện. <strong>Không chấp nhận Trường thuộc thành phố Hồ Chí Minh.</strong></p>
+// api/register.js
 
-    <form id="regForm" autocomplete="off">
-      <!-- 1) 两个必答问题 -->
-      <label>1. Bạn là sinh viên năm nào? *</label>
-      <div>
-        <label><input type="radio" name="year" value="1" required> Đại học năm 1</label>
-        &nbsp;&nbsp;
-        <label><input type="radio" name="year" value="2" required> Đại học năm 2</label>
-      </div>
-
-      <label>2. Bạn muốn nhận tài trợ? *</label>
-      <div>
-        <label><input type="radio" name="sponsor" value="Có" required> Có</label>
-        &nbsp;&nbsp;
-        <label><input type="radio" name="sponsor" value="Không" required> Không</label>
-      </div>
-
-      <!-- 基本信息 -->
-      <label for="fullname">Họ và tên đầy đủ *</label>
-      <input id="fullname" name="fullname" type="text" placeholder="Ví dụ: Nguyễn Văn A" required>
-
-      <div class="row">
-        <div>
-          <label for="phone">Số điện thoại liên hệ *</label>
-          <input id="phone" name="phone" type="tel" placeholder="Ví dụ: 09xxxxxxxx" required pattern="[0-9+ ]{8,}">
-        </div>
-        <div>
-          <label for="school">Tên trường / Đại học *</label>
-          <input id="school" name="school" type="text" placeholder="Tên trường (không ghi Hồ Chí Minh)" required>
-        </div>
-      </div>
-
-      <div class="row">
-        <div>
-          <label for="school_city">Tỉnh/Thành phố nơi trường tọa lạc *</label>
-          <input id="school_city" name="school_city" type="text" placeholder="Ví dụ: Hà Nội, Đà Nẵng, Cần Thơ..." required>
-        </div>
-        <div>
-          <label for="mail_address">Địa chỉ nhận thư (để gửi bưu phẩm) *</label>
-          <input id="mail_address" name="mail_address" type="text" placeholder="Địa chỉ nhận thư đầy đủ (họ tên & địa chỉ)" required>
-        </div>
-      </div>
-
-      <label for="note">Bạn cần hỗ trợ gì? (tùy chọn)</label>
-      <textarea id="note" name="note" rows="2" placeholder="Ví dụ: học bổng, tài liệu, phụ cấp đi lại..."></textarea>
-
-      <div style="display:flex;gap:10px;align-items:center;">
-        <input id="agree" type="checkbox" required>
-        <label for="agree" class="small">Tôi xác nhận thông tin là chính xác và đồng ý tổ chức liên hệ qua trường hoặc gửi thư bưu điện.</label>
-      </div>
-
-      <div id="err" class="error" style="display:none"></div>
-      <button type="submit" class="btn">Gửi đăng ký</button>
-      <div id="msg" style="margin-top:10px"></div>
-
-      <div class="note">Ghi chú: Đây là phiên bản kiểm tra. Chỉ chấp nhận thông tin thực tế, không thu phí. Nếu trường hoặc tỉnh ghi Hồ Chí Minh sẽ bị từ chối tự động.</div>
-    </form>
-  </div>
-
-<script>
-  // 关键词列表，用于拒绝胡志明市相关提交（前端校验）
-  const forbidden = ['ho chi minh','hồ chí minh','hcm','胡志明','胡志明市','tp.hcm','tp hcm','thành phố hồ chí minh'];
-
-  function containsForbidden(s){
-    if(!s) return false;
-    const t = s.toLowerCase();
-    return forbidden.some(k => t.includes(k));
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const form = document.getElementById('regForm');
-  const err = document.getElementById('err');
-  const msg = document.getElementById('msg');
+  try {
+    const body = req.body || {};
+    const {
+      year,
+      sponsor,
+      fullname,
+      phone,
+      email,
+      school,
+      school_city,
+      major,
+      student_id,
+      mail_address,
+      note
+    } = body;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    err.style.display='none'; err.textContent=''; msg.textContent='';
-
-    // gather values
-    const data = {
-      year: form.year.value,
-      sponsor: form.sponsor.value,
-      fullname: form.fullname.value.trim(),
-      phone: form.phone.value.trim(),
-      school: form.school.value.trim(),
-      school_city: form.school_city.value.trim(),
-      mail_address: form.mail_address.value.trim(),
-      note: form.note.value.trim()
-    };
-
-    // 前端基础验证
-    if (!data.fullname || !data.phone || !data.school || !data.school_city || !data.mail_address) {
-      err.style.display='block'; err.textContent='Vui lòng điền đầy đủ các trường bắt buộc.';
-      return;
+    // 基本校验
+    if (!year || !sponsor || !fullname || !phone || !school || !school_city || !mail_address) {
+      return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    // 禁止胡志明
-    if (containsForbidden(data.school) || containsForbidden(data.school_city)) {
-      err.style.display='block';
-      err.textContent='Rất tiếc: chương trình không nhận Trường/Tỉnh thuộc Thành phố Hồ Chí Minh.';
-      return;
+    if (sponsor !== 'Có') {
+      return res.status(400).json({ error: 'Only applicants who opt-in for support are accepted' });
     }
 
-    try {
-      // 调用后端
-      const res = await fetch('/api/register', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(data)
+    // 禁止 TP.HCM / Hồ Chí Minh 等
+    const forbidden = [
+      'ho chi minh','hồ chí minh','tp.hcm','tp hcm','hcm',
+      'thành phố hồ chí minh','sài gòn','sai gon','胡志明','胡志明市'
+    ];
+    const lower = (s) => (s || '').toString().toLowerCase();
+
+    if (forbidden.some(k => lower(school).includes(k) || lower(school_city).includes(k))) {
+      return res.status(400).json({ error: 'Not eligible for Ho Chi Minh City institutions' });
+    }
+
+    const time = new Date().toISOString();
+
+    // 1) 打日志（在 Vercel Logs 中查看，做审计 & 备份）
+    console.log('VN_STUDENT_APPLICATION', {
+      time,
+      year,
+      sponsor,
+      fullname,
+      phone,
+      email,
+      school,
+      school_city,
+      major,
+      student_id,
+      mail_address,
+      note: note || ''
+    });
+
+    // 2) 可选：发送到 Telegram（推荐给你团队用）
+    // 在 Vercel 项目环境变量中设置：
+    // TELEGRAM_BOT_TOKEN = xxxxxx
+    // TELEGRAM_CHAT_ID = xxxxxx
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+
+    if (botToken && chatId) {
+      const text =
+`📥 Hồ sơ sinh viên mới (Chương trình Hỗ Trợ SV VN)
+Thời gian: ${time}
+Năm học: ${year === '1' ? 'Đại học năm 1' : 'Đại học năm 2'}
+Mong muốn hỗ trợ: ${sponsor}
+Họ tên: ${fullname}
+SĐT: ${phone}
+Email: ${email || '-'}
+Trường: ${school}
+Tỉnh/TP của trường: ${school_city}
+Ngành/Khoa: ${major || '-'}
+MSSV: ${student_id || '-'}
+Địa chỉ nhận thư/bưu phẩm: ${mail_address}
+Nhu cầu hỗ trợ: ${note || '-'}
+
+⚠ Liên hệ chỉ qua: nhà trường / email xác minh / bưu điện. Không yêu cầu chuyển tiền hay cung cấp thông tin NH.`;
+
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text })
       });
-      const j = await res.json();
-      if (!res.ok) {
-        throw new Error(j?.error || 'Lỗi server');
-      }
-      msg.innerHTML = '<span class="success">Cảm ơn! Đăng ký đã được gửi. Chúng tôi sẽ liên hệ qua trường hoặc gửi thư bưu điện.</span>';
-      form.reset();
-    } catch (errx) {
-      console.error(errx);
-      err.style.display='block';
-      err.textContent = 'Gửi không thành công. Vui lòng thử lại sau.';
     }
-  });
-</script>
-</body>
-</html>
+
+    // 3) 将来可在这里接数据库 / Google Sheet
+
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('REGISTER_ERROR', err);
+    return res.status(500).json({ error: 'Server error' });
+  }
+}
