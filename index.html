@@ -1,471 +1,447 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Học Bổng Sinh Viên Việt Nam - Nhận hỗ trợ 12.000.000₫</title>
-<meta name="description" content="Chương trình học bổng dành cho sinh viên Việt Nam. Nhận hỗ trợ 12.000.000₫ (~500 USD) qua nhà trường hoặc bưu điện. Không thu phí, xác minh thật.">
-<style>
-:root{
-  --accent:#16a34a;
-  --accent2:#38bdf8;
-  --bg-grad:radial-gradient(1200px 600px at 50% -10%,#0b1026 0,#020617 55%,#01040d 100%);
-  --card-bg:rgba(255,255,255,0.06);
-  --card-br:rgba(255,255,255,0.12);
-  --soft:#9ca3af; --muted:#6b7280; --text:#f8fafc; --ok:#22c55e; --err:#f87171;
-  --font: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:var(--font);
-  background:var(--bg-grad);
-  color:var(--text);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:24px 12px 80px;
-}
-.header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:10px;
-}
-.badge{
-  width:42px;height:42px;border-radius:50%;
-  background:conic-gradient(from 0deg,var(--accent),#10b981,#0ea5e9);
-  display:grid;place-items:center;
-  box-shadow:0 6px 18px rgba(34,197,94,0.35);
-}
-.badge span{font-weight:900;color:#0b1026}
-h1{
-  text-align:center;
-  font-size:1.6rem;
-  line-height:1.3;
-  margin:4px 0 6px;
-}
-.sub{
-  text-align:center;
-  font-size:0.92rem;
-  color:#cbd5e1;
-  max-width:520px;
-  margin:0 auto 10px;
-}
-.trust-row{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom:12px;
-}
-.trust-chip{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:0.78rem;
-  color:#d1d5db;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid var(--card-br);
-}
-.bonus-box{
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#0f172a;
-  padding:8px 14px;
-  border-radius:999px;
-  display:inline-block;
-  font-weight:800;
-  font-size:0.95rem;
-  margin:6px 0 18px;
-  box-shadow:0 10px 22px rgba(34,197,94,0.35);
-}
-.card{
-  width:100%;
-  max-width:520px;
-  background:var(--card-bg);
-  backdrop-filter:blur(10px);
-  border:1px solid var(--card-br);
-  border-radius:16px;
-  padding:18px 16px;
-  box-shadow:0 24px 46px rgba(0,0,0,0.35);
-  animation:fadeIn .5s ease-out;
-}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.section-title{
-  font-weight:800;
-  font-size:0.95rem;
-  letter-spacing:.2px;
-  margin:4px 0 10px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.section-title .stamp{
-  font-size:.78rem;
-  padding:4px 8px;
-  border-radius:6px;
-  background:rgba(34,197,94,.12);
-  border:1px solid rgba(34,197,94,.4);
-  color:#86efac;
-}
-label{
-  font-weight:650;
-  font-size:0.86rem;
-  display:block;
-  margin:6px 0 4px;
-}
-.hint{
-  font-size:.78rem;
-  color:#94a3b8;
-  margin:-6px 0 8px;
-}
-input,textarea,select,datalist{
-  width:100%;
-  padding:11px 12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.18);
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  font-size:.95rem;
-  outline:none;
-  transition:border .2s,box-shadow .2s;
-  margin-bottom:12px;
-}
-input:focus,textarea:focus,select:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(34,197,94,.18);
-}
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-@media(max-width:480px){
-  .header{flex-direction:row;}
-  .row{grid-template-columns:1fr}
-}
-.kit{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-  margin-top:2px;
-}
-.kit .mini{
-  background:rgba(255,255,255,0.06);
-  border:1px solid var(--card-br);
-  border-radius:12px;
-  padding:8px 9px;
-  font-size:.8rem;
-  color:#cbd5e1;
-}
-button{
-  width:100%;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#0b1220;
-  font-weight:900;
-  border:none;
-  padding:12px;
-  border-radius:999px;
-  cursor:pointer;
-  font-size:1.02rem;
-  margin-top:6px;
-  box-shadow:0 12px 24px rgba(34,197,94,0.35);
-  transition:transform .15s ease,filter .15s ease;
-}
-button:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.04);
-}
-.status{
-  text-align:center;
-  font-size:0.88rem;
-  margin-top:6px;
-}
-.status.ok{color:var(--ok)}
-.status.err{color:var(--err)}
-.note{
-  text-align:center;
-  color:#9ca3af;
-  font-size:.8rem;
-  margin-top:10px;
-}
-.steps{
-  max-width:520px;
-  width:100%;
-  margin:14px auto 0;
-  display:grid;
-  gap:10px;
-}
-.step{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:10px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid var(--card-br);
-  color:#dbeafe;
-}
-.step .n{
-  width:28px;height:28px;border-radius:50%;
-  display:grid;place-items:center;
-  font-weight:800;
-  background:rgba(34,197,94,.15);
-  border:1px solid rgba(34,197,94,.4);
-  color:#86efac;
-  margin-top:2px;
-}
-.faq{
-  width:100%;
-  max-width:520px;
-  margin:16px auto 0;
-  display:grid;
-  gap:8px;
-}
-.faq details{
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--card-br);
-  border-radius:12px;
-  padding:10px 12px;
-}
-.faq summary{
-  cursor:pointer;
-  font-weight:700;
-}
-footer{
-  font-size:.72rem;
-  color:#94a3b8;
-  text-align:center;
-  margin-top:22px;
-  max-width:520px;
-}
-.stampbar{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  margin:8px 0 4px;
-}
-.stampbar .seal{
-  font-size:.72rem;
-  padding:4px 8px;
-  border-radius:999px;
-  border:1px dashed rgba(148,163,184,.6);
-  color:#cbd5e1;
-  background:rgba(148,163,184,.08);
-}
-.warning{
-  color:#fca5a5;
-  font-size:.78rem;
-  margin-top:4px;
-  text-align:center;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Keamanan Nasional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #e74c3c;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .search-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .search-box h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .warning-banner {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .warning-banner h3 {
+            color: #e74c3c;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+        }
+
+        .info-item strong {
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item span {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .close-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #7f8c8d;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .search-section {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>SISTEM INFORMASI KEAMANAN NASIONAL</h1>
+            <p>Republik Indonesia - Sistem Verifikasi dan Validasi Data</p>
+        </div>
 
-<div class="header">
-  <div class="badge"><span>VN</span></div>
-  <div>
-    <h1>Học Bổng Sinh Viên Việt Nam 2025</h1>
-    <p class="sub">
-      Hỗ trợ học bổng <b>12.000.000₫ (~500 USD)</b> theo <b>danh sách xác minh nhà trường</b>. 
-      Không thu phí, chỉ dành cho sinh viên đang học.
-    </p>
-    <div class="trust-row">
-      <div class="trust-chip">🏫 Xác minh qua Trường/Phòng CTCT-SV</div>
-      <div class="trust-chip">📬 Hồ sơ gửi/đối chiếu qua bưu điện</div>
-      <div class="trust-chip">🛡️ Cam kết minh bạch · Không tuyển dụng</div>
-    </div>
-  </div>
-</div>
+        <div class="search-section">
+            <!-- Pencarian berdasarkan Nama -->
+            <div class="search-box">
+                <h3>PENCARIAN BERDASARKAN NAMA</h3>
+                <div class="form-group">
+                    <label for="nama">Masukkan Nama Lengkap:</label>
+                    <input type="text" id="nama" placeholder="Contoh: Ahmad Wijaya">
+                </div>
+                <button class="btn" onclick="searchByName()">Cari Data</button>
+            </div>
 
-<div class="bonus-box">💰 Mức học bổng: <b>12.000.000₫</b> / sinh viên</div>
+            <!-- Pencarian berdasarkan ID -->
+            <div class="search-box">
+                <h3>PENCARIAN BERDASARKAN NIK</h3>
+                <div class="form-group">
+                    <label for="nik">Masukkan Nomor Induk Kependudukan:</label>
+                    <input type="text" id="nik" placeholder="Contoh: 3271011509960001">
+                </div>
+                <button class="btn" onclick="searchByNIK()">Cari Data</button>
+            </div>
 
-<div class="card">
-  <div class="section-title">
-    Thông tin sinh viên đăng ký
-    <span class="stamp">Bắt buộc: Họ tên · Trường · SĐT · CCCD</span>
-  </div>
+            <!-- Pencarian berdasarkan Nomor Kartu -->
+            <div class="search-box">
+                <h3>PENCARIAN BERDASARKAN REKENING BANK</h3>
+                <div class="form-group">
+                    <label for="rekening">Masukkan Nomor Rekening Bank:</label>
+                    <input type="text" id="rekening" placeholder="Contoh: 1234567890">
+                </div>
+                <button class="btn" onclick="searchByRekening()">Cari Data</button>
+            </div>
+        </div>
 
-  <!-- 表单：只保留 4 个必填字段 + 2 个可选字段 -->
-  <form id="regForm" novalidate>
-    <label>Họ và tên sinh viên *</label>
-    <input type="text" name="fullname" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="name" required>
-
-    <label>Tên trường / Đại học đang theo học *</label>
-    <input list="schoolList" name="school" placeholder="Ví dụ: Trường Đại học Cần Thơ" required>
-    <datalist id="schoolList">
-      <option value="Trường Đại học Cần Thơ">
-      <option value="Trường Đại học Bách khoa Hà Nội">
-      <option value="Trường Đại học Kinh tế Quốc dân">
-      <option value="Trường Đại học Quốc gia Hà Nội">
-      <option value="Trường Đại học Quốc gia TP. Hồ Chí Minh">
-      <option value="Trường Đại học Sư phạm Hà Nội">
-      <option value="Học viện Ngân hàng">
-      <option value="Học viện Tài chính">
-      <option value="Trường Đại học Đà Nẵng">
-      <option value="Trường Đại học Huế">
-    </datalist>
-    <div class="hint">Ghi đúng tên trường theo giấy tờ/website chính thức.</div>
-
-    <label>Số điện thoại sinh viên *</label>
-    <input type="tel" name="phone" placeholder="Ví dụ: 03x/05x/07x/08x/09x..." required pattern="^(\+84|0)[0-9]{9,10}$">
-    <div class="hint">Sử dụng số di động cá nhân (có thể liên hệ qua Zalo).</div>
-
-    <label>Số CCCD/CMND *</label>
-    <!-- 用这个 input 来映射到 data.address 提交给后端 -->
-    <input type="text" name="idcard" placeholder="12 số CCCD hoặc 9 số CMND" required pattern="^[0-9]{9,12}$">
-    <div class="hint">Sử dụng để đối chiếu thông tin khi xác minh với nhà trường/bưu điện.</div>
-
-    <!-- 可选：多 2 个字段，增加真实感 -->
-    <div class="row">
-      <div>
-        <label>MSSV (không bắt buộc)</label>
-        <input type="text" name="mssv" placeholder="Mã số sinh viên">
-      </div>
-      <div>
-        <label>Ngành học / Năm học (không bắt buộc)</label>
-        <input type="text" name="year" placeholder="Ví dụ: CNTT · Năm 3">
-      </div>
+        <div class="footer">
+            <p>© 2024 Sistem Informasi Keamanan Nasional - Hak Cipta Dilindungi Undang-Undang</p>
+            <p>Hanya untuk penggunaan resmi yang berwenang</p>
+        </div>
     </div>
 
-    <div class="kit">
-      <div class="mini">✅ Thông tin thật · Không thu bất kỳ khoản phí</div>
-      <div class="mini">🏫 Ưu tiên đối chiếu qua nhà trường</div>
-      <div class="mini">📬 Có thể gửi/nhận giấy tờ qua bưu điện</div>
+    <!-- Modal Hasil Pencarian -->
+    <div class="result-modal" id="resultModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>HASIL VERIFIKASI DATA</h2>
+                <p>Status: <strong id="statusIndicator">DITEMUKAN</strong></p>
+            </div>
+            <div class="modal-body">
+                <div class="warning-banner">
+                    <h3>⚠ PERINGATAN: DATA TERCATAT SEBAGAI ORANG YANG DITANDAI</h3>
+                    <p id="warningText">Individu ini tercatat dalam database kami dengan status khusus. Disarankan tindakan lanjutan sesuai protokol keamanan.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4>INFORMASI PRIBADI</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Nama Lengkap:</strong>
+                            <span id="resultNama">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>NIK:</strong>
+                            <span id="resultNIK">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Tempat/Tanggal Lahir:</strong>
+                            <span id="resultTTL">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Jenis Kelamin:</strong>
+                            <span id="resultGender">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Alamat:</strong>
+                            <span id="resultAlamat">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Pekerjaan:</strong>
+                            <span id="resultPekerjaan">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>INFORMASI REKENING BANK</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Nomor Rekening:</strong>
+                            <span id="resultRekening">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Nama Bank:</strong>
+                            <span id="resultBank">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Status Rekening:</strong>
+                            <span id="resultStatusRekening">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>CATATAN TAMBAHAN</h4>
+                    <p id="additionalNotes">Tidak ada catatan tambahan.</p>
+                </div>
+
+                <button class="close-btn" onclick="closeModal()">Tutup Laporan</button>
+            </div>
+        </div>
     </div>
 
-    <div class="status" id="status"></div>
-    <button type="submit">Gửi thông tin đăng ký học bổng</button>
-    <div class="warning">* Hồ sơ từ <b>TP. Hồ Chí Minh</b> hiện không được tiếp nhận.</div>
-  </form>
+    <script>
+        // Data contoh untuk simulasi pencarian
+        const sampleData = {
+            nama: "Ahmad Wijaya",
+            nik: "3271011509960001",
+            ttl: "Jakarta, 15-09-1996",
+            gender: "Laki-laki",
+            alamat: "Jl. Merdeka No. 123, Jakarta Pusat",
+            pekerjaan: "Pengusaha",
+            rekening: "1234567890",
+            bank: "Bank Negara Indonesia",
+            statusRekening: "Aktif - Dalam Pengawasan",
+            catatan: "Individu ini teridentifikasi dalam daftar pemantauan kami. Disarankan verifikasi tambahan sebelum melanjutkan transaksi keuangan."
+        };
 
-  <div class="note">
-    Thông tin chỉ dùng để đối chiếu danh sách sinh viên với nhà trường và phục vụ việc chi trả học bổng.
-    Không tuyển dụng, không môi giới, không yêu cầu chuyển khoản.
-  </div>
-</div>
+        function searchByName() {
+            const nama = document.getElementById('nama').value;
+            if (!nama) {
+                alert('Silakan masukkan nama terlebih dahulu.');
+                return;
+            }
+            showResult({...sampleData, nama: nama || sampleData.nama});
+        }
 
-<div class="steps">
-  <div class="step">
-    <div class="n">1</div>
-    <div><b>Điền thông tin</b> · Ghi chính xác họ tên, trường, số điện thoại và số CCCD/CMND.</div>
-  </div>
-  <div class="step">
-    <div class="n">2</div>
-    <div><b>Xác minh</b> · Đối chiếu qua nhà trường/bưu điện theo danh sách sinh viên.</div>
-  </div>
-  <div class="step">
-    <div class="n">3</div>
-    <div><b>Nhận học bổng</b> · 12.000.000₫/sinh viên sau khi xác minh thành công.</div>
-  </div>
-</div>
+        function searchByNIK() {
+            const nik = document.getElementById('nik').value;
+            if (!nik) {
+                alert('Silakan masukkan NIK terlebih dahulu.');
+                return;
+            }
+            showResult({...sampleData, nik: nik || sampleData.nik});
+        }
 
-<div class="faq">
-  <details>
-    <summary>Chương trình có thu bất kỳ khoản phí nào không?</summary>
-    <div>Không. Chúng tôi <b>không thu phí</b>, không yêu cầu đặt cọc hay chuyển khoản.</div>
-  </details>
-  <details>
-    <summary>Tại sao cần số CCCD/CMND?</summary>
-    <div>Để đối chiếu với danh sách sinh viên thực tế của trường và đảm bảo chi trả đúng người.</div>
-  </details>
-  <details>
-    <summary>TP. Hồ Chí Minh có đăng ký được không?</summary>
-    <div>Hiện tại <b>không tiếp nhận</b> hồ sơ từ TP. Hồ Chí Minh. Vui lòng theo dõi thông báo sau.</div>
-  </details>
-</div>
+        function searchByRekening() {
+            const rekening = document.getElementById('rekening').value;
+            if (!rekening) {
+                alert('Silakan masukkan nomor rekening terlebih dahulu.');
+                return;
+            }
+            showResult({...sampleData, rekening: rekening || sampleData.rekening});
+        }
 
-<div class="stampbar">
-  <div class="seal">Chương trình học bổng · 2025</div>
-  <div class="seal">Minh bạch · Xác minh thật</div>
-</div>
+        function showResult(data) {
+            // Isi data ke dalam modal
+            document.getElementById('resultNama').textContent = data.nama;
+            document.getElementById('resultNIK').textContent = data.nik;
+            document.getElementById('resultTTL').textContent = data.ttl;
+            document.getElementById('resultGender').textContent = data.gender;
+            document.getElementById('resultAlamat').textContent = data.alamat;
+            document.getElementById('resultPekerjaan').textContent = data.pekerjaan;
+            document.getElementById('resultRekening').textContent = data.rekening;
+            document.getElementById('resultBank').textContent = data.bank;
+            document.getElementById('resultStatusRekening').textContent = data.statusRekening;
+            document.getElementById('additionalNotes').textContent = data.catatan;
+            
+            // Tampilkan modal
+            document.getElementById('resultModal').style.display = 'flex';
+        }
 
-<footer>
-  © 2025 Vietnam Student Grant Program · Hỗ trợ minh bạch, xác minh thật qua nhà trường. Không tuyển dụng, không thu phí.
-</footer>
+        function closeModal() {
+            document.getElementById('resultModal').style.display = 'none';
+        }
 
-<script>
-// 禁止 TP.HCM（沿用你的逻辑）
-const forbidden = ['ho chi minh','hồ chí minh','tp.hcm','tp hcm','hcm','胡志明','胡志明市'];
-function containsForbidden(s){
-  if(!s) return false;
-  const t=s.toLowerCase();
-  return forbidden.some(k=>t.includes(k));
-}
-
-const form=document.getElementById('regForm');
-const statusBox=document.getElementById('status');
-
-function isVNPhone(p){
-  if(!p) return false;
-  const t=p.trim();
-  return /^(\+84|0)[0-9]{9,10}$/.test(t);
-}
-function normalizePhone(p){
-  let t=p.trim();
-  if(t.startsWith('+84')) return t;
-  if(t.startsWith('84')) t='+'+t;
-  if(t.startsWith('0')) return t;
-  return t;
-}
-
-form.addEventListener('submit',async(e)=>{
-  e.preventDefault();
-  statusBox.textContent='Đang gửi...';
-  statusBox.className='status';
-
-  // 仍然只向后端提交这 4 个字段：
-  const data={
-    fullname: form.fullname.value.trim(),      // 学生名字
-    phone:   normalizePhone(form.phone.value), // 电话
-    address: form.idcard.value.trim(),         // 用 address 字段装身份证号
-    school:  form.school.value.trim()          // 学校名字
-  };
-
-  if(!data.fullname || !data.phone || !data.address || !data.school){
-    statusBox.textContent='Vui lòng điền đầy đủ bốn mục bắt buộc.';
-    statusBox.classList.add('err');
-    return;
-  }
-  if(!isVNPhone(data.phone)){
-    statusBox.textContent='Số điện thoại chưa đúng định dạng Việt Nam.';
-    statusBox.classList.add('err');
-    return;
-  }
-  if(!/^[0-9]{9,12}$/.test(data.address)){
-    statusBox.textContent='Số CCCD/CMND phải từ 9–12 chữ số.';
-    statusBox.classList.add('err');
-    return;
-  }
-  if(containsForbidden(data.school)){
-    statusBox.textContent='Xin lỗi, hiện không tiếp nhận hồ sơ từ TP. Hồ Chí Minh.';
-    statusBox.classList.add('err');
-    return;
-  }
-
-  try{
-    // 不改变上传接口：仍然 POST /api/register，body 为 {fullname, phone, address, school}
-    const res=await fetch('/api/register',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    const j=await res.json();
-    if(!res.ok || !j.ok) throw new Error(j.error || 'Lỗi máy chủ');
-
-    statusBox.textContent='Cảm ơn bạn! Thông tin đã được ghi nhận. Danh sách sẽ được đối chiếu với nhà trường trong vài ngày.';
-    statusBox.classList.add('ok');
-    form.reset();
-  }catch(err){
-    console.error(err);
-    statusBox.textContent='Không gửi được. Vui lòng thử lại sau.';
-    statusBox.classList.add('err');
-  }
-});
-</script>
-
+        // Tutup modal jika klik di luar konten modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('resultModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
