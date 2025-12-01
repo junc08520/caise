@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Informasi Keamanan Nasional</title>
+    <title>Tinder - Temukan Cinta Sejatimu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,437 +12,337 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #333;
+            background: linear-gradient(135deg, #ff6b9d, #ff8e53, #ffcc70);
+            color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
             padding: 20px;
         }
-
-        .container {
-            max-width: 1200px;
+        
+        .logo-container {
+            margin: 20px 0 30px;
+            position: relative;
+        }
+        
+        /* 这里放置您的LOGO */
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
         }
-
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            border-bottom: 5px solid #e74c3c;
+        
+        .heart {
+            position: absolute;
+            top: -10px;
+            right: 30%;
+            font-size: 24px;
+            color: #ff4d6d;
+            animation: heartbeat 1.5s infinite;
         }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
-
-        .header p {
-            font-size: 1.1rem;
+        
+        .match-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .match-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .match-subtitle {
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.5;
             opacity: 0.9;
         }
-
-        .search-section {
-            padding: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .search-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #3498db;
-            transition: transform 0.3s ease;
+        
+        .profile-image i {
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.8);
         }
-
-        .search-box:hover {
-            transform: translateY(-5px);
-        }
-
-        .search-box h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        
+        .cta-button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
+            padding: 16px 30px;
+            font-size: 18px;
             font-weight: 600;
+            border-radius: 50px;
+            width: 100%;
+            cursor: pointer;
+            margin: 25px 0 15px;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
             transition: all 0.3s ease;
         }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
         }
-
-        .result-modal {
-            display: none;
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px;
+            flex: 1;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 80px;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .feature-text {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        /* 浮动心形动画 */
+        .floating-hearts {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            pointer-events: none;
+            z-index: -1;
         }
-
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            animation: modalAppear 0.3s ease;
+        
+        .heart-float {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: float 8s linear infinite;
         }
-
-        @keyframes modalAppear {
-            from {
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
-                transform: scale(0.7);
             }
-            to {
-                opacity: 1;
-                transform: scale(1);
+            10% {
+                opacity: 0.7;
             }
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .modal-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .modal-body {
-            padding: 30px;
-        }
-
-        .warning-banner {
-            background: #fff3cd;
-            border: 2px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .warning-banner h3 {
-            color: #e74c3c;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .info-section {
-            margin-bottom: 25px;
-        }
-
-        .info-section h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 8px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .info-item {
-            margin-bottom: 12px;
-        }
-
-        .info-item strong {
-            color: #555;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .info-item span {
-            color: #333;
-            font-weight: 500;
-        }
-
-        .close-btn {
-            background: #95a5a6;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            width: 100%;
-            transition: background 0.3s ease;
-        }
-
-        .close-btn:hover {
-            background: #7f8c8d;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            border-top: 1px solid #ecf0f1;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .search-section {
-                grid-template-columns: 1fr;
-                padding: 20px;
+            90% {
+                opacity: 0.7;
             }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
     <div class="container">
-        <div class="header">
-            <h1>SISTEM INFORMASI KEAMANAN NASIONAL</h1>
-            <p>Republik Indonesia - Sistem Verifikasi dan Validasi Data</p>
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <!-- 这里放置您的LOGO -->
+                LOGO ANDA DI SINI
+            </div>
+            <div class="heart">❤</div>
         </div>
-
-        <div class="search-section">
-            <!-- Pencarian berdasarkan Nama -->
-            <div class="search-box">
-                <h3>PENCARIAN BERDASARKAN NAMA</h3>
-                <div class="form-group">
-                    <label for="nama">Masukkan Nama Lengkap:</label>
-                    <input type="text" id="nama" placeholder="Contoh: Ahmad Wijaya">
-                </div>
-                <button class="btn" onclick="searchByName()">Cari Data</button>
+        
+        <div class="match-card">
+            <h1 class="match-title">Selamat! Anda Cocok</h1>
+            <p class="match-subtitle">Seseorang yang mungkin juga menyukai Anda telah terhubung dengan profil Anda</p>
+            
+            <div class="profile-image">
+                <i class="fas fa-user"></i>
             </div>
-
-            <!-- Pencarian berdasarkan ID -->
-            <div class="search-box">
-                <h3>PENCARIAN BERDASARKAN NIK</h3>
-                <div class="form-group">
-                    <label for="nik">Masukkan Nomor Induk Kependudukan:</label>
-                    <input type="text" id="nik" placeholder="Contoh: 3271011509960001">
-                </div>
-                <button class="btn" onclick="searchByNIK()">Cari Data</button>
+            
+            <p class="match-subtitle">Bergabunglah sekarang untuk melihat siapa dia dan mulai percakapan!</p>
+            
+            <button class="cta-button">
+                <i class="fas fa-heart"></i> Bergabung untuk Melihat
+            </button>
+            
+            <p style="font-size: 14px; opacity: 0.8;">Bergabung dengan 10+ juta orang lainnya</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">10Jt+</div>
+                <div class="stat-label">Pengguna Aktif</div>
             </div>
-
-            <!-- Pencarian berdasarkan Nomor Kartu -->
-            <div class="search-box">
-                <h3>PENCARIAN BERDASARKAN REKENING BANK</h3>
-                <div class="form-group">
-                    <label for="rekening">Masukkan Nomor Rekening Bank:</label>
-                    <input type="text" id="rekening" placeholder="Contoh: 1234567890">
-                </div>
-                <button class="btn" onclick="searchByRekening()">Cari Data</button>
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Pertandingan Harian</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2Jt+</div>
+                <div class="stat-label">Kisah Sukses</div>
             </div>
         </div>
-
+        
+        <div class="testimonial">
+            "Saya bertemu dengan pasangan hidup saya di sini hanya dalam 2 minggu! Terima kasih telah membantu saya menemukan cinta sejati."
+            <br><strong>- Rina, 28</strong>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="feature-text">Aman & Terverifikasi</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="feature-text">Cocok Instan</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="feature-text">Chat Langsung</div>
+            </div>
+        </div>
+        
         <div class="footer">
-            <p>© 2024 Sistem Informasi Keamanan Nasional - Hak Cipta Dilindungi Undang-Undang</p>
-            <p>Hanya untuk penggunaan resmi yang berwenang</p>
-        </div>
-    </div>
-
-    <!-- Modal Hasil Pencarian -->
-    <div class="result-modal" id="resultModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>HASIL VERIFIKASI DATA</h2>
-                <p>Status: <strong id="statusIndicator">DITEMUKAN</strong></p>
-            </div>
-            <div class="modal-body">
-                <div class="warning-banner">
-                    <h3>⚠ PERINGATAN: DATA TERCATAT SEBAGAI ORANG YANG DITANDAI</h3>
-                    <p id="warningText">Individu ini tercatat dalam database kami dengan status khusus. Disarankan tindakan lanjutan sesuai protokol keamanan.</p>
-                </div>
-
-                <div class="info-section">
-                    <h4>INFORMASI PRIBADI</h4>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <strong>Nama Lengkap:</strong>
-                            <span id="resultNama">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>NIK:</strong>
-                            <span id="resultNIK">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Tempat/Tanggal Lahir:</strong>
-                            <span id="resultTTL">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Jenis Kelamin:</strong>
-                            <span id="resultGender">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Alamat:</strong>
-                            <span id="resultAlamat">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Pekerjaan:</strong>
-                            <span id="resultPekerjaan">-</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h4>INFORMASI REKENING BANK</h4>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <strong>Nomor Rekening:</strong>
-                            <span id="resultRekening">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Nama Bank:</strong>
-                            <span id="resultBank">-</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Status Rekening:</strong>
-                            <span id="resultStatusRekening">-</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h4>CATATAN TAMBAHAN</h4>
-                    <p id="additionalNotes">Tidak ada catatan tambahan.</p>
-                </div>
-
-                <button class="close-btn" onclick="closeModal()">Tutup Laporan</button>
-            </div>
+            © 2023 Tinder. Semua hak dilindungi undang-undang.
         </div>
     </div>
 
     <script>
-        // Data contoh untuk simulasi pencarian
-        const sampleData = {
-            nama: "Ahmad Wijaya",
-            nik: "3271011509960001",
-            ttl: "Jakarta, 15-09-1996",
-            gender: "Laki-laki",
-            alamat: "Jl. Merdeka No. 123, Jakarta Pusat",
-            pekerjaan: "Pengusaha",
-            rekening: "1234567890",
-            bank: "Bank Negara Indonesia",
-            statusRekening: "Aktif - Dalam Pengawasan",
-            catatan: "Individu ini teridentifikasi dalam daftar pemantauan kami. Disarankan verifikasi tambahan sebelum melanjutkan transaksi keuangan."
-        };
-
-        function searchByName() {
-            const nama = document.getElementById('nama').value;
-            if (!nama) {
-                alert('Silakan masukkan nama terlebih dahulu.');
-                return;
-            }
-            showResult({...sampleData, nama: nama || sampleData.nama});
-        }
-
-        function searchByNIK() {
-            const nik = document.getElementById('nik').value;
-            if (!nik) {
-                alert('Silakan masukkan NIK terlebih dahulu.');
-                return;
-            }
-            showResult({...sampleData, nik: nik || sampleData.nik});
-        }
-
-        function searchByRekening() {
-            const rekening = document.getElementById('rekening').value;
-            if (!rekening) {
-                alert('Silakan masukkan nomor rekening terlebih dahulu.');
-                return;
-            }
-            showResult({...sampleData, rekening: rekening || sampleData.rekening});
-        }
-
-        function showResult(data) {
-            // Isi data ke dalam modal
-            document.getElementById('resultNama').textContent = data.nama;
-            document.getElementById('resultNIK').textContent = data.nik;
-            document.getElementById('resultTTL').textContent = data.ttl;
-            document.getElementById('resultGender').textContent = data.gender;
-            document.getElementById('resultAlamat').textContent = data.alamat;
-            document.getElementById('resultPekerjaan').textContent = data.pekerjaan;
-            document.getElementById('resultRekening').textContent = data.rekening;
-            document.getElementById('resultBank').textContent = data.bank;
-            document.getElementById('resultStatusRekening').textContent = data.statusRekening;
-            document.getElementById('additionalNotes').textContent = data.catatan;
+        // 创建浮动心形
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 15;
             
-            // Tampilkan modal
-            document.getElementById('resultModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('resultModal').style.display = 'none';
-        }
-
-        // Tutup modal jika klik di luar konten modal
-        window.onclick = function(event) {
-            const modal = document.getElementById('resultModal');
-            if (event.target === modal) {
-                closeModal();
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-float';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                heart.style.opacity = Math.random() * 0.5 + 0.2;
+                container.appendChild(heart);
             }
         }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            
+            // 按钮点击效果
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', function() {
+                alert('Selamat! Anda akan diarahkan ke halaman pendaftaran.');
+            });
+        });
     </script>
 </body>
 </html>
