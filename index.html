@@ -49,6 +49,13 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             font-size: 14px;
             color: rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+        }
+        
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .heart {
@@ -90,6 +97,11 @@
             opacity: 0.9;
         }
         
+        .profile-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
         .profile-image {
             width: 150px;
             height: 150px;
@@ -102,11 +114,38 @@
             border: 5px solid rgba(255, 255, 255, 0.3);
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .profile-image i {
             font-size: 60px;
             color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .profile-info {
+            margin-top: 15px;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-age {
+            font-size: 16px;
+            opacity: 0.8;
         }
         
         .cta-button {
@@ -238,16 +277,56 @@
                 opacity: 0;
             }
         }
+        
+        /* 加载动画 */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ff416c;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div class="floating-hearts" id="hearts-container"></div>
     
+    <!-- 加载动画 -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Mengarahkan ke halaman chat...</div>
+    </div>
+    
     <div class="container">
         <div class="logo-container">
             <div class="logo-placeholder">
                 <!-- 这里放置您的LOGO -->
-                LOGO ANDA DI SINI
+                <img src="" alt="Tinder Logo" id="logo-img">
             </div>
             <div class="heart">❤</div>
         </div>
@@ -256,13 +335,20 @@
             <h1 class="match-title">Selamat! Anda Cocok</h1>
             <p class="match-subtitle">Seseorang yang mungkin juga menyukai Anda telah terhubung dengan profil Anda</p>
             
-            <div class="profile-image">
-                <i class="fas fa-user"></i>
+            <div class="profile-container">
+                <div class="profile-image" id="profile-image">
+                    <!-- 这里放置匹配用户的头像 -->
+                    <img src="" alt="Profil Match" id="match-img">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name" id="profile-name">Sari, 24</div>
+                    <div class="profile-age">Jakarta, Indonesia</div>
+                </div>
             </div>
             
             <p class="match-subtitle">Bergabunglah sekarang untuk melihat siapa dia dan mulai percakapan!</p>
             
-            <button class="cta-button">
+            <button class="cta-button" id="join-button">
                 <i class="fas fa-heart"></i> Bergabung untuk Melihat
             </button>
             
@@ -316,6 +402,33 @@
     </div>
 
     <script>
+        // 网站列表 - 您可以添加更多网站或WebSocket地址
+        const websites = [
+            "https://web.whatsapp.com",
+            "https://t.me",
+            "https://discord.com",
+            "https://instagram.com",
+            "https://facebook.com",
+            "ws://localhost:8080",
+            "ws://example.com:3000"
+        ];
+        
+        // 用户头像列表
+        const profileImages = [
+            "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+            "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=689&q=80",
+            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
+        ];
+        
+        // 用户名称列表
+        const profileNames = [
+            "Sari, 24",
+            "Dewi, 26",
+            "Maya, 23",
+            "Rini, 25"
+        ];
+        
         // 创建浮动心形
         function createHearts() {
             const container = document.getElementById('hearts-container');
@@ -333,16 +446,83 @@
             }
         }
         
+        // 随机选择网站
+        function getRandomWebsite() {
+            const randomIndex = Math.floor(Math.random() * websites.length);
+            return websites[randomIndex];
+        }
+        
+        // 随机选择用户头像
+        function getRandomProfile() {
+            const randomIndex = Math.floor(Math.random() * profileImages.length);
+            return {
+                image: profileImages[randomIndex],
+                name: profileNames[randomIndex]
+            };
+        }
+        
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
             createHearts();
             
-            // 按钮点击效果
-            const ctaButton = document.querySelector('.cta-button');
+            // 设置随机用户资料
+            const profile = getRandomProfile();
+            document.getElementById('match-img').src = profile.image;
+            document.getElementById('profile-name').textContent = profile.name;
+            
+            // 设置LOGO
+            document.getElementById('logo-img').src = "https://logos-world.net/wp-content/uploads/2020/09/Tinder-Logo.png";
+            
+            // 头像点击事件
+            const profileImage = document.getElementById('profile-image');
+            profileImage.addEventListener('click', function() {
+                const website = getRandomWebsite();
+                showLoading();
+                
+                // 模拟加载延迟
+                setTimeout(() => {
+                    if (website.startsWith('ws://')) {
+                        // 对于WebSocket连接，显示提示
+                        alert(`Membuka koneksi WebSocket: ${website}`);
+                        // 在实际应用中，您会在这里建立WebSocket连接
+                    } else {
+                        // 对于普通网站，重定向
+                        window.location.href = website;
+                    }
+                    hideLoading();
+                }, 2000);
+            });
+            
+            // 按钮点击事件
+            const ctaButton = document.getElementById('join-button');
             ctaButton.addEventListener('click', function() {
-                alert('Selamat! Anda akan diarahkan ke halaman pendaftaran.');
+                const website = getRandomWebsite();
+                showLoading();
+                
+                // 模拟加载延迟
+                setTimeout(() => {
+                    if (website.startsWith('ws://')) {
+                        // 对于WebSocket连接，显示提示
+                        alert(`Membuka koneksi WebSocket: ${website}`);
+                        // 在实际应用中，您会在这里建立WebSocket连接
+                    } else {
+                        // 对于普通网站，重定向
+                        window.location.href = website;
+                    }
+                    hideLoading();
+                }, 2000);
             });
         });
+        
+        // 显示加载动画
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+        
+        // 隐藏加载动画
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
     </script>
 </body>
 </html>
