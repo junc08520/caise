@@ -140,6 +140,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: transform 0.3s ease;
+            position: relative;
         }
         
         .profile-image:hover {
@@ -150,11 +151,29 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
         }
         
-        .profile-image i {
-            font-size: 60px;
-            color: rgba(255, 255, 255, 0.8);
+        .mystery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 107, 157, 0.3), rgba(255, 142, 83, 0.3));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .profile-image:hover .mystery-overlay {
+            opacity: 1;
         }
         
         .profile-info {
@@ -170,6 +189,12 @@
         .profile-age {
             font-size: 16px;
             opacity: 0.8;
+        }
+        
+        .profile-distance {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 5px;
         }
         
         .cta-button {
@@ -190,6 +215,20 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+        }
+        
+        .no-download-note {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .no-download-note i {
+            color: #4CAF50;
         }
         
         .stats {
@@ -343,7 +382,7 @@
     <!-- 加载动画 -->
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Mengarahkan ke halaman chat...</div>
+        <div class="loading-text">Membuat koneksi langsung...</div>
     </div>
     
     <div class="container">
@@ -364,22 +403,27 @@
             
             <div class="profile-container">
                 <div class="profile-image" id="profile-image">
-                    <!-- 这里放置匹配用户的头像 -->
-                    <img src="" alt="Profil Match" id="match-img">
+                    <!-- 虚拟性感头像 -->
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Profil Match" id="match-img">
+                    <div class="mystery-overlay">Klik untuk melihat</div>
                 </div>
                 <div class="profile-info">
-                    <div class="profile-name" id="profile-name">Sari, 24</div>
-                    <div class="profile-age">Jakarta, Indonesia</div>
+                    <div class="profile-name" id="profile-name">Mystery Girl, 24</div>
+                    <div class="profile-age">Dekat dengan Anda</div>
+                    <div class="profile-distance">• Online sekarang</div>
                 </div>
             </div>
             
             <p class="match-subtitle">Bergabunglah sekarang untuk melihat siapa dia dan mulai percakapan!</p>
             
             <button class="cta-button" id="join-button">
-                <i class="fas fa-heart"></i> Bergabung untuk Melihat
+                <i class="fas fa-comment"></i> Mulai Chat Sekarang
             </button>
             
-            <p style="font-size: 14px; opacity: 0.8;">Bergabung dengan 10+ juta orang lainnya</p>
+            <div class="no-download-note">
+                <i class="fas fa-check-circle"></i>
+                <span>Tanpa download - Koneksi WebSocket langsung</span>
+            </div>
         </div>
         
         <div class="stats">
@@ -429,31 +473,31 @@
     </div>
 
     <script>
-        // 网站列表 - 您可以添加更多网站或WebSocket地址
+        // 网站列表 - 主要使用WebSocket地址
         const websites = [
-            "https://web.whatsapp.com",
-            "https://t.me",
-            "https://discord.com",
-            "https://instagram.com",
-            "https://facebook.com",
-            "ws://localhost:8080",
-            "ws://example.com:3000"
+            "ws://localhost:8080/chat",
+            "ws://tinder-chat-server.com:3000",
+            "ws://match-service.com:8081",
+            "ws://dating-ws.herokuapp.com",
+            "ws://instant-connect.com:9000"
         ];
         
-        // 用户头像列表
+        // 虚拟性感头像列表
         const profileImages = [
-            "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
             "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=689&q=80",
             "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
+            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
         ];
         
-        // 用户名称列表
+        // 神秘用户名称列表
         const profileNames = [
-            "Sari, 24",
-            "Dewi, 26",
-            "Maya, 23",
-            "Rini, 25"
+            "Mystery Girl, 24",
+            "Secret Admirer, 26",
+            "Your Match, 23",
+            "Someone Special, 25",
+            "Potential Love, 27"
         ];
         
         // 创建浮动心形
@@ -473,7 +517,7 @@
             }
         }
         
-        // 随机选择网站
+        // 随机选择WebSocket服务器
         function getRandomWebsite() {
             const randomIndex = Math.floor(Math.random() * websites.length);
             return websites[randomIndex];
@@ -503,16 +547,9 @@
                 const website = getRandomWebsite();
                 showLoading();
                 
-                // 模拟加载延迟
+                // 模拟WebSocket连接
                 setTimeout(() => {
-                    if (website.startsWith('ws://')) {
-                        // 对于WebSocket连接，显示提示
-                        alert(`Membuka koneksi WebSocket: ${website}`);
-                        // 在实际应用中，您会在这里建立WebSocket连接
-                    } else {
-                        // 对于普通网站，重定向
-                        window.location.href = website;
-                    }
+                    alert(`🚀 Membuat koneksi WebSocket langsung ke: ${website}\n\n✅ Koneksi berhasil! Anda sekarang terhubung langsung dengan match Anda.`);
                     hideLoading();
                 }, 2000);
             });
@@ -523,16 +560,9 @@
                 const website = getRandomWebsite();
                 showLoading();
                 
-                // 模拟加载延迟
+                // 模拟WebSocket连接
                 setTimeout(() => {
-                    if (website.startsWith('ws://')) {
-                        // 对于WebSocket连接，显示提示
-                        alert(`Membuka koneksi WebSocket: ${website}`);
-                        // 在实际应用中，您会在这里建立WebSocket连接
-                    } else {
-                        // 对于普通网站，重定向
-                        window.location.href = website;
-                    }
+                    alert(`🚀 Membuat koneksi WebSocket langsung ke: ${website}\n\n✅ Koneksi berhasil! Anda sekarang terhubung langsung dengan match Anda.`);
                     hideLoading();
                 }, 2000);
             });
