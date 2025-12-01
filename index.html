@@ -1,111 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tinder Invite</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tinder — Temukan Kecocokanmu</title>
+  <meta name="description" content="Aplikasi kencan bergaya Tinder — undang, ngobrol, dan temukan pasangan. Mobile-first, romantis dan profesional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: #ffeef2;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg1:#ffeff3; --bg2:#ffe0d6; --accent:#ff3b5c; --accent2:#ff7a45; --muted:#666;
+      --card:#ffffff; --glass: rgba(255,255,255,0.75);
     }
-    .container {
-      max-width: 420px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-    }
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    }
-    .logo {
-      font-size: 40px;
-      color: #ff4d6d;
-      margin-bottom: 10px;
-    }
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 4px solid #ff4d6d;
-    }
-    h2 {
-      margin: 10px 0;
-      color: #333;
-    }
-    p {
-      color: #666;
-      font-size: 15px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,Segoe UI,Arial; -webkit-font-smoothing:antialiased;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#111;display:flex;align-items:center;justify-content:center;padding:18px
     }
 
-    .btn {
-      display: block;
-      background: #ff4d6d;
-      color: white;
-      padding: 14px;
-      border-radius: 12px;
-      text-decoration: none;
-      margin-top: 18px;
-      font-size: 17px;
-      font-weight: bold;
-    }
+    /* Container - mobile first */
+    .wrap{width:100%;max-width:460px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));border-radius:18px;box-shadow:0 10px 30px rgba(17,24,39,0.12);overflow:hidden}
 
-    .switch-text {
-      font-size: 12px;
-      color: #777;
-      margin-top: 10px;
-    }
+    header{padding:18px;display:flex;align-items:center;gap:12px}
+    .logo-slot{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0}
+    /* Logo placeholder - replace inside with your own image */
+    /* **PLACEHOLDER FOR YOUR LOGO: replace <div class="logo-slot">Tinder</div> with your <img> **/ 
+
+    .title{flex:1}
+    .brand{font-size:18px;font-weight:700;color:#111;letter-spacing:0.2px}
+    .sub{font-size:12px;color:var(--muted)}
+
+    main{padding:14px}
+    .match-box{display:flex;gap:12px;align-items:center}
+    .avatar{width:114px;height:114px;border-radius:14px;overflow:hidden;flex-shrink:0;border:4px solid #fff;box-shadow:0 6px 18px rgba(17,24,39,0.08)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .meta{flex:1}
+    .meta h2{margin:0;font-size:20px;color:#111}
+    .meta p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    .cta{margin-top:14px;display:flex;gap:10px}
+    .btn-primary{flex:1;padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+    .btn-secondary{padding:12px 12px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);background:#fff;color:var(--accent);font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+
+    .stats{display:flex;gap:8px;justify-content:space-between;margin-top:16px}
+    .stat{flex:1;background:rgba(255,255,255,0.85);padding:10px;border-radius:10px;text-align:center}
+    .stat b{display:block;font-size:16px}
+    .stat small{color:var(--muted)}
+
+    footer{padding:12px;border-top:1px solid rgba(0,0,0,0.04);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* flame icon fallback styling */
+    .flame-svg{width:22px;height:22px;display:inline-block;vertical-align:middle}
+
+    /* responsive tweaks */
+    @media(min-width:600px){body{padding:30px}.card{border-radius:20px}}
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
     <div class="card">
-      <div class="logo"><i class="fas fa-fire"></i></div>
-      <img class="avatar" src="https://i.ibb.co/4fH2fQp/samplegirl.jpg" alt="Girl Avatar">
+      <header>
+        <!-- **PLACEHOLDER FOR YOUR LOGO**: 把下面这个 div 换成你的 <img src="..." alt="logo" style="width:56px;height:56px;border-radius:12px;"> -->
+        <div class="logo-slot" aria-hidden="true">Tinder</div>
 
-      <h2>You've Been Invited</h2>
-      <p>Someone liked your profile! Join the private Tinder-style beta room.</p>
+        <div class="title">
+          <div class="brand">Tinder</div>
+          <div class="sub">Temukan kecocokanmu — mengundang privat, ngobrol, dan bertemu</div>
+        </div>
 
-      <!-- Rotating jump links -->
-      <a id="jumpBtn" class="btn" href="#">Enter Private Chat</a>
+        <!-- flame icon: SVG generated in-code, 会在浏览器显示火苗。若 SVG 无法显示则 fallback 显示文本 'Tinder' -->
+        <div aria-hidden="true" title="flame">
+          <svg class="flame-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ff7a45" />
+                <stop offset="100%" stop-color="#ff3b5c" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2s4 3.2 4 7.2C16 14 9.5 16 9.5 20c0 0-2-1.5-4-4 0 0 1.5-3 2.5-4.5C9 10.5 8.8 7 12 2z" fill="url(#g1)" stroke="none"/>
+          </svg>
+        </div>
+      </header>
 
-      <div class="switch-text">Automatic smart-match enabled • Online users: 1,284</div>
+      <main>
+        <section class="match-box">
+          <div class="avatar" id="avatar">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Profile">
+          </div>
+
+          <div class="meta">
+            <h2 id="name">Sari, 24</h2>
+            <p id="loc">Jakarta, Indonesia · Online</p>
+
+            <div class="cta">
+              <!-- primary button will jump to rotating WS link -->
+              <a id="joinBtn" class="btn-primary" href="#">Gabung Chat Privat</a>
+              <a id="previewBtn" class="btn-secondary" href="#" onclick="event.preventDefault(); alert('Pratinjau profil');">Lihat Profil</a>
+            </div>
+
+            <div class="stats" aria-hidden="true">
+              <div class="stat"><b>1.2K</b><small>Pengguna Aktif</small></div>
+              <div class="stat"><b>4.8</b><small>Rating</small></div>
+              <div class="stat"><b>98%</b><small>Match Sukses</small></div>
+            </div>
+          </div>
+        </section>
+
+        <p style="font-size:13px;color:var(--muted);margin-top:14px">Kami telah membantu ribuan orang menemukan pasangan — bergabung dan mulai percakapan privat sekarang.</p>
+      </main>
+
+      <footer>
+        <div style="display:flex;gap:8px;align-items:center">
+          <small>Mobile-friendly • Aman</small>
+        </div>
+        <small>© <span id="year"></span> Tinder</small>
+      </footer>
     </div>
   </div>
 
   <script>
-    // Five WS URLs (replace with your links)
-    const links = [
-      "https://wa.me/111111",
-      "https://wa.me/222222",
-      "https://wa.me/333333",
-      "https://wa.me/444444",
-      "https://wa.me/555555"
+    // --- konfigurasi link WS (替换为真实链接) ---
+    const wsLinks = [
+      'wss://example.com/ws/room1',
+      'wss://example.com/ws/room2',
+      'wss://example.com/ws/room3',
+      'wss://example.com/ws/room4',
+      'wss://example.com/ws/room5'
     ];
 
-    let index = 0;
+    // 头像与名字池（使用吸引人的女性头像）
+    const profiles = [
+      {name:'Dewi, 26', loc:'Bandung', img:'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=600&q=80'},
+      {name:'Maya, 25', loc:'Jakarta', img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'},
+      {name:'Rina, 24', loc:'Surabaya', img:'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=600&q=80'},
+      {name:'Sari, 27', loc:'Medan', img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'},
+      {name:'Lia, 23', loc:'Yogyakarta', img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80'}
+    ];
 
-    function rotateLink() {
-      const btn = document.getElementById("jumpBtn");
-      btn.href = links[index];
-      index = (index + 1) % links.length;
+    let linkIndex = 0;
+    let profileIndex = 0;
+
+    const joinBtn = document.getElementById('joinBtn');
+    const avatar = document.getElementById('avatar').querySelector('img');
+    const nameEl = document.getElementById('name');
+    const locEl = document.getElementById('loc');
+
+    // 初始化显示
+    function applyProfile(i){
+      const p = profiles[i%profiles.length];
+      avatar.src = p.img; nameEl.textContent = p.name; locEl.textContent = p.loc + ' · Online';
+    }
+    applyProfile(profileIndex);
+
+    // 轮换链接函数：点击或定时切换指向不同 ws 链接
+    function rotateWsLink(){
+      joinBtn.href = wsLinks[linkIndex];
+      // 若需改为 http/wa 链接可在此映射
+      linkIndex = (linkIndex + 1) % wsLinks.length;
     }
 
-    // Rotate on click
-    document.getElementById("jumpBtn").addEventListener("click", rotateLink);
+    // 点击时先 rotate 再打开（移动端友好）
+    joinBtn.addEventListener('click', function(e){
+      // allow default if link is external; for safety we update href then navigate
+      rotateWsLink();
+      // small delay to ensure href updated
+      setTimeout(()=>{
+        // 以新窗口打开 ws 链接（大多数浏览器会阻止直接打开 ws，通常要通过页面中建立 ws 或使用跳转页面）
+        const url = joinBtn.href;
+        window.location.href = url;
+      },50);
+    });
 
-    // Also rotate every 6 seconds to simulate real match refresh
-    setInterval(rotateLink, 6000);
+    // 自动每 6 秒轮换展示人物与链接，模拟真实匹配刷新
+    setInterval(()=>{
+      profileIndex = (profileIndex + 1) % profiles.length; applyProfile(profileIndex);
+      rotateWsLink();
+    },6000);
 
-    rotateLink(); // Initialize first link
+    // 年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 说明（仅开发者可见）：
+    // - 替换 logo: 在 <div class="logo-slot">Tinder</div> 位置，放入 <img src="你的logo.png" style="width:56px;height:56px;border-radius:12px;object-fit:cover">。
+    // - 替换 wsLinks 数组为你需要的跳转链接（支持 wss:// 或 https://）。
+    // - 为了逼真，请将 profiles 中的图片替换成你准备好的女性头像。
+    // - 注意：浏览器不能直接通过 window.location 打开 wss:// WebSocket 作为页面跳转；通常需要先跳转到一个中转页面或直接使用 https/wa/链接。如果你的目标是打开 WhatsApp 或 websockets，请用相应的协议（例如 https://wa.me/xxx 或 https://你的中转页）进行替换。
   </script>
 </body>
 </html>
