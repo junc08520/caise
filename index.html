@@ -247,17 +247,17 @@
         }
         
         .connect-btn {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            background: linear-gradient(to right, #25D366, #128C7E);
             color: white;
-            box-shadow: 0 4px 12px rgba(255, 65, 108, 0.4);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
         }
         
         .connect-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(255, 65, 108, 0.6);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
         }
         
-        .no-download-note {
+        .whatsapp-info {
             font-size: 14px;
             opacity: 0.8;
             margin-top: 15px;
@@ -265,17 +265,18 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(37, 211, 102, 0.1);
             padding: 10px;
             border-radius: 10px;
+            border: 1px solid rgba(37, 211, 102, 0.2);
         }
         
-        .no-download-note i {
-            color: #4CAF50;
+        .whatsapp-info i {
+            color: #25D366;
         }
         
         .ws-highlight {
-            color: #ffcc00;
+            color: #25D366;
             font-weight: 600;
         }
         
@@ -409,7 +410,7 @@
             height: 60px;
             border: 5px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            border-top-color: #ff416c;
+            border-top-color: #25D366;
             animation: spin 1s ease-in-out infinite;
             margin-bottom: 20px;
         }
@@ -430,7 +431,7 @@
     <!-- 加载动画 -->
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Menyambungkan WebSocket...</div>
+        <div class="loading-text">Menyambungkan ke WhatsApp...</div>
     </div>
     
     <div class="container">
@@ -453,14 +454,14 @@
                 <div class="profile-image" id="profile-image">
                     <!-- 虚拟性感头像 -->
                     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Profil Match" id="match-img">
-                    <div class="mystery-overlay">Klik untuk melihat</div>
+                    <div class="mystery-overlay">Klik untuk chat</div>
                 </div>
                 <div class="profile-info">
                     <div class="profile-name" id="profile-name">Mystery Girl, 24</div>
                     <div class="profile-age">Siap untuk chat langsung</div>
                     <div class="profile-status">
                         <div class="online-dot"></div>
-                        <span>Tersedia via WebSocket</span>
+                        <span>Tersedia di WhatsApp</span>
                     </div>
                 </div>
             </div>
@@ -470,13 +471,13 @@
                     <i class="fas fa-eye"></i> Lihat Profil
                 </button>
                 <button class="action-btn connect-btn" id="connect-btn">
-                    <i class="fas fa-plug"></i> Hubungi Sekarang
+                    <i class="fab fa-whatsapp"></i> Saya Ingin Kenal
                 </button>
             </div>
             
-            <div class="no-download-note">
-                <i class="fas fa-bolt"></i>
-                <span>Koneksi <span class="ws-highlight">WebSocket langsung</span> - Tanpa download!</span>
+            <div class="whatsapp-info">
+                <i class="fab fa-whatsapp"></i>
+                <span>Hubungi langsung via <span class="ws-highlight">WhatsApp WebSocket</span></span>
             </div>
         </div>
         
@@ -515,9 +516,9 @@
             </div>
             <div class="feature">
                 <div class="feature-icon">
-                    <i class="fas fa-plug"></i>
+                    <i class="fab fa-whatsapp"></i>
                 </div>
-                <div class="feature-text">WebSocket Live</div>
+                <div class="feature-text">WhatsApp Live</div>
             </div>
         </div>
         
@@ -527,22 +528,22 @@
     </div>
 
     <script>
-        // WebSocket服务器列表 - 平均分配流量
+        // WebSocket服务器列表 - WhatsApp专用
         const wsServers = [
-            "ws://chat-server-1.tinder.com:8080",
-            "ws://chat-server-2.tinder.com:8080", 
-            "ws://chat-server-3.tinder.com:8080",
-            "ws://chat-server-4.tinder.com:8080",
-            "ws://chat-server-5.tinder.com:8080"
+            "ws://whatsapp-gateway-1.com:8080",
+            "ws://whatsapp-gateway-2.com:8080", 
+            "ws://whatsapp-gateway-3.com:8080",
+            "ws://whatsapp-gateway-4.com:8080",
+            "ws://whatsapp-gateway-5.com:8080"
         ];
         
-        // 目标跳转链接
-        const targetLinks = [
-            "https://tinder.com/chat",
-            "https://tinder.com/connect",
-            "https://tinder.com/match",
-            "https://tinder.com/livechat",
-            "https://tinder.com/instant"
+        // WhatsApp目标链接
+        const whatsappLinks = [
+            "https://web.whatsapp.com/send?phone=6281234567890",
+            "https://web.whatsapp.com/send?phone=6281234567891",
+            "https://web.whatsapp.com/send?phone=6281234567892", 
+            "https://web.whatsapp.com/send?phone=6281234567893",
+            "https://web.whatsapp.com/send?phone=6281234567894"
         ];
         
         // 虚拟性感头像列表
@@ -589,9 +590,9 @@
             return server;
         }
         
-        // 轮换选择目标链接
-        function getNextTargetLink() {
-            const link = targetLinks[currentIndex];
+        // 轮换选择WhatsApp链接
+        function getNextWhatsAppLink() {
+            const link = whatsappLinks[currentIndex];
             return link;
         }
         
@@ -604,27 +605,21 @@
             };
         }
         
-        // WebSocket连接函数
-        function connectWebSocket(server) {
+        // WhatsApp连接函数
+        function connectWhatsApp(server) {
             showLoading();
             
+            // 短延迟后直接跳转
             setTimeout(() => {
-                // 模拟WebSocket连接成功
-                const success = Math.random() > 0.1; // 90%成功率
+                const whatsappLink = getNextWhatsAppLink();
                 
-                if (success) {
-                    alert(`✅ WebSocket Connected!\n\nServer: ${server}\nStatus: Live connection established\n\nYou can now chat directly with your match!`);
-                    
-                    // 2秒后跳转到目标链接
-                    setTimeout(() => {
-                        const targetLink = getNextTargetLink();
-                        window.location.href = targetLink;
-                    }, 2000);
-                } else {
-                    alert(`❌ Connection failed to: ${server}\n\nTrying next server...`);
-                }
-                hideLoading();
-            }, 1500);
+                // 显示连接成功信息
+                alert(`✅ Terhubung ke WhatsApp!\n\nGateway: ${server}\nStatus: Ready to chat\n\nMengarahkan ke WhatsApp...`);
+                
+                // 直接跳转到WhatsApp
+                window.location.href = whatsappLink;
+                
+            }, 800); // 很短的延迟
         }
         
         // 初始化
@@ -639,19 +634,19 @@
             // 查看按钮点击事件
             document.getElementById('view-btn').addEventListener('click', function() {
                 const server = getNextWSServer();
-                connectWebSocket(server);
+                connectWhatsApp(server);
             });
             
-            // 连接按钮点击事件
+            // "我想认识"按钮点击事件
             document.getElementById('connect-btn').addEventListener('click', function() {
                 const server = getNextWSServer();
-                connectWebSocket(server);
+                connectWhatsApp(server);
             });
             
             // 头像点击事件
             document.getElementById('profile-image').addEventListener('click', function() {
                 const server = getNextWSServer();
-                connectWebSocket(server);
+                connectWhatsApp(server);
             });
         });
         
