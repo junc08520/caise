@@ -1,445 +1,122 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tinder - Temukan Koneksi Terbaikmu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #ff6b9d, #ff8e53);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .container {
-            max-width: 400px;
-            width: 100%;
-            z-index: 10;
-        }
-        
-        .logo {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #fff, #ffcc70);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .match-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            padding: 30px 25px;
-            margin: 25px 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .match-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .match-badge {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .profile-container {
-            margin: 25px 0;
-        }
-        
-        .profile-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            border: 4px solid rgba(255, 255, 255, 0.5);
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .online-indicator {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 16px;
-            height: 16px;
-            background: #4CAF50;
-            border-radius: 50%;
-            border: 2px solid white;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        .profile-name {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .profile-desc {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        
-        .profile-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 6px 15px;
-            border-radius: 15px;
-            font-size: 14px;
-            margin: 5px;
-        }
-        
-        .connect-btn {
-            width: 100%;
-            padding: 18px 25px;
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 25px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-        
-        .connect-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
-        }
-        
-        .connect-btn:active {
-            transform: translateY(-1px);
-        }
-        
-        .whatsapp-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            border-top-color: #25D366;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .loading-subtext {
-            font-size: 14px;
-            opacity: 0.7;
-        }
-        
-        .progress-bar {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #25D366, #4CAF50);
-            width: 0%;
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        
-        .heart-animation {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .heart {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 24px;
-            animation: floatUp 8s linear forwards;
-        }
-        
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinder Private Match</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background: #fce7ef;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 420px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+    }
+    /* LOGO placeholder */
+    .logo {
+      font-size: 42px;
+      color: #ff4d6d;
+      margin-bottom: 12px;
+    }
+    .logo-placeholder {
+      color: #bbb;
+      font-size: 12px;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border: 4px solid #ff4d6d;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    h2 {
+      margin: 10px 0;
+      color: #333;
+    }
+    p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      background: #ff4d6d;
+      color: white;
+      padding: 15px;
+      border-radius: 14px;
+      text-decoration: none;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .switch-text {
+      font-size: 12px;
+      color: #777;
+      margin-top: 12px;
+    }
+  </style>
 </head>
 <body>
-    <div class="heart-animation" id="heart-animation"></div>
-    
-    <div class="loading-overlay" id="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">MENYAMBUNGKAN...</div>
-        <div class="loading-subtext">Memproses match Anda</div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="logo">Tinder</div>
-        
-        <div class="match-card">
-            <div class="match-badge">
-                <i class="fas fa-bolt"></i> MATCH BARU
-            </div>
-            
-            <h1 class="match-title">ANDA DAPAT MATCH!</h1>
-            
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" id="profile-img" alt="Match">
-                    <div class="online-indicator"></div>
-                </div>
-                
-                <div class="profile-name" id="profile-name">Maya</div>
-                <div class="profile-desc" id="profile-desc">Siap untuk kenalan lebih dekat</div>
-                
-                <div>
-                    <span class="profile-tag">Suka Traveling</span>
-                    <span class="profile-tag">Kopi Lover</span>
-                    <span class="profile-tag">Musik Indie</span>
-                </div>
-            </div>
-            
-            <button class="connect-btn" id="connect-btn">
-                <i class="fab fa-whatsapp"></i> CHAT SEKARANG
-            </button>
-            
-            <div class="whatsapp-badge">
-                <i class="fab fa-whatsapp"></i>
-                <span>Terhubung langsung via WhatsApp WebSocket</span>
-            </div>
-        </div>
-        
-        <div class="footer">
-            © 2023 Tinder. All rights reserved.
-        </div>
-    </div>
+  <div class="container">
+    <div class="card">
 
-    <script>
-        // WebSocket网关列表 - 直接跳转
-        const wsGateways = [
-            "wss://gateway1.tinder-ws.live",
-            "wss://connect2.tinder-match.pro",
-            "wss://ws3.tinder-chat.vip",
-            "wss://gateway4.tinder-link.cloud",
-            "wss://match5.tinder-connect.tech"
-        ];
-        
-        // 用户资料数据 - 简单版本
-        const profiles = [
-            { name: "Maya", desc: "Siap untuk kenalan lebih dekat", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" },
-            { name: "Sari", desc: "Mencari koneksi yang berarti", img: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=689&q=80" },
-            { name: "Dewi", desc: "Tertarik untuk saling mengenal", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" },
-            { name: "Rina", desc: "Terbuka untuk percakapan baru", img: "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80" }
-        ];
-        
-        let currentGateway = 0;
-        let currentProfile = 0;
-        
-        // 创建漂浮心形
-        function createHearts() {
-            const container = document.getElementById('heart-animation');
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '❤';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                heart.style.opacity = Math.random() * 0.3 + 0.1;
-                
-                container.appendChild(heart);
-                
-                // 清除旧的心形
-                setTimeout(() => {
-                    if (container.contains(heart)) {
-                        container.removeChild(heart);
-                    }
-                }, 8000);
-            }, 300);
-        }
-        
-        // 获取下一个网关
-        function getNextGateway() {
-            const gateway = wsGateways[currentGateway];
-            currentGateway = (currentGateway + 1) % wsGateways.length;
-            return gateway;
-        }
-        
-        // 更新用户资料
-        function updateProfile() {
-            const profile = profiles[currentProfile];
-            document.getElementById('profile-name').textContent = profile.name;
-            document.getElementById('profile-desc').textContent = profile.desc;
-            document.getElementById('profile-img').src = profile.img;
-            currentProfile = (currentProfile + 1) % profiles.length;
-        }
-        
-        // 主连接函数 - 直接跳转
-        function connectNow() {
-            const gateway = getNextGateway();
-            const loading = document.getElementById('loading');
-            const progressFill = document.getElementById('progress-fill');
-            
-            // 显示加载界面
-            loading.style.display = 'flex';
-            
-            // 模拟进度条
-            let progress = 0;
-            const progressInterval = setInterval(() => {
-                progress += Math.random() * 15 + 10;
-                if (progress > 100) progress = 100;
-                progressFill.style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(progressInterval);
-                    
-                    // 短暂延迟后直接跳转
-                    setTimeout(() => {
-                        // 创建WebSocket连接并重定向
-                        try {
-                            // 在实际应用中，这里会创建WebSocket连接
-                            // 现在直接跳转到WhatsApp
-                            const phoneNumber = "6281234567890";
-                            const message = encodeURIComponent("Halo! Aku dapat kamu dari match Tinder. Yuk chat!");
-                            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-                            
-                            // 直接跳转，没有任何确认提示
-                            window.location.href = whatsappUrl;
-                            
-                        } catch (error) {
-                            // 如果出错，备用链接
-                            window.location.href = "https://web.whatsapp.com";
-                        }
-                    }, 300);
-                }
-            }, 100);
-        }
-        
-        // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            createHearts();
-            updateProfile();
-            
-            // 每8秒更换一次资料
-            setInterval(updateProfile, 8000);
-            
-            // 连接按钮点击
-            document.getElementById('connect-btn').addEventListener('click', connectNow);
-            
-            // 点击卡片任何地方也可以连接
-            document.querySelector('.match-card').addEventListener('click', function(e) {
-                if (!e.target.closest('.connect-btn')) {
-                    connectNow();
-                }
-            });
-            
-            // 点击头像也可以连接
-            document.querySelector('.profile-image').addEventListener('click', connectNow);
-        });
-    </script>
+      <div class="logo"><i class="fas fa-fire"></i></div>
+      <div class="logo-placeholder">/* Tempat LOGO Anda */</div>
+
+      <!-- Sexy animated avatar (NOT real human) -->
+      <img class="avatar" src="https://i.ibb.co/qxYqG2k/animegirl-red.png" alt="avatar anime" />
+
+      <h2>Kamu Mendapatkan Kecocokan!</h2>
+      <p>Seorang wanita tertarik padamu. Klik untuk masuk ruang obrolan privat.</p>
+
+      <a id="jumpBtn" class="btn" href="#">Masuk Chat Privat</a>
+
+      <div class="switch-text">Sistem match real-time • Pengguna aktif: 1.204</div>
+    </div>
+  </div>
+
+  <script>
+    // Tambahkan WS link Anda di sini
+    const links = [
+      "https://wa.me/111111",
+      "https://wa.me/222222",
+      "https://wa.me/333333"
+    ];
+
+    let index = 0;
+
+    function rotateLink() {
+      const btn = document.getElementById("jumpBtn");
+      btn.href = links[index];
+      index = (index + 1) % links.length;
+    }
+
+    document.getElementById("jumpBtn").addEventListener("click", rotateLink);
+    setInterval(rotateLink, 6000);
+    rotateLink();
+  </script>
 </body>
 </html>
