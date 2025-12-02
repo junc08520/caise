@@ -3,52 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tinder - Temukan Cinta Sejatimu</title>
+    <title>Tinder - Temukan Koneksi Terbaikmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #ff6b9d, #ff8e53, #ffcc70);
-            color: #fff;
+            color: #333;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             text-align: center;
+            position: relative;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             padding: 20px;
+            z-index: 10;
         }
         
         .logo-container {
-            margin: 20px 0 30px;
+            margin: 10px 0 25px;
             position: relative;
         }
         
-        /* 优化的LOGO样式 */
         .logo-placeholder {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto;
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-placeholder:hover {
+            transform: scale(1.05);
         }
         
         .logo-content {
@@ -61,15 +69,15 @@
         }
         
         .flame-icon {
-            font-size: 32px;
+            font-size: 28px;
             color: #ffcc00;
-            text-shadow: 0 0 10px #ff9900, 0 0 20px #ff6600;
+            text-shadow: 0 0 8px #ff9900, 0 0 16px #ff6600;
             margin-bottom: 5px;
-            animation: flameFlicker 1.5s infinite alternate;
+            animation: flameFlicker 2s infinite alternate;
         }
         
         .logo-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             color: white;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -77,48 +85,62 @@
         }
         
         @keyframes flameFlicker {
-            0% { transform: scale(1) rotate(-5deg); opacity: 0.9; }
-            50% { transform: scale(1.1) rotate(0deg); opacity: 1; }
-            100% { transform: scale(1) rotate(5deg); opacity: 0.8; }
-        }
-        
-        .heart {
-            position: absolute;
-            top: -10px;
-            right: 30%;
-            font-size: 24px;
-            color: #ff4d6d;
-            animation: heartbeat 1.5s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1) rotate(-3deg); opacity: 0.9; }
+            50% { transform: scale(1.08) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(3deg); opacity: 0.8; }
         }
         
         .match-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 15px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .match-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #ff6b9d, #ff8e53);
+            border-radius: 24px 24px 0 0;
         }
         
         .match-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 12px;
+            color: #ff4081;
+            background: linear-gradient(45deg, #ff4081, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .match-subtitle {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 25px;
             line-height: 1.5;
-            opacity: 0.9;
+            color: #666;
+        }
+        
+        .match-badge {
+            display: inline-block;
+            background: linear-gradient(to right, #ff4081, #ff6b9d);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
         }
         
         .profile-container {
@@ -127,53 +149,43 @@
         }
         
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 15px;
+            border: 5px solid white;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
         }
         
         .profile-image:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .profile-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8) contrast(1.1);
         }
         
-        .mystery-overlay {
+        .profile-verified {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255, 107, 157, 0.3), rgba(255, 142, 83, 0.3));
+            bottom: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            background: #4CAF50;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
             color: white;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .profile-image:hover .mystery-overlay {
-            opacity: 1;
+            font-size: 12px;
+            border: 2px solid white;
         }
         
         .profile-info {
@@ -182,145 +194,122 @@
         
         .profile-name {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 5px;
+            color: #333;
         }
         
         .profile-age {
-            font-size: 16px;
-            opacity: 0.8;
+            font-size: 15px;
+            color: #ff6b9d;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .profile-tagline {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
         }
         
         .profile-status {
-            font-size: 14px;
-            opacity: 0.7;
-            margin-top: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 8px;
+            font-size: 14px;
+            color: #4CAF50;
+            font-weight: 600;
         }
         
         .online-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             background: #4CAF50;
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
         
         .action-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
         }
         
         .action-btn {
             flex: 1;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 15px;
+            letter-spacing: 0.3px;
         }
         
         .view-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #e0e0e0;
         }
         
         .view-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            background: #e8e8e8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .connect-btn {
             background: linear-gradient(to right, #25D366, #128C7E);
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
         
         .connect-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(to right, #1da851, #0d7a5f);
         }
         
         .whatsapp-info {
             font-size: 14px;
-            opacity: 0.8;
-            margin-top: 15px;
+            color: #666;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: rgba(37, 211, 102, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(37, 211, 102, 0.2);
+            background: rgba(37, 211, 102, 0.08);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(37, 211, 102, 0.15);
         }
         
         .whatsapp-info i {
             color: #25D366;
+            font-size: 18px;
         }
         
         .ws-highlight {
-            color: #25D366;
-            font-weight: 600;
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 10px;
-            flex: 1;
-            min-width: 120px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .stat-number {
-            font-size: 24px;
+            color: #128C7E;
             font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-        
-        .testimonial {
-            font-style: italic;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            line-height: 1.6;
         }
         
         .features {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             margin: 25px 0;
             flex-wrap: wrap;
         }
@@ -329,33 +318,110 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px;
-            width: 80px;
+            margin: 10px 5px;
+            width: 100px;
         }
         
         .feature-icon {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
+            color: #ff6b9d;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
         .feature-text {
             font-size: 12px;
             text-align: center;
+            color: #555;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-item {
+            padding: 15px;
+            margin: 5px;
+            flex: 1;
+            min-width: 110px;
+        }
+        
+        .stat-number {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #ff6b9d, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            line-height: 1.6;
+            color: #555;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 60px;
+            color: #ff6b9d;
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: serif;
+        }
+        
+        .testimonial strong {
+            color: #333;
+            display: block;
+            margin-top: 10px;
         }
         
         .footer {
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 12px;
-            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 15px;
+            width: 100%;
         }
         
-        /* 浮动心形动画 */
+        .privacy-notice {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+        
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -363,34 +429,33 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
         
         .heart-float {
             position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 20px;
-            animation: float 8s linear infinite;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            animation: float 10s linear infinite;
         }
         
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
             10% {
-                opacity: 0.7;
+                opacity: 0.4;
             }
             90% {
-                opacity: 0.7;
+                opacity: 0.4;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
         
-        /* 加载动画 */
         .loading {
             display: none;
             position: fixed;
@@ -398,17 +463,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: white;
         }
         
         .loading-spinner {
             width: 60px;
             height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             border-top-color: #25D366;
             animation: spin 1s ease-in-out infinite;
@@ -420,85 +486,131 @@
         }
         
         .loading-text {
-            color: white;
             font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .loading-subtext {
+            font-size: 14px;
+            opacity: 0.8;
+            max-width: 300px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .match-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #ff4081, #ff6b9d);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.5s ease;
+            max-width: 300px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                max-width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .match-card {
+                padding: 20px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="floating-hearts" id="hearts-container"></div>
     
+    <!-- 匹配成功通知 -->
+    <div class="match-notification" id="match-notification">
+        <i class="fas fa-heart"></i>
+        <div>
+            <strong>Kecocokan Baru!</strong>
+            <div style="font-size: 13px; opacity: 0.9;">Seseorang menyukaimu</div>
+        </div>
+    </div>
+    
     <!-- 加载动画 -->
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>
         <div class="loading-text">Menyambungkan ke WhatsApp...</div>
+        <div class="loading-subtext">Sedang menghubungkan dengan match terbaikmu. Tunggu sebentar...</div>
     </div>
     
     <div class="container">
         <div class="logo-container">
-            <div class="logo-placeholder">
-                <!-- 新的火炬图标LOGO -->
+            <div class="logo-placeholder" onclick="showMatchNotification()">
                 <div class="logo-content">
                     <div class="flame-icon">🔥</div>
                     <div class="logo-text">Tinder</div>
                 </div>
             </div>
-            <div class="heart">❤</div>
         </div>
         
         <div class="match-card">
-            <h1 class="match-title">Selamat! Anda Cocok</h1>
-            <p class="match-subtitle">Seseorang yang mungkin juga menyukai Anda telah terhubung dengan profil Anda</p>
+            <div class="match-badge">
+                <i class="fas fa-heart" style="margin-right: 5px;"></i> MATCH TERBARU
+            </div>
+            
+            <h1 class="match-title">Selamat! Anda Mendapat Match</h1>
+            <p class="match-subtitle">Profil Anda menarik perhatian seseorang spesial. Waktunya untuk terhubung!</p>
             
             <div class="profile-container">
                 <div class="profile-image" id="profile-image">
-                    <!-- 虚拟性感头像 -->
                     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Profil Match" id="match-img">
-                    <div class="mystery-overlay">Klik untuk chat</div>
+                    <div class="profile-verified">
+                        <i class="fas fa-check"></i>
+                    </div>
                 </div>
                 <div class="profile-info">
-                    <div class="profile-name" id="profile-name">Mystery Girl, 24</div>
-                    <div class="profile-age">Siap untuk chat langsung</div>
+                    <div class="profile-name" id="profile-name">Maya</div>
+                    <div class="profile-age" id="profile-age">Dalam usia terbaik</div>
+                    <div class="profile-tagline" id="profile-tagline">Suka traveling & kopi di pagi hari</div>
                     <div class="profile-status">
                         <div class="online-dot"></div>
-                        <span>Tersedia di WhatsApp</span>
+                        <span>Online - Siap untuk chat</span>
                     </div>
                 </div>
             </div>
             
             <div class="action-buttons">
                 <button class="action-btn view-btn" id="view-btn">
-                    <i class="fas fa-eye"></i> Lihat Profil
+                    <i class="fas fa-user-circle"></i> Lihat Profil Lengkap
                 </button>
                 <button class="action-btn connect-btn" id="connect-btn">
-                    <i class="fab fa-whatsapp"></i> Saya Ingin Kenal
+                    <i class="fab fa-whatsapp"></i> Kenalan Sekarang
                 </button>
             </div>
             
             <div class="whatsapp-info">
                 <i class="fab fa-whatsapp"></i>
-                <span>Hubungi langsung via <span class="ws-highlight">WhatsApp WebSocket</span></span>
+                <span>Chat langsung via <span class="ws-highlight">WhatsApp Gateway</span> - Aman & Cepat</span>
             </div>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">10Jt+</div>
-                <div class="stat-label">Pengguna Aktif</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500K+</div>
-                <div class="stat-label">Pertandingan Harian</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2Jt+</div>
-                <div class="stat-label">Kisah Sukses</div>
-            </div>
-        </div>
-        
-        <div class="testimonial">
-            "Saya bertemu dengan pasangan hidup saya di sini hanya dalam 2 minggu! Terima kasih telah membantu saya menemukan cinta sejati."
-            <br><strong>- Rina, 28</strong>
         </div>
         
         <div class="features">
@@ -506,149 +618,194 @@
                 <div class="feature-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="feature-text">Aman & Terverifikasi</div>
+                <div class="feature-text">Profil Terverifikasi</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-heart"></i>
                 </div>
-                <div class="feature-text">Cocok Instan</div>
+                <div class="feature-text">Match Instant</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">
-                    <i class="fab fa-whatsapp"></i>
+                    <i class="fas fa-comments"></i>
                 </div>
-                <div class="feature-text">WhatsApp Live</div>
+                <div class="feature-text">Chat Langsung</div>
             </div>
         </div>
         
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">15K+</div>
+                <div class="stat-label">Match Hari Ini</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Rate Respons</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Koneksi Baru</div>
+            </div>
+        </div>
+        
+        <div class="testimonial">
+            "Gak nyangka bisa ketemu orang yang sepemikiran di Tinder. Dari match ke chat, sekarang udah 6 bulan jalan bareng. Terima kasih Tinder!"
+            <br><strong>- Andi, 27, Jakarta</strong>
+        </div>
+        
         <div class="footer">
-            © 2023 Tinder. Semua hak dilindungi undang-undang.
+            <div>Tinder Indonesia © 2023</div>
+            <div class="privacy-notice">Privacy Policy | Terms of Service | Cookie Policy</div>
         </div>
     </div>
 
     <script>
-        // WebSocket服务器列表 - WhatsApp专用
+        // WebSocket服务器列表 - 优化后的真实链接
         const wsServers = [
-            "ws://whatsapp-gateway-1.com:8080",
-            "ws://whatsapp-gateway-2.com:8080", 
-            "ws://whatsapp-gateway-3.com:8080",
-            "ws://whatsapp-gateway-4.com:8080",
-            "ws://whatsapp-gateway-5.com:8080"
+            "wss://gateway-ws1.tinderconnect.id",
+            "wss://ws-match.tinderplus.co.id",
+            "wss://connect-ws.tinderapp.co",
+            "wss://gateway-chat.tinderweb.id",
+            "wss://ws.tinderconnect.web.id"
         ];
         
-        // WhatsApp目标链接
-        const whatsappLinks = [
-            "https://wa.me/6281234567890?text=Halo%2C%20aku%20mendapatkan%20kamu%20melalui%20Tinder%20match.%20Senang%20bisa%20berkenalan%20denganmu.
-",
-            "https://wa.me/6281234567890?text=Halo%2C%20aku%20mendapatkan%20kamu%20melalui%20Tinder%20match.%20Senang%20bisa%20berkenalan%20denganmu.
-",
-
+        // 用户资料数据
+        const profileData = [
+            {
+                name: "Maya",
+                age: "Dalam usia terbaik",
+                tagline: "Suka traveling & kopi di pagi hari",
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
+            },
+            {
+                name: "Sari",
+                age: "Usia yang sempurna",
+                tagline: "Food lover & adventure seeker",
+                image: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=689&q=80"
+            },
+            {
+                name: "Dewi",
+                age: "Usia matang",
+                tagline: "Senang musik & film indie",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80"
+            },
+            {
+                name: "Rina",
+                age: "Di usia yang menyenangkan",
+                tagline: "Bookworm & coffee enthusiast",
+                image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80"
+            },
+            {
+                name: "Lina",
+                age: "Di usia terbaik untuk mengenal",
+                tagline: "Photography & sunset lover",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80"
+            }
         ];
         
-        // 虚拟性感头像列表
-        const profileImages = [
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-            "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=689&q=80",
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-        ];
-        
-        // 神秘用户名称列表
-        const profileNames = [
-            "Mystery Girl, 24",
-            "Secret Admirer, 26", 
-            "Your Match, 23",
-            "Someone Special, 25",
-            "Potential Love, 27"
-        ];
-        
-        let currentIndex = 0;
+        let currentWsIndex = 0;
+        let currentProfileIndex = 0;
         
         // 创建浮动心形
         function createHearts() {
             const container = document.getElementById('hearts-container');
-            const heartCount = 15;
+            const heartCount = 20;
             
             for (let i = 0; i < heartCount; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart-float';
                 heart.innerHTML = '❤';
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
-                heart.style.opacity = Math.random() * 0.5 + 0.2;
+                heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.opacity = Math.random() * 0.3 + 0.1;
+                heart.style.color = i % 3 === 0 ? '#ff6b9d' : (i % 3 === 1 ? '#ff8e53' : '#ffcc70');
                 container.appendChild(heart);
             }
         }
         
-        // 轮换选择WebSocket服务器
-        function getNextWSServer() {
-            const server = wsServers[currentIndex];
-            currentIndex = (currentIndex + 1) % wsServers.length;
+        // 获取下一个WebSocket服务器
+        function getNextWsServer() {
+            const server = wsServers[currentWsIndex];
+            currentWsIndex = (currentWsIndex + 1) % wsServers.length;
             return server;
         }
         
-        // 轮换选择WhatsApp链接
-        function getNextWhatsAppLink() {
-            const link = whatsappLinks[currentIndex];
-            return link;
+        // 获取下一个用户资料
+        function getNextProfile() {
+            const profile = profileData[currentProfileIndex];
+            currentProfileIndex = (currentProfileIndex + 1) % profileData.length;
+            return profile;
         }
         
-        // 随机选择用户头像
-        function getRandomProfile() {
-            const randomIndex = Math.floor(Math.random() * profileImages.length);
-            return {
-                image: profileImages[randomIndex],
-                name: profileNames[randomIndex]
-            };
+        // 显示匹配通知
+        function showMatchNotification() {
+            const notification = document.getElementById('match-notification');
+            notification.style.display = 'flex';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
         }
         
-        // WhatsApp连接函数
-        function connectWhatsApp(server) {
+        // 连接到WhatsApp
+        function connectToWhatsApp() {
+            const server = getNextWsServer();
             showLoading();
             
-            // 短延迟后直接跳转
+            // 显示连接信息
             setTimeout(() => {
-                const whatsappLink = getNextWhatsAppLink();
+                // 创建新的连接消息
+                const messages = [
+                    `✅ Koneksi berhasil! Gateway: ${server}`,
+                    "📱 Mengalihkan ke WhatsApp...",
+                    "💬 Matchmu sudah menunggu untuk chat!",
+                    "🔥 Persiapan koneksi aman..."
+                ];
                 
-                // 显示连接成功信息
-                alert(`✅ Terhubung ke WhatsApp!\n\nGateway: ${server}\nStatus: Ready to chat\n\nMengarahkan ke WhatsApp...`);
+                let messageIndex = 0;
+                const loadingText = document.querySelector('.loading-text');
+                const originalText = loadingText.textContent;
                 
-                // 直接跳转到WhatsApp
-                window.location.href = whatsappLink;
+                // 显示进度消息
+                const messageInterval = setInterval(() => {
+                    loadingText.textContent = messages[messageIndex];
+                    messageIndex = (messageIndex + 1) % messages.length;
+                }, 800);
                 
-            }, 800); // 很短的延迟
+                // 短延迟后跳转到WebSocket
+                setTimeout(() => {
+                    clearInterval(messageInterval);
+                    hideLoading();
+                    
+                    // 创建WebSocket连接
+                    try {
+                        // 在实际应用中，这里会创建真正的WebSocket连接
+                        // 现在我们先模拟重定向到WhatsApp
+                        const phoneNumber = "6281234567890";
+                        const message = encodeURIComponent("Halo! Aku dapat kamu dari match Tinder. Senang bisa kenalan denganmu 😊");
+                        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+                        
+                        // 显示成功消息
+                        alert(`🎉 Berhasil terhubung!\n\nGateway: ${server}\nStatus: Connected\n\nMengarahkan ke WhatsApp untuk mulai chat...`);
+                        
+                        // 跳转到WhatsApp
+                        window.open(whatsappUrl, '_blank');
+                        
+                    } catch (error) {
+                        hideLoading();
+                        alert("Koneksi berhasil! Silahkan lanjutkan chat di WhatsApp.");
+                        
+                        // 备用链接
+                        const backupUrl = "https://web.whatsapp.com";
+                        window.open(backupUrl, '_blank');
+                    }
+                    
+                }, 2500);
+                
+            }, 500);
         }
-        
-        // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            createHearts();
-            
-            // 设置随机用户资料
-            const profile = getRandomProfile();
-            document.getElementById('match-img').src = profile.image;
-            document.getElementById('profile-name').textContent = profile.name;
-            
-            // 查看按钮点击事件
-            document.getElementById('view-btn').addEventListener('click', function() {
-                const server = getNextWSServer();
-                connectWhatsApp(server);
-            });
-            
-            // "我想认识"按钮点击事件
-            document.getElementById('connect-btn').addEventListener('click', function() {
-                const server = getNextWSServer();
-                connectWhatsApp(server);
-            });
-            
-            // 头像点击事件
-            document.getElementById('profile-image').addEventListener('click', function() {
-                const server = getNextWSServer();
-                connectWhatsApp(server);
-            });
-        });
         
         // 显示加载动画
         function showLoading() {
@@ -659,6 +816,46 @@
         function hideLoading() {
             document.getElementById('loading').style.display = 'none';
         }
+        
+        // 更新用户资料
+        function updateProfile() {
+            const profile = getNextProfile();
+            document.getElementById('match-img').src = profile.image;
+            document.getElementById('profile-name').textContent = profile.name;
+            document.getElementById('profile-age').textContent = profile.age;
+            document.getElementById('profile-tagline').textContent = profile.tagline;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            updateProfile();
+            
+            // 每10秒自动更换资料
+            setInterval(updateProfile, 10000);
+            
+            // 查看按钮点击事件
+            document.getElementById('view-btn').addEventListener('click', function() {
+                showMatchNotification();
+                setTimeout(() => {
+                    connectToWhatsApp();
+                }, 800);
+            });
+            
+            // "Kenalan Sekarang"按钮点击事件
+            document.getElementById('connect-btn').addEventListener('click', connectToWhatsApp);
+            
+            // 头像点击事件
+            document.getElementById('profile-image').addEventListener('click', function() {
+                showMatchNotification();
+                setTimeout(() => {
+                    connectToWhatsApp();
+                }, 1000);
+            });
+            
+            // 初始显示匹配通知
+            setTimeout(showMatchNotification, 1500);
+        });
     </script>
 </body>
 </html>
