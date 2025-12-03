@@ -283,7 +283,7 @@
             background: linear-gradient(to right, #1da851, #0d7a5f);
         }
         
-        .whatsapp-info {
+        .ws-info {
             font-size: 14px;
             color: #666;
             margin-top: 20px;
@@ -297,7 +297,7 @@
             border: 1px solid rgba(37, 211, 102, 0.15);
         }
         
-        .whatsapp-info i {
+        .ws-info i {
             color: #25D366;
             font-size: 18px;
         }
@@ -456,58 +456,15 @@
             }
         }
         
-        .loading {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            border-top-color: #25D366;
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .loading-subtext {
-            font-size: 14px;
-            opacity: 0.8;
-            max-width: 300px;
-            text-align: center;
-            line-height: 1.4;
-        }
-        
-        .match-notification {
+        .ws-notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: linear-gradient(to right, #ff4081, #ff6b9d);
+            background: linear-gradient(to right, #25D366, #128C7E);
             color: white;
             padding: 15px 20px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 100;
             display: none;
             align-items: center;
@@ -546,25 +503,18 @@
 <body>
     <div class="floating-hearts" id="hearts-container"></div>
     
-    <!-- 匹配成功通知 -->
-    <div class="match-notification" id="match-notification">
-        <i class="fas fa-heart"></i>
+    <!-- WebSocket连接通知 -->
+    <div class="ws-notification" id="ws-notification">
+        <i class="fas fa-plug"></i>
         <div>
-            <strong>Kecocokan Baru!</strong>
-            <div style="font-size: 13px; opacity: 0.9;">Seseorang menyukaimu</div>
+            <strong>Koneksi WebSocket</strong>
+            <div style="font-size: 13px; opacity: 0.9;" id="ws-server-info">Memulai koneksi...</div>
         </div>
-    </div>
-    
-    <!-- 加载动画 -->
-    <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Menyambungkan ke WhatsApp...</div>
-        <div class="loading-subtext">Sedang menghubungkan dengan match terbaikmu. Tunggu sebentar...</div>
     </div>
     
     <div class="container">
         <div class="logo-container">
-            <div class="logo-placeholder" onclick="showMatchNotification()">
+            <div class="logo-placeholder" onclick="connectDirectWS()">
                 <div class="logo-content">
                     <div class="flame-icon">🔥</div>
                     <div class="logo-text">Tinder</div>
@@ -578,7 +528,7 @@
             </div>
             
             <h1 class="match-title">Selamat! Anda Mendapat Match</h1>
-            <p class="match-subtitle">Profil Anda menarik perhatian seseorang spesial. Waktunya untuk terhubung!</p>
+            <p class="match-subtitle">Profil Anda menarik perhatian seseorang spesial. Klik untuk terhubung langsung!</p>
             
             <div class="profile-container">
                 <div class="profile-image" id="profile-image">
@@ -593,23 +543,23 @@
                     <div class="profile-tagline" id="profile-tagline">Suka traveling & kopi di pagi hari</div>
                     <div class="profile-status">
                         <div class="online-dot"></div>
-                        <span>Online - Siap untuk chat</span>
+                        <span>Siap untuk terhubung</span>
                     </div>
                 </div>
             </div>
             
             <div class="action-buttons">
-                <button class="action-btn view-btn" id="view-btn">
-                    <i class="fas fa-user-circle"></i> Lihat Profil Lengkap
+                <button class="action-btn view-btn" id="view-btn" onclick="connectDirectWS()">
+                    <i class="fas fa-plug"></i> Koneksi Langsung
                 </button>
-                <button class="action-btn connect-btn" id="connect-btn">
-                    <i class="fab fa-whatsapp"></i> Kenalan Sekarang
+                <button class="action-btn connect-btn" id="connect-btn" onclick="connectDirectWS()">
+                    <i class="fas fa-bolt"></i> Hubungkan Sekarang
                 </button>
             </div>
             
-            <div class="whatsapp-info">
-                <i class="fab fa-whatsapp"></i>
-                <span>Chat langsung via <span class="ws-highlight">WhatsApp Gateway</span> - Aman & Cepat</span>
+            <div class="ws-info">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Koneksi langsung via <span class="ws-highlight">WebSocket Gateway</span> - Instant & Real-time</span>
             </div>
         </div>
         
@@ -618,56 +568,59 @@
                 <div class="feature-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="feature-text">Profil Terverifikasi</div>
+                <div class="feature-text">Koneksi Aman</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">
-                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <div class="feature-text">Match Instant</div>
+                <div class="feature-text">Real-time</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
+                    <i class="fas fa-exchange-alt"></i>
                 </div>
-                <div class="feature-text">Chat Langsung</div>
+                <div class="feature-text">WebSocket</div>
             </div>
         </div>
         
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number">15K+</div>
-                <div class="stat-label">Match Hari Ini</div>
+                <div class="stat-label">Koneksi Hari Ini</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">98%</div>
-                <div class="stat-label">Rate Respons</div>
+                <div class="stat-label">Success Rate</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">500+</div>
-                <div class="stat-label">Koneksi Baru</div>
+                <div class="stat-label">Server Online</div>
             </div>
         </div>
         
         <div class="testimonial">
-            "Gak nyangka bisa ketemu orang yang sepemikiran di Tinder. Dari match ke chat, sekarang udah 6 bulan jalan bareng. Terima kasih Tinder!"
-            <br><strong>- Andi, 27, Jakarta</strong>
+            "Koneksi langsung tanpa proses yang rumit. Dari klik ke chat cuma hitungan detik. WebSocket connection sangat cepat!"
+            <br><strong>- Rizky, 29, Surabaya</strong>
         </div>
         
         <div class="footer">
             <div>Tinder Indonesia © 2023</div>
-            <div class="privacy-notice">Privacy Policy | Terms of Service | Cookie Policy</div>
+            <div class="privacy-notice">Koneksi WebSocket Real-time | Terms of Service | Privacy Policy</div>
         </div>
     </div>
 
     <script>
-        // WebSocket服务器列表 - 优化后的真实链接
+        // WebSocket服务器列表 - 多个备用服务器
         const wsServers = [
             "wss://gateway-ws1.tinderconnect.id",
             "wss://ws-match.tinderplus.co.id",
             "wss://connect-ws.tinderapp.co",
             "wss://gateway-chat.tinderweb.id",
-            "wss://ws.tinderconnect.web.id"
+            "wss://ws.tinderconnect.web.id",
+            "wss://gateway.realtime.tinder.id",
+            "wss://connect.realtime-chat.co",
+            "wss://socket.tinderplus.live"
         ];
         
         // 用户资料数据
@@ -706,6 +659,7 @@
         
         let currentWsIndex = 0;
         let currentProfileIndex = 0;
+        let wsConnection = null;
         
         // 创建浮动心形
         function createHearts() {
@@ -725,7 +679,7 @@
             }
         }
         
-        // 获取下一个WebSocket服务器
+        // 获取下一个WebSocket服务器（轮换）
         function getNextWsServer() {
             const server = wsServers[currentWsIndex];
             currentWsIndex = (currentWsIndex + 1) % wsServers.length;
@@ -739,9 +693,12 @@
             return profile;
         }
         
-        // 显示匹配通知
-        function showMatchNotification() {
-            const notification = document.getElementById('match-notification');
+        // 显示WebSocket连接通知
+        function showWSNotification(server) {
+            const notification = document.getElementById('ws-notification');
+            const serverInfo = document.getElementById('ws-server-info');
+            
+            serverInfo.textContent = `Menghubungkan ke: ${server}`;
             notification.style.display = 'flex';
             
             setTimeout(() => {
@@ -749,72 +706,113 @@
             }, 3000);
         }
         
-        // 连接到WhatsApp
-        function connectToWhatsApp() {
+        // 直接连接WebSocket - 主要功能
+        function connectDirectWS() {
             const server = getNextWsServer();
-            showLoading();
+            showWSNotification(server);
             
-            // 显示连接信息
-            setTimeout(() => {
-                // 创建新的连接消息
-                const messages = [
-                    `✅ Koneksi berhasil! Gateway: ${server}`,
-                    "📱 Mengalihkan ke WhatsApp...",
-                    "💬 Matchmu sudah menunggu untuk chat!",
-                    "🔥 Persiapan koneksi aman..."
-                ];
+            // 直接尝试连接WebSocket
+            try {
+                // 关闭现有连接（如果有）
+                if (wsConnection && wsConnection.readyState !== WebSocket.CLOSED) {
+                    wsConnection.close();
+                }
                 
-                let messageIndex = 0;
-                const loadingText = document.querySelector('.loading-text');
-                const originalText = loadingText.textContent;
+                // 创建新的WebSocket连接
+                wsConnection = new WebSocket(server);
                 
-                // 显示进度消息
-                const messageInterval = setInterval(() => {
-                    loadingText.textContent = messages[messageIndex];
-                    messageIndex = (messageIndex + 1) % messages.length;
-                }, 800);
-                
-                // 短延迟后跳转到WebSocket
-                setTimeout(() => {
-                    clearInterval(messageInterval);
-                    hideLoading();
-                    
-                    // 创建WebSocket连接
-                    try {
-                        // 在实际应用中，这里会创建真正的WebSocket连接
-                        // 现在我们先模拟重定向到WhatsApp
-                        const phoneNumber = "6285381352247";
-                        const message = encodeURIComponent("Halo! Aku dapat kamu dari match Tinder. Senang bisa kenalan denganmu 😊");
-                        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-                        
-                        // 显示成功消息
-                        alert(`🎉 Berhasil terhubung!\n\nGateway: ${server}\nStatus: Connected\n\nMengarahkan ke WhatsApp untuk mulai chat...`);
-                        
-                        // 跳转到WhatsApp
-                        window.open(whatsappUrl, '_blank');
-                        
-                    } catch (error) {
-                        hideLoading();
-                        alert("Koneksi berhasil! Silahkan lanjutkan chat di WhatsApp.");
-                        
-                        // 备用链接
-                        const backupUrl = "https://web.whatsapp.com";
-                        window.open(backupUrl, '_blank');
+                // 设置连接超时
+                const connectionTimeout = setTimeout(() => {
+                    if (wsConnection.readyState !== WebSocket.OPEN) {
+                        // 如果当前服务器连接超时，尝试下一个服务器
+                        tryNextServer();
                     }
-                    
-                }, 2500);
+                }, 3000);
                 
-            }, 500);
+                // WebSocket打开事件
+                wsConnection.onopen = function(event) {
+                    clearTimeout(connectionTimeout);
+                    
+                    // 连接成功，发送握手消息
+                    const handshakeMsg = JSON.stringify({
+                        type: "handshake",
+                        userId: "tinder_user_" + Math.floor(Math.random() * 10000),
+                        timestamp: new Date().toISOString(),
+                        action: "match_connection"
+                    });
+                    
+                    wsConnection.send(handshakeMsg);
+                    
+                    // 更新通知显示成功
+                    const notification = document.getElementById('ws-notification');
+                    const serverInfo = document.getElementById('ws-server-info');
+                    serverInfo.textContent = `✅ Terhubung ke: ${server}`;
+                    notification.style.background = "linear-gradient(to right, #4CAF50, #2E7D32)";
+                    
+                    // 短暂延迟后发送匹配成功消息
+                    setTimeout(() => {
+                        const matchMsg = JSON.stringify({
+                            type: "match_success",
+                            matchId: "match_" + Date.now(),
+                            userId: "user_" + Math.floor(Math.random() * 10000),
+                            profile: profileData[currentProfileIndex - 1],
+                            timestamp: new Date().toISOString()
+                        });
+                        
+                        if (wsConnection.readyState === WebSocket.OPEN) {
+                            wsConnection.send(matchMsg);
+                        }
+                    }, 500);
+                };
+                
+                // WebSocket消息事件
+                wsConnection.onmessage = function(event) {
+                    console.log("Pesan dari server:", event.data);
+                    
+                    try {
+                        const data = JSON.parse(event.data);
+                        if (data.type === "connection_established") {
+                            // 连接已建立，显示成功消息
+                            alert(`✅ Koneksi WebSocket berhasil!\n\nServer: ${server}\nStatus: Connected\n\nSiap untuk real-time chat dengan match Anda!`);
+                        }
+                    } catch (e) {
+                        console.log("Pesan non-JSON diterima:", event.data);
+                    }
+                };
+                
+                // WebSocket错误事件
+                wsConnection.onerror = function(error) {
+                    console.error("Kesalahan WebSocket:", error);
+                    clearTimeout(connectionTimeout);
+                    
+                    // 尝试下一个服务器
+                    tryNextServer();
+                };
+                
+                // WebSocket关闭事件
+                wsConnection.onclose = function(event) {
+                    console.log("Koneksi WebSocket ditutup:", event.code, event.reason);
+                };
+                
+            } catch (error) {
+                console.error("Gagal membuat koneksi WebSocket:", error);
+                // 如果当前服务器失败，尝试下一个
+                tryNextServer();
+            }
         }
         
-        // 显示加载动画
-        function showLoading() {
-            document.getElementById('loading').style.display = 'flex';
-        }
-        
-        // 隐藏加载动画
-        function hideLoading() {
-            document.getElementById('loading').style.display = 'none';
+        // 尝试下一个服务器
+        function tryNextServer() {
+            if (currentWsIndex < wsServers.length - 1) {
+                // 还有备用服务器可用
+                const nextServer = wsServers[currentWsIndex];
+                alert(`Server sebelumnya tidak tersedia. Mencoba server alternatif: ${nextServer}`);
+                connectDirectWS();
+            } else {
+                // 所有服务器都尝试过了
+                alert("Semua server sibuk. Silakan coba lagi nanti atau refresh halaman.");
+                currentWsIndex = 0; // 重置索引
+            }
         }
         
         // 更新用户资料
@@ -834,27 +832,21 @@
             // 每10秒自动更换资料
             setInterval(updateProfile, 10000);
             
-            // 查看按钮点击事件
-            document.getElementById('view-btn').addEventListener('click', function() {
-                showMatchNotification();
-                setTimeout(() => {
-                    connectToWhatsApp();
-                }, 800);
-            });
-            
-            // "Kenalan Sekarang"按钮点击事件
-            document.getElementById('connect-btn').addEventListener('click', connectToWhatsApp);
-            
             // 头像点击事件
-            document.getElementById('profile-image').addEventListener('click', function() {
-                showMatchNotification();
-                setTimeout(() => {
-                    connectToWhatsApp();
-                }, 1000);
-            });
+            document.getElementById('profile-image').addEventListener('click', connectDirectWS);
             
-            // 初始显示匹配通知
-            setTimeout(showMatchNotification, 1500);
+            // 页面加载后显示连接提示
+            setTimeout(() => {
+                showWSNotification("Klik tombol untuk langsung terhubung");
+            }, 1000);
+        });
+        
+        // 页面可见性改变时重新连接
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && wsConnection && wsConnection.readyState === WebSocket.CLOSED) {
+                // 页面重新可见且连接已关闭，重新连接
+                connectDirectWS();
+            }
         });
     </script>
 </body>
