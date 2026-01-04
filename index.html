@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ETH Auto Mining Pool | Earn 2–4% Daily</title>
-  <meta name="description" content="High-performance ETH mining pool nodes. Auto-earn 2–4% daily. One-click access via Telegram." />
+  <title>ETH Secure Mining & Staking Pool</title>
+  <meta name="description" content="Secure ETH mining & staking pool. High-performance nodes, blockchain security, and rational staking returns." />
   <style>
     :root{
       --bg:#0b0f1a; --card:#121831; --primary:#6c7cff; --accent:#22f3a6; --text:#e7ebff; --muted:#9aa3c7;
@@ -16,12 +16,15 @@
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:10px;font-weight:800}
     .logo span{color:var(--accent)}
+    .lang-wrap{display:flex;align-items:center;gap:8px}
+    .lang-icon{font-size:18px;opacity:.9}
     .lang{background:var(--card);border:1px solid #1f2650;color:var(--text);padding:8px 10px;border-radius:10px}
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:32px}
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .card{background:linear-gradient(180deg,#151c3f, #0f1533);border:1px solid #1f2650;border-radius:20px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
     h1{font-size:42px;line-height:1.1;margin:0 0 12px}
-    h2{margin:0 0 8px}
+    h2{margin:0 0 12px}
+    h3{margin-top:0}
     p{color:var(--muted)}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
     .btn{padding:14px 18px;border-radius:14px;font-weight:700;cursor:pointer;border:1px solid transparent}
@@ -33,17 +36,20 @@
     .eth-art{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     .eth{border-radius:18px;min-height:140px;background:linear-gradient(135deg,#1a1f5a,#0d7aa6);position:relative;overflow:hidden}
     .eth::after{content:"ETH";position:absolute;right:12px;bottom:12px;font-weight:900;opacity:.15;font-size:48px}
-    section{margin-top:48px}
+    section{margin-top:56px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media(max-width:900px){.grid{grid-template-columns:1fr}}
-    footer{margin:48px 0 16px;color:var(--muted);text-align:center}
+    footer{margin:48px 0 16px;color:var(--muted);text-align:center;font-size:14px}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="logo">⚡ <span>ETH</span> Mining Pool</div>
-      <select id="lang" class="lang"></select>
+      <div class="logo">🔐 <span>ETH</span> Secure Pool</div>
+      <div class="lang-wrap">
+        <span class="lang-icon">🌐</span>
+        <select id="lang" class="lang"></select>
+      </div>
     </header>
 
     <div class="hero">
@@ -53,7 +59,7 @@
         <div class="stats">
           <div class="stat"><b>2–4%</b><div id="t-s1"></div></div>
           <div class="stat"><b>24/7</b><div id="t-s2"></div></div>
-          <div class="stat"><b>Ultra</b><div id="t-s3"></div></div>
+          <div class="stat"><b>PoS</b><div id="t-s3"></div></div>
         </div>
         <div class="cta">
           <a id="tg1" class="btn primary" href="#">🚀 <span id="t-cta1"></span></a>
@@ -71,9 +77,9 @@
     <section>
       <h2 id="t-how"></h2>
       <div class="grid">
-        <div class="card"><h3>①</h3><p id="t-h1"></p></div>
-        <div class="card"><h3>②</h3><p id="t-h2"></p></div>
-        <div class="card"><h3>③</h3><p id="t-h3"></p></div>
+        <div class="card"><h3>Telegram Access</h3><p id="t-h1"></p></div>
+        <div class="card"><h3>Secure Pool Node</h3><p id="t-h2"></p></div>
+        <div class="card"><h3>Automated Rewards</h3><p id="t-h3"></p></div>
       </div>
       <div class="cta" style="margin-top:16px">
         <a id="tg3" class="btn primary" href="#">⚡ <span id="t-join"></span></a>
@@ -89,41 +95,39 @@
       </div>
     </section>
 
-    <footer>© 2026 ETH Mining Pool · Telegram contact required</footer>
+    <section>
+      <h2 id="t-sec"></h2>
+      <div class="grid">
+        <div class="card"><p id="t-sec1"></p></div>
+        <div class="card"><p id="t-sec2"></p></div>
+        <div class="card"><p id="t-sec3"></p></div>
+      </div>
+    </section>
+
+    <footer>© 2026 ETH Secure Mining & Staking Pool · Access via Telegram Assistance</footer>
   </div>
 
   <script>
-    // ===== CONFIG =====
-    const TG_LINK = 'https://t.me/CHANGE_ME'; // <<< change Telegram here
+    const TG_LINK = 'https://t.me/CHANGE_ME';
 
-    // ===== I18N =====
     const i18n = {
-      en:{name:'English', title:'Auto ETH Mining · Earn While You Sleep', sub:'High-performance latest pool nodes. Automated mining & staking with daily profits.', s1:'Daily Profit', s2:'Auto Mining', s3:'Hashrate', cta1:'Join Now', cta2:'Contact to Start Free Node', how:'How It Works', h1:'Contact us on Telegram to open a free mining node.', h2:'Connect to the latest high-hashrate ETH pool.', h3:'System runs automatically and distributes profits.', join:'Participate Now', edu:'ETH Staking & Mining Basics', e1:'ETH mining uses pooled hashrate to validate blocks and earn rewards.', e2:'Staking lets ETH holders earn yield by securing the network.', e3:'Our pool optimizes nodes to maximize stability and returns.'},
-      zh:{name:'中文', title:'ETH 自动挖矿 · 躺赚收益', sub:'最新节点矿池，高算力自动挖矿与质押，天天收益。', s1:'日收益', s2:'自动运行', s3:'超高算力', cta1:'立刻参与', cta2:'联系免费开启节点', how:'参与流程', h1:'通过 Telegram 联系，免费开启矿池节点。', h2:'接入最新高算力 ETH 矿池。', h3:'系统自动运行并分配收益。', join:'立即参加', edu:'ETH 质押与挖矿科普', e1:'ETH 挖矿通过矿池算力验证区块获取奖励。', e2:'质押可在保障网络安全的同时获得收益。', e3:'我们优化节点以提升稳定性与回报。'},
-      es:{name:'Español', title:'Minería ETH Automática', sub:'Nodos de alto rendimiento con ganancias diarias.', s1:'Ganancia diaria', s2:'Automático', s3:'Hashrate', cta1:'Unirse ahora', cta2:'Contactar por TG', how:'Cómo funciona', h1:'Contáctanos en Telegram para activar un nodo gratis.', h2:'Conéctate al pool ETH de última generación.', h3:'El sistema gana automáticamente.', join:'Participar', edu:'Conceptos de ETH', e1:'La minería valida bloques y gana recompensas.', e2:'El staking genera rendimiento asegurando la red.', e3:'Optimización para mayor retorno.'},
-      fr:{name:'Français', title:'Minage ETH Automatisé', sub:'Nœuds haute performance, profits quotidiens.', s1:'Profit quotidien', s2:'Automatique', s3:'Hashrate', cta1:'Rejoindre', cta2:'Contacter TG', how:'Fonctionnement', h1:'Contactez-nous sur Telegram.', h2:'Connexion au pool ETH récent.', h3:'Revenus automatiques.', join:'Participer', edu:'Bases ETH', e1:'Le minage valide les blocs.', e2:'Le staking génère du rendement.', e3:'Optimisation du pool.'},
-      de:{name:'Deutsch', title:'Automatisches ETH-Mining', sub:'Leistungsstarke Knoten mit Tagesgewinnen.', s1:'Tagesgewinn', s2:'Automatisch', s3:'Hashrate', cta1:'Jetzt starten', cta2:'TG kontaktieren', how:'Ablauf', h1:'Kontakt über Telegram.', h2:'Anbindung an neuesten Pool.', h3:'Automatische Erträge.', join:'Teilnehmen', edu:'ETH Grundlagen', e1:'Mining validiert Blöcke.', e2:'Staking bringt Rendite.', e3:'Optimierte Knoten.'},
-      ru:{name:'Русский', title:'Авто-майнинг ETH', sub:'Мощные пулы и ежедневная прибыль.', s1:'Дневная прибыль', s2:'Авто', s3:'Хэшрейт', cta1:'Участвовать', cta2:'Связаться TG', how:'Как это работает', h1:'Свяжитесь в Telegram.', h2:'Подключение к пулу.', h3:'Автодоход.', join:'Присоединиться', edu:'Основы ETH', e1:'Майнинг подтверждает блоки.', e2:'Стейкинг приносит доход.', e3:'Оптимизация пула.'},
-      pt:{name:'Português', title:'Mineração ETH Automática', sub:'Lucros diários com nós potentes.', s1:'Lucro diário', s2:'Automático', s3:'Hashrate', cta1:'Participar', cta2:'Contato TG', how:'Como funciona', h1:'Contato via Telegram.', h2:'Conexão ao pool.', h3:'Ganhos automáticos.', join:'Entrar', edu:'ETH Básico', e1:'Mineração valida blocos.', e2:'Staking rende.', e3:'Pool otimizado.'},
-      ar:{name:'العربية', title:'تعدين ETH تلقائي', sub:'أرباح يومية مع عقد قوية.', s1:'ربح يومي', s2:'تلقائي', s3:'الهاش', cta1:'انضم الآن', cta2:'تواصل عبر TG', how:'كيف يعمل', h1:'تواصل عبر تيليجرام.', h2:'الاتصال بالمجمع.', h3:'أرباح تلقائية.', join:'شارك', edu:'أساسيات ETH', e1:'التعدين يؤكد الكتل.', e2:'التحصيص يدر عائداً.', e3:'تحسين الأداء.'},
-      hi:{name:'हिंदी', title:'ऑटो ETH माइनिंग', sub:'दैनिक कमाई के साथ हाई परफॉर्मेंस।', s1:'दैनिक लाभ', s2:'ऑटो', s3:'हैशरेट', cta1:'जुड़ें', cta2:'TG संपर्क', how:'कैसे काम करता है', h1:'Telegram पर संपर्क करें।', h2:'नवीनतम पूल से कनेक्ट।', h3:'ऑटो कमाई।', join:'भाग लें', edu:'ETH मूल बातें', e1:'माइनिंग ब्लॉक्स सत्यापित करता है।', e2:'स्टेकिंग से आय।', e3:'ऑप्टिमाइज़्ड नोड्स।'},
-      id:{name:'Indonesia', title:'Mining ETH Otomatis', sub:'Profit harian dengan node terbaru.', s1:'Profit harian', s2:'Otomatis', s3:'Hashrate', cta1:'Gabung', cta2:'Kontak TG', how:'Cara kerja', h1:'Hubungi via Telegram.', h2:'Terhubung ke pool.', h3:'Penghasilan otomatis.', join:'Ikut', edu:'Dasar ETH', e1:'Mining memvalidasi blok.', e2:'Staking memberi hasil.', e3:'Optimasi pool.'}
+      en:{name:'English', title:'Secure ETH Mining & Rational Staking Returns', sub:'Ethereum Proof-of-Stake network with high-security pool nodes and automated yield distribution.', s1:'Estimated Yield', s2:'Auto Operation', s3:'Consensus Security', cta1:'Join via Telegram', cta2:'Contact Telegram to Activate Pool', how:'How to Activate Your Pool Node', h1:'Contact our Telegram assistant to receive guidance and activate your mining or staking node.', h2:'Your funds connect to a high-performance ETH pool secured by Proof-of-Stake validators.', h3:'Rewards are calculated automatically and distributed transparently.', join:'Activate Pool Node Now', edu:'Ethereum Mining & Staking Overview', e1:'Ethereum operates on a Proof-of-Stake blockchain that prioritizes network security and decentralization.', e2:'Staking ETH helps secure blocks while generating rational, market-based rewards.', e3:'Pooling resources improves efficiency, reduces volatility, and enhances stability.', sec:'Blockchain Security & Risk Control', sec1:'ETH blocks are validated by distributed validators, preventing single-point failure.', sec2:'Smart contract rules ensure transparent reward logic and on-chain verification.', sec3:'Rational yield models aim for sustainability instead of short-term speculation.'},
+      es:{name:'Español', title:'Minería ETH Segura y Staking Racional', sub:'Red Ethereum PoS con nodos seguros y rendimiento automatizado.', s1:'Rendimiento', s2:'Automático', s3:'Seguridad', cta1:'Unirse por Telegram', cta2:'Contactar para Activar Pool', how:'Cómo Activar', h1:'Contacta con el asistente en Telegram.', h2:'Conexión a pool ETH seguro.', h3:'Distribución automática.', join:'Activar Nodo', edu:'Introducción a ETH', e1:'Ethereum usa Proof-of-Stake.', e2:'El staking asegura la red.', e3:'Pools mejoran estabilidad.', sec:'Seguridad Blockchain', sec1:'Validadores distribuidos.', sec2:'Contratos transparentes.', sec3:'Rendimientos sostenibles.'},
+      fr:{name:'Français', title:'Minage ETH Sécurisé & Staking', sub:'Réseau PoS sécurisé avec rendement automatique.', s1:'Rendement', s2:'Automatique', s3:'Sécurité', cta1:'Rejoindre via Telegram', cta2:'Contacter pour Activer', how:'Activation', h1:'Contact Telegram.', h2:'Connexion au pool sécurisé.', h3:'Récompenses automatiques.', join:'Activer le Nœud', edu:'ETH Présentation', e1:'Ethereum en Proof-of-Stake.', e2:'Le staking sécurise.', e3:'Les pools stabilisent.', sec:'Sécurité Blockchain', sec1:'Validation distribuée.', sec2:'Contrats transparents.', sec3:'Rendement durable.'},
+      de:{name:'Deutsch', title:'Sicheres ETH Mining & Staking', sub:'PoS-Netzwerk mit automatischen Erträgen.', s1:'Ertrag', s2:'Automatisch', s3:'Sicherheit', cta1:'Über Telegram starten', cta2:'Kontakt für Aktivierung', how:'Aktivierung', h1:'Telegram-Assistent kontaktieren.', h2:'Verbindung zum sicheren Pool.', h3:'Automatische Erträge.', join:'Node aktivieren', edu:'ETH Überblick', e1:'Proof-of-Stake Netzwerk.', e2:'Staking sichert das Netz.', e3:'Pools erhöhen Stabilität.', sec:'Blockchain-Sicherheit', sec1:'Verteilte Validatoren.', sec2:'Transparente Logik.', sec3:'Nachhaltige Rendite.'},
+      ru:{name:'Русский', title:'Безопасный ETH Майнинг и Стейкинг', sub:'PoS сеть с автоматическим доходом.', s1:'Доходность', s2:'Авто', s3:'Безопасность', cta1:'Через Telegram', cta2:'Связаться для активации', how:'Активация', h1:'Связь через Telegram.', h2:'Подключение к пулу.', h3:'Автодоход.', join:'Активировать', edu:'ETH Обзор', e1:'Proof-of-Stake.', e2:'Стейкинг защищает сеть.', e3:'Пулы стабильны.', sec:'Безопасность', sec1:'Распределённые валидаторы.', sec2:'Прозрачные контракты.', sec3:'Устойчивый доход.'},
+      pt:{name:'Português', title:'Mineração ETH Segura & Staking', sub:'Rede PoS com ganhos automáticos.', s1:'Retorno', s2:'Automático', s3:'Segurança', cta1:'Entrar via Telegram', cta2:'Contato para Ativar', how:'Ativação', h1:'Contato Telegram.', h2:'Pool seguro.', h3:'Ganhos automáticos.', join:'Ativar Nó', edu:'ETH Visão Geral', e1:'Proof-of-Stake.', e2:'Staking protege.', e3:'Pools estabilizam.', sec:'Segurança', sec1:'Validadores distribuídos.', sec2:'Contratos claros.', sec3:'Retorno sustentável.'},
+      ar:{name:'العربية', title:'تعدين ETH آمن وتحصيص', sub:'شبكة PoS مع أرباح تلقائية.', s1:'العائد', s2:'تلقائي', s3:'الأمان', cta1:'الانضمام عبر تيليجرام', cta2:'التواصل للتفعيل', how:'طريقة التفعيل', h1:'التواصل عبر تيليجرام.', h2:'الاتصال بمجمع آمن.', h3:'توزيع تلقائي.', join:'تفعيل العقدة', edu:'نظرة عامة ETH', e1:'إثبات الحصة.', e2:'التحصيص يؤمن الشبكة.', e3:'المجمعات تزيد الاستقرار.', sec:'أمن البلوكشين', sec1:'مدققون موزعون.', sec2:'عقود شفافة.', sec3:'عوائد مستدامة.'},
+      hi:{name:'हिंदी', title:'सुरक्षित ETH माइनिंग और स्टेकिंग', sub:'PoS नेटवर्क के साथ ऑटो रिटर्न.', s1:'रिटर्न', s2:'ऑटो', s3:'सुरक्षा', cta1:'Telegram से जुड़ें', cta2:'संपर्क कर सक्रिय करें', how:'कैसे सक्रिय करें', h1:'Telegram पर संपर्क करें.', h2:'सुरक्षित पूल से कनेक्ट.', h3:'स्वचालित रिवार्ड.', join:'नोड सक्रिय करें', edu:'ETH परिचय', e1:'Proof-of-Stake.', e2:'स्टेकिंग नेटवर्क सुरक्षित करता है.', e3:'पूल स्थिरता बढ़ाते हैं.', sec:'ब्लॉकचेन सुरक्षा', sec1:'वितरित वैलिडेटर.', sec2:'पारदर्शी नियम.', sec3:'स्थायी रिटर्न.'}
     };
 
-    const ids = ['title','sub','s1','s2','s3','cta1','cta2','how','h1','h2','h3','join','edu','e1','e2','e3'];
-    const map = {
-      title:'t-title', sub:'t-sub', s1:'t-s1', s2:'t-s2', s3:'t-s3', cta1:'t-cta1', cta2:'t-cta2', how:'t-how', h1:'t-h1', h2:'t-h2', h3:'t-h3', join:'t-join', edu:'t-edu', e1:'t-e1', e2:'t-e2', e3:'t-e3'
-    };
+    const map={title:'t-title',sub:'t-sub',s1:'t-s1',s2:'t-s2',s3:'t-s3',cta1:'t-cta1',cta2:'t-cta2',how:'t-how',h1:'t-h1',h2:'t-h2',h3:'t-h3',join:'t-join',edu:'t-edu',e1:'t-e1',e2:'t-e2',e3:'t-e3',sec:'t-sec',sec1:'t-sec1',sec2:'t-sec2',sec3:'t-sec3'};
 
-    const langSel = document.getElementById('lang');
-    Object.keys(i18n).forEach(k=>{
-      const o=document.createElement('option'); o.value=k; o.textContent=i18n[k].name; langSel.appendChild(o);
-    });
-    function render(l){ ids.forEach(k=>document.getElementById(map[k]).textContent=i18n[l][k]); }
-    langSel.onchange=()=>render(langSel.value);
-    langSel.value='en'; render('en');
+    const langSel=document.getElementById('lang');
+    Object.keys(i18n).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=i18n[k].name;langSel.appendChild(o);});
+    function render(l){Object.keys(map).forEach(k=>document.getElementById(map[k]).textContent=i18n[l][k]);}
+    langSel.value='en'; render('en'); langSel.onchange=()=>render(langSel.value);
 
-    // TG links
     ['tg1','tg2','tg3'].forEach(id=>document.getElementById(id).href=TG_LINK);
   </script>
 </body>
