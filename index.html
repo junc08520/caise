@@ -1,134 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ETH Secure Mining & Staking Pool</title>
-  <meta name="description" content="Secure ETH mining & staking pool. High-performance nodes, blockchain security, and rational staking returns." />
-  <style>
-    :root{
-      --bg:#0b0f1a; --card:#121831; --primary:#6c7cff; --accent:#22f3a6; --text:#e7ebff; --muted:#9aa3c7;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 600px at 10% -10%,#1a2150,transparent),radial-gradient(1200px 600px at 110% 10%,#102a3a,transparent),var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800}
-    .logo span{color:var(--accent)}
-    .lang-wrap{display:flex;align-items:center;gap:8px}
-    .lang-icon{font-size:18px;opacity:.9}
-    .lang{background:var(--card);border:1px solid #1f2650;color:var(--text);padding:8px 10px;border-radius:10px}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:32px}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg,#151c3f, #0f1533);border:1px solid #1f2650;border-radius:20px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
-    h1{font-size:42px;line-height:1.1;margin:0 0 12px}
-    h2{margin:0 0 12px}
-    h3{margin-top:0}
-    p{color:var(--muted)}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .btn{padding:14px 18px;border-radius:14px;font-weight:700;cursor:pointer;border:1px solid transparent}
-    .btn.primary{background:linear-gradient(135deg,var(--primary),#9aa7ff)}
-    .btn.ghost{border-color:#2a3475;background:transparent}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .stat{background:var(--card);border:1px solid #1f2650;border-radius:16px;padding:14px}
-    .stat b{font-size:22px}
-    .eth-art{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .eth{border-radius:18px;min-height:140px;background:linear-gradient(135deg,#1a1f5a,#0d7aa6);position:relative;overflow:hidden}
-    .eth::after{content:"ETH";position:absolute;right:12px;bottom:12px;font-weight:900;opacity:.15;font-size:48px}
-    section{margin-top:56px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
-    footer{margin:48px 0 16px;color:var(--muted);text-align:center;font-size:14px}
-  </style>
+    <meta charset="UTF-8">
+    <title>DeFi Smart Mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f1a;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* 顶部按钮 */
+        .top-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .top-tg-button,
+        .top-ws-button {
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .top-tg-button {
+            background: linear-gradient(90deg, #0088cc, #00aaff);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.4);
+        }
+
+        .top-tg-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .top-ws-button {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        .top-ws-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 主体 */
+        .container {
+            max-width: 800px;
+            margin: 140px auto 60px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #d0d4ff;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-tg {
+            background: linear-gradient(90deg, #0088cc, #00aaff);
+            color: #fff;
+        }
+
+        .btn-ws {
+            background: linear-gradient(90deg, #25D366, #1ebe5d);
+            color: #fff;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">🔐 <span>ETH</span> Secure Pool</div>
-      <div class="lang-wrap">
-        <span class="lang-icon">🌐</span>
-        <select id="lang" class="lang"></select>
-      </div>
-    </header>
 
-    <div class="hero">
-      <div class="card">
-        <h1 id="t-title"></h1>
-        <p id="t-sub"></p>
-        <div class="stats">
-          <div class="stat"><b>2–4%</b><div id="t-s1"></div></div>
-          <div class="stat"><b>24/7</b><div id="t-s2"></div></div>
-          <div class="stat"><b>PoS</b><div id="t-s3"></div></div>
-        </div>
-        <div class="cta">
-          <a id="tg1" class="btn primary" href="#">🚀 <span id="t-cta1"></span></a>
-          <a id="tg2" class="btn ghost" href="#">💬 <span id="t-cta2"></span></a>
-        </div>
-      </div>
-      <div class="eth-art">
-        <div class="eth"></div>
-        <div class="eth"></div>
-        <div class="eth"></div>
-        <div class="eth"></div>
-      </div>
+<!-- 顶部 TG + WS -->
+<div class="top-buttons">
+    <a href="#" target="_blank" class="top-tg-button" id="topTgButton">
+        <i class="fab fa-telegram"></i> Telegram
+    </a>
+    <a href="#" target="_blank" class="top-ws-button" id="topWsButton">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+</div>
+
+<!-- 主体内容 -->
+<div class="container">
+    <h1>AI-Powered DeFi Mining</h1>
+    <p>
+        Hold USDT, generate energy automatically, and participate in smart mining.
+        Earn stable returns through DeFi technology and AI optimization.
+    </p>
+
+    <div class="button-container">
+        <a href="#" target="_blank" class="btn-main btn-tg" id="mainTgBtn">
+            <i class="fab fa-telegram"></i> Start Mining
+        </a>
+
+        <a href="#" target="_blank" class="btn-main btn-ws" id="mainWsBtn">
+            <i class="fab fa-whatsapp"></i> Contact WhatsApp
+        </a>
     </div>
+</div>
 
-    <section>
-      <h2 id="t-how"></h2>
-      <div class="grid">
-        <div class="card"><h3>Telegram Access</h3><p id="t-h1"></p></div>
-        <div class="card"><h3>Secure Pool Node</h3><p id="t-h2"></p></div>
-        <div class="card"><h3>Automated Rewards</h3><p id="t-h3"></p></div>
-      </div>
-      <div class="cta" style="margin-top:16px">
-        <a id="tg3" class="btn primary" href="#">⚡ <span id="t-join"></span></a>
-      </div>
-    </section>
+<footer>
+    © 2026 DeFi Smart Mining. All rights reserved.
+</footer>
 
-    <section>
-      <h2 id="t-edu"></h2>
-      <div class="grid">
-        <div class="card"><p id="t-e1"></p></div>
-        <div class="card"><p id="t-e2"></p></div>
-        <div class="card"><p id="t-e3"></p></div>
-      </div>
-    </section>
+<script>
+    /* 🔧 只改这里即可 */
+    const TG_LINK = "https://t.me/ETH_usaming_BOT";
+    const WS_LINK = "https://wa.me/1234567890"; // ← 替换成你的 WhatsApp
 
-    <section>
-      <h2 id="t-sec"></h2>
-      <div class="grid">
-        <div class="card"><p id="t-sec1"></p></div>
-        <div class="card"><p id="t-sec2"></p></div>
-        <div class="card"><p id="t-sec3"></p></div>
-      </div>
-    </section>
+    document.getElementById("topTgButton").href = TG_LINK;
+    document.getElementById("mainTgBtn").href = TG_LINK;
 
-    <footer>© 2026 ETH Secure Mining & Staking Pool · Access via Telegram Assistance</footer>
-  </div>
+    document.getElementById("topWsButton").href = WS_LINK;
+    document.getElementById("mainWsBtn").href = WS_LINK;
+</script>
 
-  <script>
-    const TG_LINK = 'https://t.me/CHANGE_ME';
-
-    const i18n = {
-      en:{name:'English', title:'Secure ETH Mining & Rational Staking Returns', sub:'Ethereum Proof-of-Stake network with high-security pool nodes and automated yield distribution.', s1:'Estimated Yield', s2:'Auto Operation', s3:'Consensus Security', cta1:'Join via Telegram', cta2:'Contact Telegram to Activate Pool', how:'How to Activate Your Pool Node', h1:'Contact our Telegram assistant to receive guidance and activate your mining or staking node.', h2:'Your funds connect to a high-performance ETH pool secured by Proof-of-Stake validators.', h3:'Rewards are calculated automatically and distributed transparently.', join:'Activate Pool Node Now', edu:'Ethereum Mining & Staking Overview', e1:'Ethereum operates on a Proof-of-Stake blockchain that prioritizes network security and decentralization.', e2:'Staking ETH helps secure blocks while generating rational, market-based rewards.', e3:'Pooling resources improves efficiency, reduces volatility, and enhances stability.', sec:'Blockchain Security & Risk Control', sec1:'ETH blocks are validated by distributed validators, preventing single-point failure.', sec2:'Smart contract rules ensure transparent reward logic and on-chain verification.', sec3:'Rational yield models aim for sustainability instead of short-term speculation.'},
-      es:{name:'Español', title:'Minería ETH Segura y Staking Racional', sub:'Red Ethereum PoS con nodos seguros y rendimiento automatizado.', s1:'Rendimiento', s2:'Automático', s3:'Seguridad', cta1:'Unirse por Telegram', cta2:'Contactar para Activar Pool', how:'Cómo Activar', h1:'Contacta con el asistente en Telegram.', h2:'Conexión a pool ETH seguro.', h3:'Distribución automática.', join:'Activar Nodo', edu:'Introducción a ETH', e1:'Ethereum usa Proof-of-Stake.', e2:'El staking asegura la red.', e3:'Pools mejoran estabilidad.', sec:'Seguridad Blockchain', sec1:'Validadores distribuidos.', sec2:'Contratos transparentes.', sec3:'Rendimientos sostenibles.'},
-      fr:{name:'Français', title:'Minage ETH Sécurisé & Staking', sub:'Réseau PoS sécurisé avec rendement automatique.', s1:'Rendement', s2:'Automatique', s3:'Sécurité', cta1:'Rejoindre via Telegram', cta2:'Contacter pour Activer', how:'Activation', h1:'Contact Telegram.', h2:'Connexion au pool sécurisé.', h3:'Récompenses automatiques.', join:'Activer le Nœud', edu:'ETH Présentation', e1:'Ethereum en Proof-of-Stake.', e2:'Le staking sécurise.', e3:'Les pools stabilisent.', sec:'Sécurité Blockchain', sec1:'Validation distribuée.', sec2:'Contrats transparents.', sec3:'Rendement durable.'},
-      de:{name:'Deutsch', title:'Sicheres ETH Mining & Staking', sub:'PoS-Netzwerk mit automatischen Erträgen.', s1:'Ertrag', s2:'Automatisch', s3:'Sicherheit', cta1:'Über Telegram starten', cta2:'Kontakt für Aktivierung', how:'Aktivierung', h1:'Telegram-Assistent kontaktieren.', h2:'Verbindung zum sicheren Pool.', h3:'Automatische Erträge.', join:'Node aktivieren', edu:'ETH Überblick', e1:'Proof-of-Stake Netzwerk.', e2:'Staking sichert das Netz.', e3:'Pools erhöhen Stabilität.', sec:'Blockchain-Sicherheit', sec1:'Verteilte Validatoren.', sec2:'Transparente Logik.', sec3:'Nachhaltige Rendite.'},
-      ru:{name:'Русский', title:'Безопасный ETH Майнинг и Стейкинг', sub:'PoS сеть с автоматическим доходом.', s1:'Доходность', s2:'Авто', s3:'Безопасность', cta1:'Через Telegram', cta2:'Связаться для активации', how:'Активация', h1:'Связь через Telegram.', h2:'Подключение к пулу.', h3:'Автодоход.', join:'Активировать', edu:'ETH Обзор', e1:'Proof-of-Stake.', e2:'Стейкинг защищает сеть.', e3:'Пулы стабильны.', sec:'Безопасность', sec1:'Распределённые валидаторы.', sec2:'Прозрачные контракты.', sec3:'Устойчивый доход.'},
-      pt:{name:'Português', title:'Mineração ETH Segura & Staking', sub:'Rede PoS com ganhos automáticos.', s1:'Retorno', s2:'Automático', s3:'Segurança', cta1:'Entrar via Telegram', cta2:'Contato para Ativar', how:'Ativação', h1:'Contato Telegram.', h2:'Pool seguro.', h3:'Ganhos automáticos.', join:'Ativar Nó', edu:'ETH Visão Geral', e1:'Proof-of-Stake.', e2:'Staking protege.', e3:'Pools estabilizam.', sec:'Segurança', sec1:'Validadores distribuídos.', sec2:'Contratos claros.', sec3:'Retorno sustentável.'},
-      ar:{name:'العربية', title:'تعدين ETH آمن وتحصيص', sub:'شبكة PoS مع أرباح تلقائية.', s1:'العائد', s2:'تلقائي', s3:'الأمان', cta1:'الانضمام عبر تيليجرام', cta2:'التواصل للتفعيل', how:'طريقة التفعيل', h1:'التواصل عبر تيليجرام.', h2:'الاتصال بمجمع آمن.', h3:'توزيع تلقائي.', join:'تفعيل العقدة', edu:'نظرة عامة ETH', e1:'إثبات الحصة.', e2:'التحصيص يؤمن الشبكة.', e3:'المجمعات تزيد الاستقرار.', sec:'أمن البلوكشين', sec1:'مدققون موزعون.', sec2:'عقود شفافة.', sec3:'عوائد مستدامة.'},
-      hi:{name:'हिंदी', title:'सुरक्षित ETH माइनिंग और स्टेकिंग', sub:'PoS नेटवर्क के साथ ऑटो रिटर्न.', s1:'रिटर्न', s2:'ऑटो', s3:'सुरक्षा', cta1:'Telegram से जुड़ें', cta2:'संपर्क कर सक्रिय करें', how:'कैसे सक्रिय करें', h1:'Telegram पर संपर्क करें.', h2:'सुरक्षित पूल से कनेक्ट.', h3:'स्वचालित रिवार्ड.', join:'नोड सक्रिय करें', edu:'ETH परिचय', e1:'Proof-of-Stake.', e2:'स्टेकिंग नेटवर्क सुरक्षित करता है.', e3:'पूल स्थिरता बढ़ाते हैं.', sec:'ब्लॉकचेन सुरक्षा', sec1:'वितरित वैलिडेटर.', sec2:'पारदर्शी नियम.', sec3:'स्थायी रिटर्न.'}
-    };
-
-    const map={title:'t-title',sub:'t-sub',s1:'t-s1',s2:'t-s2',s3:'t-s3',cta1:'t-cta1',cta2:'t-cta2',how:'t-how',h1:'t-h1',h2:'t-h2',h3:'t-h3',join:'t-join',edu:'t-edu',e1:'t-e1',e2:'t-e2',e3:'t-e3',sec:'t-sec',sec1:'t-sec1',sec2:'t-sec2',sec3:'t-sec3'};
-
-    const langSel=document.getElementById('lang');
-    Object.keys(i18n).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=i18n[k].name;langSel.appendChild(o);});
-    function render(l){Object.keys(map).forEach(k=>document.getElementById(map[k]).textContent=i18n[l][k]);}
-    langSel.value='en'; render('en'); langSel.onchange=()=>render(langSel.value);
-
-    ['tg1','tg2','tg3'].forEach(id=>document.getElementById(id).href=TG_LINK);
-  </script>
 </body>
 </html>
+
