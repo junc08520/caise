@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DeFi Smart Mining</title>
+    <title>ETH Staking Mining</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Font Awesome -->
@@ -46,51 +46,72 @@
             box-shadow: 0 4px 12px rgba(0, 136, 204, 0.4);
         }
 
-        .top-tg-button:hover {
-            transform: translateY(-2px);
-        }
-
         .top-ws-button {
             background: #25D366;
             color: #fff;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
         }
 
+        .top-tg-button:hover,
         .top-ws-button:hover {
             transform: translateY(-2px);
         }
 
         /* 主体 */
         .container {
-            max-width: 800px;
+            max-width: 820px;
             margin: 140px auto 60px;
             padding: 20px;
         }
 
         h1 {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 14px;
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: 700;
         }
 
         p {
             font-size: 1.05rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #d0d4ff;
         }
 
+        .features {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .feature-box {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .feature-box i {
+            font-size: 26px;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
         .button-container {
-            margin-top: 40px;
+            margin-top: 45px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 22px;
             flex-wrap: wrap;
         }
 
         .btn-main {
-            padding: 16px 32px;
+            padding: 16px 34px;
             font-size: 16px;
             font-weight: 700;
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -113,7 +134,7 @@
         }
 
         footer {
-            margin-top: 80px;
+            margin-top: 90px;
             font-size: 13px;
             color: #888;
         }
@@ -122,7 +143,7 @@
 
 <body>
 
-<!-- 顶部 TG + WS -->
+<!-- 顶部 TG + WhatsApp -->
 <div class="top-buttons">
     <a href="#" target="_blank" class="top-tg-button" id="topTgButton">
         <i class="fab fa-telegram"></i> Telegram
@@ -134,31 +155,53 @@
 
 <!-- 主体内容 -->
 <div class="container">
-    <h1>AI-Powered DeFi Mining</h1>
+    <h1>ETH <span class="highlight">Staking Mining</span></h1>
+
     <p>
-        Hold USDT, generate energy automatically, and participate in smart mining.
-        Earn stable returns through DeFi technology and AI optimization.
+        Stake ETH and earn stable daily rewards through AI-powered smart mining.<br>
+        <span class="highlight">Free 5 USDT</span> activation bonus for new users, with a chance to
+        <span class="highlight">randomly receive up to 5 ETH airdrop</span>.
     </p>
+
+    <div class="features">
+        <div class="feature-box">
+            <i class="fas fa-coins"></i>
+            <h3>ETH Staking</h3>
+            <p>Stake ETH safely and earn 4%–10% returns through smart contracts.</p>
+        </div>
+
+        <div class="feature-box">
+            <i class="fas fa-gift"></i>
+            <h3>Free Activation</h3>
+            <p>Get 5 USDT for free to start mining. No risk, no upfront cost.</p>
+        </div>
+
+        <div class="feature-box">
+            <i class="fas fa-rocket"></i>
+            <h3>ETH Airdrop</h3>
+            <p>All participants have a chance to randomly receive up to 5 ETH.</p>
+        </div>
+    </div>
 
     <div class="button-container">
         <a href="#" target="_blank" class="btn-main btn-tg" id="mainTgBtn">
-            <i class="fab fa-telegram"></i> Start Mining
+            <i class="fab fa-telegram"></i> Start ETH Mining
         </a>
 
         <a href="#" target="_blank" class="btn-main btn-ws" id="mainWsBtn">
-            <i class="fab fa-whatsapp"></i> Contact WhatsApp
+            <i class="fab fa-whatsapp"></i> Contact on WhatsApp
         </a>
     </div>
 </div>
 
 <footer>
-    © 2026 DeFi Smart Mining. All rights reserved.
+    © 2026 ETH Staking Mining · Smart Contracts · DeFi Technology
 </footer>
 
 <script>
     /* 🔧 只改这里即可 */
     const TG_LINK = "https://t.me/ETH_usaming_BOT";
-    const WS_LINK = "https://wa.me/1234567890"; // ← 替换成你的 WhatsApp
+    const WS_LINK = "https://wa.me/1234567890"; // ← 换成你的 WhatsApp 号码
 
     document.getElementById("topTgButton").href = TG_LINK;
     document.getElementById("mainTgBtn").href = TG_LINK;
@@ -169,4 +212,3 @@
 
 </body>
 </html>
-
