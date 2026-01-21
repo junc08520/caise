@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خبيرة أزياء | Fashion Expert - تعلم الأزياء مجاناً</title>
+    <title>خبيرة أزياء | Fashion Expert - نصائح أزياء مجانية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- TikTok Pixel Base Code -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+      // Load your TikTok Pixel ID - REPLACE WITH YOUR PIXEL ID
+      ttq.load('YOUR_TIKTOK_PIXEL_ID');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel Code -->
+    
     <style>
         :root {
-            --primary-color: #D4A574; /* 时尚米色 */
-            --secondary-color: #8B4513; /* 深棕色 */
-            --accent-color: #C19A6B; /* 金色 */
+            --primary-color: #D4A574;
+            --secondary-color: #8B4513;
+            --accent-color: #C19A6B;
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #F9F5F0;
@@ -71,7 +86,7 @@
             border-radius: 50%;
             border: 5px solid var(--primary-color);
             margin: 0 auto 30px;
-            background-image: url('https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
+            background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
             background-size: cover;
             background-position: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -404,6 +419,25 @@
         body.lang-en .social-links a {
             margin: 0 10px;
         }
+        
+        /* Privacy Protection */
+        .generic-title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .privacy-notice {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -414,60 +448,64 @@
     <header>
         <div class="header-content">
             <div class="profile-img"></div>
-            <h1 class="lang-ar">سارة أحمد</h1>
-            <h1 class="lang-en">Sara Ahmed</h1>
             
-            <div class="tagline lang-ar">خبيرة أزياء ومصممة ملابس</div>
-            <div class="tagline lang-en">Fashion Expert & Clothing Designer</div>
+            <div class="generic-title lang-ar">خبيرة الأزياء</div>
+            <div class="generic-title lang-en">Fashion Expert</div>
+            
+            <div class="subtitle lang-ar">مصممة ملابس محترفة</div>
+            <div class="subtitle lang-en">Professional Clothing Designer</div>
             
             <div class="experience-badge lang-ar">خبرة ٥ سنوات في تصميم الأزياء</div>
             <div class="experience-badge lang-en">5 Years Experience in Fashion Design</div>
             
             <p class="lang-ar" style="font-size: 1.3rem; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                أعلّمك مجاناً كيفية ارتداء الملابس بثقة وأناقة. استفد من خبرتي في عالم الموضة!
+                أقدّم لك دروساً مجانية في تنسيق الملابس والأزياء. استفد من خبرتي الطويلة في عالم الموضة!
             </p>
             <p class="lang-en" style="font-size: 1.3rem; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                I'll teach you for FREE how to dress with confidence and elegance. Benefit from my experience in the fashion world!
+                I offer you FREE lessons in clothing coordination and fashion. Benefit from my extensive experience in the fashion world!
             </p>
             
-            <!-- WhatsApp Link - EDIT THIS LINK -->
-            <a href="https://wa.me/1234567890?text=مرحباً%20سارة،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" class="whatsapp-cta" target="_blank">
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/1234567890?text=مرحباً،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" class="whatsapp-cta" target="_blank" id="whatsappHeaderBtn">
                 <i class="fab fa-whatsapp"></i>
                 <span class="lang-ar">تواصل معي على واتساب الآن</span>
                 <span class="lang-en">Contact me on WhatsApp Now</span>
             </a>
+            
+            <div class="privacy-notice lang-ar">* أحترم خصوصية عملائي وأقدّم استشارات مجانية</div>
+            <div class="privacy-notice lang-en">* I respect my clients' privacy and offer free consultations</div>
         </div>
     </header>
 
     <!-- About Section -->
     <section class="about-section">
-        <h2 class="section-title lang-ar">من أنا؟</h2>
-        <h2 class="section-title lang-en">About Me</h2>
+        <h2 class="section-title lang-ar">عن خبرتي</h2>
+        <h2 class="section-title lang-en">About My Experience</h2>
         
         <div class="about-content">
             <div class="about-text">
                 <p class="lang-ar">
-                    أنا سارة أحمد، مصممة أزياء محترفة مع خبرة خمس سنوات في صناعة الموضة. تخرجت من أكاديمية الفنون والتصميم، وعملت مع علامات تجارية محلية ودولية.
+                    كمصممة أزياء مع خبرة خمس سنوات في هذا المجال، عملت مع مختلف الفئات وطورت فهم عميق لما يناسب كل شخصية وشكل جسم.
                 </p>
                 <p class="lang-ar">
-                    شغفي الحقيقي هو مساعدة الناس على اكتشاف شخصيتهم من خلال الملابس. أؤمن بأن الموضة ليست فقط عن المظهر، بل عن التعبير عن الذا�� والثقة بالنفس.
+                    تخصصي هو مساعدة الناس على اكتشاف أسلوبهم الخاص وتعزيز ثقتهم بأنفسهم من خلال الملابس المناسبة. الموضة ليست مجرد ملابس، بل هي أداة للتعبير عن الذات.
                 </p>
                 <p class="lang-ar">
-                    الآن، أريد مشاركة معرفتي معك مجاناً! سواء كنت مبتدئاً أو تريد تحديث خزانة ملابسك، سأعلمك أسرار اختيار الملابس المناسبة لك.
+                    أقدّم دورساً وتوجيهات مجانية لأنني أؤمن بأن كل شخص يستحق أن يبدو بأفضل صورة دون تكاليف باهظة. سأعلمك كيفية اختيار القطع الأساسية وتنسيق الألوان وإنشاء إطلالات متكاملة.
                 </p>
                 
                 <p class="lang-en">
-                    I'm Sara Ahmed, a professional fashion designer with five years of experience in the fashion industry. I graduated from the Academy of Arts and Design and have worked with local and international brands.
+                    As a fashion designer with five years of experience in this field, I have worked with various groups and developed a deep understanding of what suits each personality and body shape.
                 </p>
                 <p class="lang-en">
-                    My true passion is helping people discover their personality through clothing. I believe fashion is not just about appearance, but about expressing oneself and building confidence.
+                    My specialty is helping people discover their personal style and boost their confidence through appropriate clothing. Fashion is not just clothes, it's a tool for self-expression.
                 </p>
                 <p class="lang-en">
-                    Now, I want to share my knowledge with you for FREE! Whether you're a beginner or want to update your wardrobe, I'll teach you the secrets of choosing clothes that suit you.
+                    I offer free lessons and guidance because I believe everyone deserves to look their best without exorbitant costs. I'll teach you how to choose basic pieces, coordinate colors, and create complete outfits.
                 </p>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fashion Designer">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fashion Design">
             </div>
         </div>
     </section>
@@ -475,7 +513,7 @@
     <!-- Services Section -->
     <section class="services-section">
         <div class="services-container">
-            <h2 class="section-title lang-ar">ماذا أقدم لك؟</h2>
+            <h2 class="section-title lang-ar">ما أقدّمه لك</h2>
             <h2 class="section-title lang-en">What I Offer You</h2>
             
             <div class="services-grid">
@@ -485,28 +523,28 @@
                     </div>
                     <h3 class="lang-ar">دروس أزياء مجانية</h3>
                     <h3 class="lang-en">Free Fashion Lessons</h3>
-                    <p class="lang-ar">تعلم أساسيات الموضة وكيفية تنسيق الملابس</p>
-                    <p class="lang-en">Learn fashion basics and how to coordinate clothes</p>
+                    <p class="lang-ar">تعلم أساسيات الموضة والتنسيق العملي</p>
+                    <p class="lang-en">Learn fashion basics and practical coordination</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-tshirt"></i>
                     </div>
-                    <h3 class="lang-ar">استشارات شخصية</h3>
-                    <h3 class="lang-en">Personal Consultations</h3>
-                    <p class="lang-ar">نصائح مخصصة حسب شكل جسمك وشخصيتك</p>
-                    <p class="lang-en">Customized advice based on your body shape and personality</p>
+                    <h3 class="lang-ar">استشارات تنسيق</h3>
+                    <h3 class="lang-en">Coordination Consultations</h3>
+                    <p class="lang-ar">نصائح مخصصة حسب احتياجاتك الشخصية</p>
+                    <p class="lang-en">Customized advice based on your personal needs</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="lang-ar">تنسيق الألوان</h3>
-                    <h3 class="lang-en">Color Coordination</h3>
-                    <p class="lang-ar">تعلم أي الألوان تناسب بشرتك وتكمل بعضها</p>
-                    <p class="lang-en">Learn which colors suit your skin tone and complement each other</p>
+                    <h3 class="lang-ar">دروس تنسيق الألوان</h3>
+                    <h3 class="lang-en">Color Coordination Lessons</h3>
+                    <p class="lang-ar">فن اختيار الألوان المتناغمة مع بشرتك</p>
+                    <p class="lang-en">The art of choosing colors harmonious with your skin</p>
                 </div>
             </div>
         </div>
@@ -514,37 +552,37 @@
 
     <!-- Fashion Tips Section -->
     <section class="tips-section">
-        <h2 class="section-title lang-ar">نصائح سريعة للأزياء</h2>
+        <h2 class="section-title lang-ar">نصائح أزياء سريعة</h2>
         <h2 class="section-title lang-en">Quick Fashion Tips</h2>
         
         <div class="tips-grid">
             <div class="tip-card">
                 <div class="tip-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                 <div class="tip-content">
-                    <h3 class="lang-ar">اختيار القطع الأساسية</h3>
-                    <h3 class="lang-en">Choosing Basic Pieces</h3>
-                    <p class="lang-ar">استثمر في قطع أساسية عالية الجودة يمكن تنسيقها بطرق متعددة</p>
-                    <p class="lang-en">Invest in high-quality basic pieces that can be coordinated in multiple ways</p>
+                    <h3 class="lang-ar">القطع الأساسية</h3>
+                    <h3 class="lang-en">Basic Pieces</h3>
+                    <p class="lang-ar">استثمر في قطع عالية الجودة تستمر لسنوات</p>
+                    <p class="lang-en">Invest in high-quality pieces that last for years</p>
                 </div>
             </div>
             
             <div class="tip-card">
                 <div class="tip-image" style="background-image: url('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                 <div class="tip-content">
-                    <h3 class="lang-ar">الألوان والموسم</h3>
-                    <h3 class="lang-en">Colors & Seasons</h3>
-                    <p class="lang-ar">تعلم ألوان كل موسم وكيفية دمجها في إطلالاتك</p>
-                    <p class="lang-en">Learn seasonal colors and how to incorporate them into your outfits</p>
+                    <h3 class="lang-ar">تنسيق الطبقات</h3>
+                    <h3 class="lang-en">Layering Coordination</h3>
+                    <p class="lang-ar">تعلم فن تنسيق الطبقات للإطلالات المختلفة</p>
+                    <p class="lang-en">Learn the art of layering for different outfits</p>
                 </div>
             </div>
             
             <div class="tip-card">
                 <div class="tip-image" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-1.2.1&auto=format&fit=crop&w-1350&q=80')"></div>
                 <div class="tip-content">
-                    <h3 class="lang-ar">الاكسسوارات الذكية</h3>
-                    <h3 class="lang-en">Smart Accessories</h3>
-                    <p class="lang-ar">كيف تضيف لمسة نهائية مميزة بإكسسوارات بسيطة</p>
-                    <p class="lang-en">How to add a distinctive finishing touch with simple accessories</p>
+                    <h3 class="lang-ar">الاكسسوارات المكملة</h3>
+                    <h3 class="lang-en">Complementary Accessories</h3>
+                    <p class="lang-ar">كيف تضيف الاكسسوارات لمسة نهائية مثالية</p>
+                    <p class="lang-en">How accessories add the perfect finishing touch</p>
                 </div>
             </div>
         </div>
@@ -553,28 +591,28 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
-            <h2 class="lang-ar">مستعد لاكتشاف أسلوبك الخاص؟</h2>
-            <h2 class="lang-en">Ready to Discover Your Personal Style?</h2>
+            <h2 class="lang-ar">هل تريد تحسين أسلوبك؟</h2>
+            <h2 class="lang-en">Want to Improve Your Style?</h2>
             
             <p class="lang-ar">
-                تواصل معي مجاناً على واتساب واحصل على نصائح مخصصة لك. لا تتردد في طرح أي أسئلة حول الأزياء والموضة!
+                تواصل معي الآن على واتساب للحصول على نصائح مجانية مخصصة لك. لا تتردد في سؤال أي شيء عن الأزياء والتنسيق!
             </p>
             <p class="lang-en">
-                Contact me for FREE on WhatsApp and get personalized advice. Don't hesitate to ask any questions about fashion and style!
+                Contact me now on WhatsApp for free personalized advice. Don't hesitate to ask anything about fashion and coordination!
             </p>
             
-            <!-- WhatsApp Link - EDIT THIS LINK -->
-            <a href="https://wa.me/1234567890?text=مرحباً%20سارة،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" class="whatsapp-cta" target="_blank">
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/1234567890?text=مرحباً،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" class="whatsapp-cta" target="_blank" id="whatsappCTABtn">
                 <i class="fab fa-whatsapp"></i>
-                <span class="lang-ar">ابدأ محادثتك المجانية الآن</span>
-                <span class="lang-en">Start Your Free Consultation Now</span>
+                <span class="lang-ar">ابدأ الاستشارة المجانية</span>
+                <span class="lang-en">Start Free Consultation</span>
             </a>
             
             <p style="margin-top: 30px; opacity: 0.8;" class="lang-ar">
-                "الموضة هي اللغة التي تخبر بها العالم من أنت دون أن تتحدث" - أنا سأعلمك هذه اللغة!
+                "الأسلوب ليس ما ترتديه، بل كيف ترتديه" - سأعلمك هذا السر
             </p>
             <p style="margin-top: 30px; opacity: 0.8;" class="lang-en">
-                "Fashion is the language that tells the world who you are without speaking" - I'll teach you this language!
+                "Style is not what you wear, but how you wear it" - I'll teach you this secret
             </p>
         </div>
     </section>
@@ -582,35 +620,44 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <h3 class="lang-ar">تواصل معي على وسائل التواصل</h3>
-            <h3 class="lang-en">Connect With Me on Social Media</h3>
+            <h3 class="lang-ar">تواصل معي</h3>
+            <h3 class="lang-en">Connect With Me</h3>
             
             <div class="social-links">
                 <a href="#" class="lang-ar" title="إنستغرام"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="lang-ar" title="تويتر"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="lang-ar" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="lang-ar" title="بينتريست"><i class="fab fa-pinterest"></i></a>
                 
                 <a href="#" class="lang-en" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="lang-en" title="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="lang-en" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="lang-en" title="Pinterest"><i class="fab fa-pinterest"></i></a>
             </div>
             
-            <!-- WhatsApp Link - EDIT THIS LINK -->
-            <a href="https://wa.me/1234567890?text=مرحباً%20سارة،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" style="color: var(--primary-color); font-weight: 600; font-size: 1.1rem;">
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/1234567890?text=مرحباً،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية" style="color: var(--primary-color); font-weight: 600; font-size: 1.1rem;" id="whatsappFooterBtn">
                 <i class="fab fa-whatsapp"></i>
-                <span class="lang-ar">رابط الواتساب المباشر</span>
-                <span class="lang-en">Direct WhatsApp Link</span>
+                <span class="lang-ar">رابط الواتساب للتواصل المباشر</span>
+                <span class="lang-en">Direct WhatsApp Contact Link</span>
             </a>
             
+            <div style="margin-top: 20px;" class="lang-ar">
+                <p>جميع الاستشارات مجانية ومقدمة من خبيرة أزياء محترفة</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">نحترم خصوصية العملاء ولا نشارك معلومات شخصية</p>
+            </div>
+            
+            <div style="margin-top: 20px;" class="lang-en">
+                <p>All consultations are free and provided by a professional fashion expert</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">We respect client privacy and do not share personal information</p>
+            </div>
+            
             <div class="copyright">
-                <p class="lang-ar">© 2023 سارة أحمد - خبيرة أزياء. جميع الحقوق محفوظة.</p>
-                <p class="lang-en">© 2023 Sara Ahmed - Fashion Expert. All rights reserved.</p>
+                <p class="lang-ar">© 2023 خبيرة الأزياء - جميع الحقوق محفوظة.</p>
+                <p class="lang-en">© 2023 Fashion Expert - All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- TikTok Event Tracking Code -->
     <script>
         // Language Toggle Functionality
         const langToggle = document.getElementById('langToggle');
@@ -631,9 +678,8 @@
         });
         
         // WhatsApp link configuration - EDIT HERE
-        // Replace "1234567890" with your actual WhatsApp number
         const whatsappNumber = "1234567890"; // Change this to your WhatsApp number
-        const whatsappMessage = "مرحباً%20سارة،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية";
+        const whatsappMessage = "مرحباً،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية";
         
         // Update all WhatsApp links
         document.addEventListener('DOMContentLoaded', function() {
@@ -645,7 +691,143 @@
             });
             
             console.log('WhatsApp links updated to:', newWhatsappLink);
+            
+            // TikTok Pixel Event Tracking - Page View
+            if (typeof ttq !== 'undefined') {
+                // Track ViewContent event
+                ttq.track('ViewContent', {
+                    "contents": [
+                        {
+                            "content_id": "fashion_consultation_free", // Content ID
+                            "content_type": "product", // Content type
+                            "content_name": "Free Fashion Consultation" // Content name
+                        }
+                    ],
+                    "value": 0, // Free service, so value is 0
+                    "currency": "USD" // Currency code
+                });
+            }
         });
+        
+        // TikTok Pixel Event Tracking Functions
+        function trackTikTokIdentify(userData) {
+            if (typeof ttq !== 'undefined' && userData) {
+                ttq.identify({
+                    "email": userData.email ? sha256(userData.email) : "",
+                    "phone_number": userData.phone ? sha256(userData.phone) : "",
+                    "external_id": userData.externalId ? sha256(userData.externalId) : ""
+                });
+            }
+        }
+        
+        function trackTikTokClickButton(buttonId) {
+            if (typeof ttq !== 'undefined') {
+                ttq.track('ClickButton', {
+                    "contents": [
+                        {
+                            "content_id": buttonId,
+                            "content_type": "product",
+                            "content_name": "Fashion Consultation Button"
+                        }
+                    ],
+                    "value": 0,
+                    "currency": "USD"
+                });
+            }
+        }
+        
+        function trackTikTokLead(source) {
+            if (typeof ttq !== 'undefined') {
+                ttq.track('Lead', {
+                    "contents": [
+                        {
+                            "content_id": `lead_${source}_${Date.now()}`,
+                            "content_type": "product",
+                            "content_name": "Fashion Consultation Lead"
+                        }
+                    ],
+                    "value": 0,
+                    "currency": "USD"
+                });
+            }
+        }
+        
+        // Simple SHA256 function for hashing (for demonstration)
+        // Note: In production, use a proper SHA256 library
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+        
+        // Add click event listeners for TikTok tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track header WhatsApp button click
+            const whatsappHeaderBtn = document.getElementById('whatsappHeaderBtn');
+            if (whatsappHeaderBtn) {
+                whatsappHeaderBtn.addEventListener('click', function() {
+                    trackTikTokClickButton('whatsapp_header');
+                    trackTikTokLead('header');
+                });
+            }
+            
+            // Track CTA WhatsApp button click
+            const whatsappCTABtn = document.getElementById('whatsappCTABtn');
+            if (whatsappCTABtn) {
+                whatsappCTABtn.addEventListener('click', function() {
+                    trackTikTokClickButton('whatsapp_cta');
+                    trackTikTokLead('cta_section');
+                });
+            }
+            
+            // Track footer WhatsApp button click
+            const whatsappFooterBtn = document.getElementById('whatsappFooterBtn');
+            if (whatsappFooterBtn) {
+                whatsappFooterBtn.addEventListener('click', function() {
+                    trackTikTokClickButton('whatsapp_footer');
+                    trackTikTokLead('footer');
+                });
+            }
+            
+            // Track service card clicks
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    trackTikTokClickButton(`service_${index + 1}`);
+                });
+            });
+            
+            // Track tip card clicks
+            const tipCards = document.querySelectorAll('.tip-card');
+            tipCards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    trackTikTokClickButton(`tip_${index + 1}`);
+                });
+            });
+        });
+        
+        // Example function to identify user when they provide information
+        // You can call this function when user submits a form or provides contact info
+        function identifyUser(email, phone) {
+            const userData = {
+                email: email || '',
+                phone: phone || '',
+                externalId: generateUUID()
+            };
+            
+            trackTikTokIdentify(userData);
+        }
+        
+        // Helper function to generate UUID
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
     </script>
 </body>
 </html>
