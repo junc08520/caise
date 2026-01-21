@@ -1,10 +1,602 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <script>
-        window.location.href = "https://api.whatsapp.com/send?phone=117655566144&text=%20";
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinder - تواصل مباشر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --tinder-red: #FE3C72;
+            --tinder-orange: #FF7F50;
+            --tinder-gradient: linear-gradient(to right, var(--tinder-red), var(--tinder-orange));
+            --light-gray: #F5F5F5;
+            --dark-gray: #333;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--tinder-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--tinder-red);
+        }
+        
+        .download-btn {
+            background: var(--tinder-gradient);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            background: var(--tinder-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            color: var(--tinder-red);
+            font-weight: 700;
+        }
+        
+        .match-feature {
+            display: flex;
+            align-items: center;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 5px solid var(--tinder-red);
+        }
+        
+        .match-feature i {
+            color: var(--tinder-red);
+            font-size: 2rem;
+            margin-left: 15px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list i {
+            color: var(--tinder-red);
+            margin-left: 10px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: var(--tinder-gradient);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .cta-primary i {
+            margin-left: 10px;
+        }
+        
+        .cta-secondary {
+            background: white;
+            color: var(--tinder-red);
+            border: 2px solid var(--tinder-red);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-secondary:hover {
+            background: var(--tinder-red);
+            color: white;
+        }
+        
+        /* App Preview */
+        .app-preview {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .phone-mockup {
+            background: white;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            border-radius: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 12px solid #111;
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--light-gray);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .match-screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .match-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #FF6B6B, #FFD93D);
+            background-size: 400% 400%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin: 40px auto 30px;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        .match-name {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .match-status {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .match-message {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .match-message p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .match-btn {
+            background: var(--tinder-gradient);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .match-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(254, 60, 114, 0.3);
+        }
+        
+        .match-btn i {
+            margin-left: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* Matching Overlay */
+        .matching-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .matching-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            width: 90%;
+            max-width: 400px;
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .matching-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            color: var(--tinder-red);
+            animation: pulse 1s infinite;
+        }
+        
+        .matching-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: var(--tinder-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .matching-text {
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            min-height: 30px;
+        }
+        
+        .matching-text::after {
+            content: "جاري البحث عن مطابقة";
+            animation: matching 2s infinite;
+        }
+        
+        .matching-progress {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        
+        .matching-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--tinder-gradient);
+            border-radius: 4px;
+            animation: progress 2s ease-in-out forwards;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes matching {
+            0% { content: "جاري البحث عن مطابقة"; }
+            33% { content: "جاري البحث عن مطابقة."; }
+            66% { content: "جاري البحث عن مطابقة.."; }
+            100% { content: "جاري البحث عن مطابقة..."; }
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                Tinder
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">الميزات</a></li>
+                <li><a href="#testimonials">تجارب المستخدمين</a></li>
+            </ul>
+            <button class="download-btn">
+                <i class="fas fa-download"></i> تحميل التطبيق
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">التواصل المباشر مع أشخاص جدد</h1>
+            <p class="hero-subtitle">
+                <span class="highlight">Tinder</span> يربطك بأشخاص يشاركونك اهتماماتك. ابدأ رحلة التعارف الآن.
+            </p>
+            
+            <div class="match-feature">
+                <i class="fas fa-heart"></i>
+                <div>
+                    <h3>مطابقة فورية</h3>
+                    <p>اضغط للبحث عن مطابقة والانتقال إلى المنصة</p>
+                </div>
+            </div>
+            
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> مطابقات عشوائية فورية</li>
+                <li><i class="fas fa-check-circle"></i> تواصل مباشر وسريع</li>
+                <li><i class="fas fa-check-circle"></i> خصوصية كاملة</li>
+                <li><i class="fas fa-check-circle"></i> آلاف المطابقات الناجحة يومياً</li>
+            </ul>
+            
+            <div class="cta-buttons">
+                <button class="cta-primary pulse-animation" id="startMatching">
+                    <i class="fas fa-heart"></i> ابدأ المطابقة العشوائية
+                </button>
+                <button class="cta-secondary" id="viewDemo">
+                    <i class="fas fa-play-circle"></i> شاهد تجربة المطابقة
+                </button>
+            </div>
+        </div>
+        
+        <div class="app-preview">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="match-screen">
+                        <div class="match-header">
+                            <i class="fas fa-times-circle" style="color: #FF4757; font-size: 1.5rem;"></i>
+                            <i class="fas fa-fire" style="color: var(--tinder-red); font-size: 1.8rem;"></i>
+                            <i class="fas fa-star" style="color: #1E90FF; font-size: 1.5rem;"></i>
+                        </div>
+                        
+                        <div class="match-avatar">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        
+                        <div class="match-name">مطابقة عشوائية</div>
+                        
+                        <div class="match-status">
+                            <i class="fas fa-random"></i>
+                            جاهز للمطابقة العشوائية
+                        </div>
+                        
+                        <div class="match-message">
+                            <p>انقر على الزر أدناه للبحث عن مطابقة عشوائية.</p>
+                            <p>سيتم توجيهك إلى المنصة للتواصل الفوري.</p>
+                        </div>
+                        
+                        <button class="match-btn" id="matchBtnPhone">
+                            <i class="fas fa-heart"></i> ابحث عن مطابقة عشوائية
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matching Overlay -->
+    <div class="matching-overlay" id="matchingOverlay">
+        <div class="matching-content">
+            <div class="matching-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h2 class="matching-title">جاري البحث عن مطابقة</h2>
+            <div class="matching-text"></div>
+            <div class="matching-progress">
+                <div class="matching-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // 指定跳转的网站链接 - 只需修改这里
+        // ============================================
+        const targetWebsite = "https://example.com"; // ← 修改为你想要跳转的网站
+        
+        // 注意：确保链接以 http:// 或 https:// 开头
+        // 示例：
+        // const targetWebsite = "https://your-website.com";
+        // const targetWebsite = "https://your-domain.com/page";
+        // ============================================
+        
+        // 获取DOM元素
+        const startMatchingBtn = document.getElementById('startMatching');
+        const matchBtnPhone = document.getElementById('matchBtnPhone');
+        const viewDemoBtn = document.getElementById('viewDemo');
+        const matchingOverlay = document.getElementById('matchingOverlay');
+        
+        // 开始匹配过程
+        function startMatchingProcess() {
+            // 检查是否配置了目标网站
+            if (!targetWebsite || targetWebsite === "https://example.com") {
+                console.error("请修改 targetWebsite 变量，设置为你要跳转的网站链接！");
+                alert("请先配置跳转链接");
+                return;
+            }
+            
+            // 显示加载界面
+            matchingOverlay.style.display = 'flex';
+            
+            console.log(`正在跳转到: ${targetWebsite}`);
+            
+            // 1.5秒后直接跳转到指定网站（加载条动画时间）
+            setTimeout(() => {
+                // 直接跳转到指定网站
+                window.open(targetWebsite, '_blank');
+                
+                // 重置加载界面
+                setTimeout(() => {
+                    matchingOverlay.style.display = 'none';
+                    
+                    // 重置进度条动画
+                    const progressBar = document.querySelector('.matching-progress-bar');
+                    progressBar.style.animation = 'none';
+                    setTimeout(() => {
+                        progressBar.style.animation = 'progress 2s ease-in-out forwards';
+                    }, 10);
+                }, 500);
+                
+            }, 1500); // 加载条显示时间
+        }
+        
+        // 事件监听器
+        startMatchingBtn.addEventListener('click', startMatchingProcess);
+        matchBtnPhone.addEventListener('click', startMatchingProcess);
+        viewDemoBtn.addEventListener('click', startMatchingProcess);
+        
+        // 开发人员说明：
+        // 1. 只需修改第270行的 targetWebsite 变量，设置为你要跳转的网站链接
+        // 2. 确保链接格式正确，以 http:// 或 https:// 开头
+        // 3. 用户点击任何按钮都会显示1.5秒加载动画，然后自动跳转到指定网站
+        // 4. 当前设置为在新标签页打开，如果想在当前页跳转，可以改为：window.location.href = targetWebsite;
+    </script>
 </body>
 </html>
