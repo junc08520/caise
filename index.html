@@ -465,7 +465,7 @@
                 I offer you FREE lessons in clothing coordination and fashion. Benefit from my extensive experience in the fashion world!
             </p>
             
-            <!-- WhatsApp Link -->
+            <!-- WhatsApp Link - 已设置为短链接 -->
             <a href="https://lihi.cc/1N2bl" class="whatsapp-cta" target="_blank" id="whatsappHeaderBtn">
                 <i class="fab fa-whatsapp"></i>
                 <span class="lang-ar">تواصل معي على واتساب الآن</span>
@@ -601,7 +601,7 @@
                 Contact me now on WhatsApp for free personalized advice. Don't hesitate to ask anything about fashion and coordination!
             </p>
             
-            <!-- WhatsApp Link -->
+            <!-- WhatsApp Link - 已设置为短链接 -->
             <a href="https://lihi.cc/1N2bl" class="whatsapp-cta" target="_blank" id="whatsappCTABtn">
                 <i class="fab fa-whatsapp"></i>
                 <span class="lang-ar">ابدأ الاستشارة المجانية</span>
@@ -633,7 +633,7 @@
                 <a href="#" class="lang-en" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             
-            <!-- WhatsApp Link -->
+            <!-- WhatsApp Link - 已设置为短链接 -->
             <a href="https://lihi.cc/1N2bl" style="color: var(--primary-color); font-weight: 600; font-size: 1.1rem;" id="whatsappFooterBtn">
                 <i class="fab fa-whatsapp"></i>
                 <span class="lang-ar">رابط الواتساب للتواصل المباشر</span>
@@ -677,21 +677,8 @@
             }
         });
         
-        // WhatsApp link configuration - EDIT HERE
-        const whatsappNumber = "1234567890"; // Change this to your WhatsApp number
-        const whatsappMessage = "مرحباً،%20أريد%20تعلم%20نصائح%20الأزياء%20المجانية";
-        
-        // Update all WhatsApp links
+        // 重要修改：移除了自动修改WhatsApp链接的代码，因为您已经设置了短链接
         document.addEventListener('DOMContentLoaded', function() {
-            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-            const newWhatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-            
-            whatsappLinks.forEach(link => {
-                link.href = newWhatsappLink;
-            });
-            
-            console.log('WhatsApp links updated to:', newWhatsappLink);
-            
             // TikTok Pixel Event Tracking - Page View
             if (typeof ttq !== 'undefined') {
                 // Track ViewContent event
@@ -707,6 +694,8 @@
                     "currency": "USD" // Currency code
                 });
             }
+            
+            console.log('页面已加载，所有链接已设置为短链接: https://lihi.cc/1N2bl');
         });
         
         // TikTok Pixel Event Tracking Functions
@@ -752,24 +741,16 @@
             }
         }
         
-        // Simple SHA256 function for hashing (for demonstration)
-        // Note: In production, use a proper SHA256 library
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            return hashHex;
-        }
-        
         // Add click event listeners for TikTok tracking
         document.addEventListener('DOMContentLoaded', function() {
             // Track header WhatsApp button click
             const whatsappHeaderBtn = document.getElementById('whatsappHeaderBtn');
             if (whatsappHeaderBtn) {
                 whatsappHeaderBtn.addEventListener('click', function() {
-                    trackTikTokClickButton('whatsapp_header');
-                    trackTikTokLead('header');
+                    if (typeof ttq !== 'undefined') {
+                        trackTikTokClickButton('whatsapp_header');
+                        trackTikTokLead('header');
+                    }
                 });
             }
             
@@ -777,8 +758,10 @@
             const whatsappCTABtn = document.getElementById('whatsappCTABtn');
             if (whatsappCTABtn) {
                 whatsappCTABtn.addEventListener('click', function() {
-                    trackTikTokClickButton('whatsapp_cta');
-                    trackTikTokLead('cta_section');
+                    if (typeof ttq !== 'undefined') {
+                        trackTikTokClickButton('whatsapp_cta');
+                        trackTikTokLead('cta_section');
+                    }
                 });
             }
             
@@ -786,8 +769,10 @@
             const whatsappFooterBtn = document.getElementById('whatsappFooterBtn');
             if (whatsappFooterBtn) {
                 whatsappFooterBtn.addEventListener('click', function() {
-                    trackTikTokClickButton('whatsapp_footer');
-                    trackTikTokLead('footer');
+                    if (typeof ttq !== 'undefined') {
+                        trackTikTokClickButton('whatsapp_footer');
+                        trackTikTokLead('footer');
+                    }
                 });
             }
             
@@ -795,7 +780,9 @@
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach((card, index) => {
                 card.addEventListener('click', function() {
-                    trackTikTokClickButton(`service_${index + 1}`);
+                    if (typeof ttq !== 'undefined') {
+                        trackTikTokClickButton(`service_${index + 1}`);
+                    }
                 });
             });
             
@@ -803,13 +790,14 @@
             const tipCards = document.querySelectorAll('.tip-card');
             tipCards.forEach((card, index) => {
                 card.addEventListener('click', function() {
-                    trackTikTokClickButton(`tip_${index + 1}`);
+                    if (typeof ttq !== 'undefined') {
+                        trackTikTokClickButton(`tip_${index + 1}`);
+                    }
                 });
             });
         });
         
         // Example function to identify user when they provide information
-        // You can call this function when user submits a form or provides contact info
         function identifyUser(email, phone) {
             const userData = {
                 email: email || '',
