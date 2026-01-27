@@ -4,35 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>انضم إلى حفلاتنا الخارجية</title>
+    
+    <script>
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+            // 这里使用你提供的 ID: D5RQDRBC77UECCBSCT2G
+            ttq.load('D5RQDRBC77UECCBSCT2G');
+            ttq.page();
+        }(window, document, 'ttq');
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-orange: #ff9500;
-            --deep-red: #ff3300;
-            --whatsapp-green: #25D366;
-            --bg-dark: #070a14;
+            --bg-dark: #0a0f1c;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--bg-dark);
             color: white;
-            line-height: 1.6;
+            direction: rtl;
             overflow-x: hidden;
-            min-height: 100vh;
         }
-
-        /* 动态背景 */
         .party-container {
             position: relative;
             min-height: 100vh;
@@ -40,277 +38,105 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background: radial-gradient(circle at 50% 100%, #1a100a 0%, #070a14 100%);
+            background: radial-gradient(circle at 50% 100%, #1a100a 0%, #0a0f1c 100%);
         }
-
-        /* 星空背景层 */
-        .stars-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
-
-        /* 升级后的主卡片 - 玻璃拟态 */
         .main-content {
             position: relative;
             z-index: 10;
-            max-width: 700px;
+            max-width: 600px;
             width: 100%;
-            padding: 50px 30px;
-            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 149, 0, 0.2);
-            border-radius: 40px;
+            border-radius: 30px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 
-                        inset 0 0 20px rgba(255, 149, 0, 0.05);
-            animation: fadeIn 1.2s ease-out;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-
         .title {
-            font-size: clamp(2rem, 8vw, 3.2rem);
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 30%, var(--primary-orange));
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to left, #fff, var(--primary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 40px;
-        }
-
-        .highlight {
-            color: var(--primary-orange);
-            font-weight: 700;
-            border-bottom: 2px solid rgba(255, 149, 0, 0.3);
-        }
-
-        /* 活动图标网格 */
         .activities {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
         }
-
-        .activity {
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .activity:hover {
-            transform: translateY(-10px);
-        }
-
         .activity-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 12px;
-            background: rgba(255, 149, 0, 0.1);
-            border: 1px solid rgba(255, 149, 0, 0.3);
-            border-radius: 20px;
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 8px;
+        }
+        .whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
-            color: var(--primary-orange);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        }
-
-        .activity-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* 升级后的 WhatsApp 按钮 */
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             text-decoration: none;
-            padding: 20px 45px;
-            border-radius: 100px;
-            font-size: 1.4rem;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 1.3rem;
             font-weight: 700;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 400px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
-
-        .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .whatsapp-btn:hover::before {
-            left: 100%;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5);
-        }
-
-        .whatsapp-btn i {
-            margin-left: 15px;
-            font-size: 1.8rem;
-        }
-
-        .footer-text {
-            margin-top: 30px;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* 动画 */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 480px) {
-            .main-content { padding: 35px 20px; }
-            .activities { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .activity-icon { width: 50px; height: 50px; font-size: 1.2rem; }
-            .activity-name { font-size: 0.8rem; }
-        }
+        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+        .whatsapp-btn i { margin-left: 10px; }
+        .stars { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t][];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-    var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-      ttq.load('D5RQDRBC77UECCBSCT2G'); // 这里是你提供的像素ID
-      ttq.page();
-    }(window, document, 'ttq');
-    </script>
-
     <div class="party-container">
-        <div class="stars-layer" id="starsLayer"></div>
-
+        <div class="stars" id="stars"></div>
         <div class="main-content">
-            <h1 class="title">انضم إلى عالم المغامرة</h1>
-            <p class="subtitle">استمتع بـ <span class="highlight">أجمل اللحظات</span> تحت ضوء النجوم وفي قلب الطبيعة</p>
+            <h1 class="title">رحلة المغامرة بانتظارك</h1>
+            <p>انضم إلى مجتمعنا في أفضل النشاطات الخارجية</p>
 
             <div class="activities">
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-fire"></i></div>
-                    <div class="activity-name">حفلات النار</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-hiking"></i></div>
-                    <div class="activity-name">تسلق الجبال</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-campground"></i></div>
-                    <div class="activity-name">تخييم فاخر</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-umbrella-beach"></i></div>
-                    <div class="activity-name">رحلات بحرية</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-music"></i></div>
-                    <div class="activity-name">عروض حية</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-camera"></i></div>
-                    <div class="activity-name">ذكريات</div>
-                </div>
+                <div class="activity"><i class="fas fa-fire activity-icon"></i><div>حفلات نار</div></div>
+                <div class="activity"><i class="fas fa-hiking activity-icon"></i><div>تسلق</div></div>
+                <div class="activity"><i class="fas fa-campground activity-icon"></i><div>تخييم</div></div>
             </div>
 
-            <div class="whatsapp-btn-container">
-                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    انضم إلى مجموعتنا الآن
-                </a>
-            </div>
-
-            <p class="footer-text">
-                مغامرات لا تنسى • صداقات جديدة • تجارب فريدة
-            </p>
+            <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="trackAction">
+                <i class="fab fa-whatsapp"></i>
+                انضم عبر واتساب
+            </a>
         </div>
     </div>
 
     <script>
-        // 生成随机星空
-        function initStars() {
-            const container = document.getElementById('starsLayer');
-            const count = 100;
-            for (let i = 0; i < count; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 3;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
-                container.appendChild(star);
-            }
+        // 星空背景逻辑
+        const starsWrap = document.getElementById('stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = star.style.height = Math.random() * 3 + 'px';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            starsWrap.appendChild(star);
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            initStars();
-
-            const btn = document.getElementById('whatsappBtn');
-            
-            // 追踪浏览事件
-            if (typeof ttq !== 'undefined') {
-                ttq.track('ViewContent', {
-                    content_name: 'Outdoor Party Landing Page',
-                    content_category: 'Community Join'
+        // --- TikTok 追踪逻辑优化 ---
+        document.getElementById('trackAction').addEventListener('click', function() {
+            if (window.ttq) {
+                // 发送 Contact 事件
+                ttq.track('Contact', {
+                    content_name: 'whatsapp_join',
+                    value: 1,
+                    currency: 'USD'
                 });
+                console.log('TikTok Contact Event Sent');
+            } else {
+                console.error('TikTok Pixel not loaded');
             }
-
-            // 追踪点击事件
-            btn.addEventListener('click', function() {
-                if (typeof ttq !== 'undefined') {
-                    ttq.track('Contact', {
-                        content_type: 'whatsapp_group',
-                        value: 1,
-                        currency: 'USD'
-                    });
-                }
-            });
         });
     </script>
 </body>
