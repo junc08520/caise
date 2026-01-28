@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>انضم إلى حفلاتنا الخارجية</title>
+    <title>Únete a Nuestras Fiestas al Aire Libre</title>
     
     <script>
         !function (w, d, t) {
@@ -28,7 +28,7 @@
             font-family: 'Cairo', sans-serif;
             background: var(--bg-dark);
             color: white;
-            direction: rtl;
+            direction: ltr;
             overflow-x: hidden;
         }
         .party-container {
@@ -56,7 +56,7 @@
         .title {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: linear-gradient(to left, #fff, var(--primary-orange));
+            background: linear-gradient(to right, #fff, var(--primary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -84,11 +84,41 @@
             font-weight: 700;
             transition: 0.3s;
             box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+            margin-bottom: 15px;
+            width: 100%;
         }
-        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
-        .whatsapp-btn i { margin-left: 10px; }
-        .stars { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; }
+        .whatsapp-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); 
+        }
+        .whatsapp-btn i { 
+            margin-right: 10px; 
+        }
+        .whatsapp-btn.english-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .whatsapp-btn.english-btn:hover {
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stars { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            top: 0; 
+            left: 0; 
+        }
+        .star { 
+            position: absolute; 
+            background: white; 
+            border-radius: 50%; 
+            opacity: 0.5; 
+        }
     </style>
 </head>
 <body>
@@ -96,19 +126,37 @@
     <div class="party-container">
         <div class="stars" id="stars"></div>
         <div class="main-content">
-            <h1 class="title">رحلة المغامرة بانتظارك</h1>
-            <p>انضم إلى مجتمعنا في أفضل النشاطات الخارجية</p>
+            <h1 class="title">La Aventura Te Espera</h1>
+            <p>Únete a nuestra comunidad en las mejores actividades al aire libre</p>
 
             <div class="activities">
-                <div class="activity"><i class="fas fa-fire activity-icon"></i><div>حفلات نار</div></div>
-                <div class="activity"><i class="fas fa-hiking activity-icon"></i><div>تسلق</div></div>
-                <div class="activity"><i class="fas fa-campground activity-icon"></i><div>تخييم</div></div>
+                <div class="activity">
+                    <i class="fas fa-fire activity-icon"></i>
+                    <div>Fogatas</div>
+                </div>
+                <div class="activity">
+                    <i class="fas fa-hiking activity-icon"></i>
+                    <div>Senderismo</div>
+                </div>
+                <div class="activity">
+                    <i class="fas fa-campground activity-icon"></i>
+                    <div>Acampada</div>
+                </div>
             </div>
 
-            <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="trackAction">
-                <i class="fab fa-whatsapp"></i>
-                انضم عبر واتساب
-            </a>
+            <div class="button-group">
+                <!-- 西班牙语WhatsApp按钮 -->
+                <a href="https://wa.me/14344272585?text=Hola,%20quiero%20unirme%20a%20las%20actividades" class="whatsapp-btn" id="trackActionSpanish">
+                    <i class="fab fa-whatsapp"></i>
+                    Únete por WhatsApp
+                </a>
+                
+                <!-- 英语WhatsApp按钮 -->
+                <a href="https://wa.me/14344272585?text=Hello,%20I%20want%20to%20join%20the%20activities" class="whatsapp-btn english-btn" id="trackActionEnglish">
+                    <i class="fab fa-whatsapp"></i>
+                    Join via WhatsApp
+                </a>
+            </div>
         </div>
     </div>
 
@@ -125,15 +173,32 @@
         }
 
         // --- TikTok 追踪逻辑优化 ---
-        document.getElementById('trackAction').addEventListener('click', function() {
+        
+        // 西班牙语按钮追踪
+        document.getElementById('trackActionSpanish').addEventListener('click', function() {
             if (window.ttq) {
-                // 发送 Contact 事件
+                // 发送 Contact 事件 - 西班牙语版本
                 ttq.track('Contact', {
-                    content_name: 'whatsapp_join',
+                    content_name: 'whatsapp_join_spanish',
                     value: 1,
                     currency: 'USD'
                 });
-                console.log('TikTok Contact Event Sent');
+                console.log('TikTok Contact Event Sent for Spanish button');
+            } else {
+                console.error('TikTok Pixel not loaded');
+            }
+        });
+
+        // 英语按钮追踪
+        document.getElementById('trackActionEnglish').addEventListener('click', function() {
+            if (window.ttq) {
+                // 发送 Contact 事件 - 英语版本
+                ttq.track('Contact', {
+                    content_name: 'whatsapp_join_english',
+                    value: 1,
+                    currency: 'USD'
+                });
+                console.log('TikTok Contact Event Sent for English button');
             } else {
                 console.error('TikTok Pixel not loaded');
             }
