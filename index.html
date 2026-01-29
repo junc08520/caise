@@ -6,13 +6,15 @@
     <title>Эксклюзіўнае запрашэнне: Падарожжа Сустрэч</title>
     
     <script>
-        !function (w, d, t) {
-            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-            ttq.load('D5RQDRBC77UECCBSCT2G');
-            ttq.page();
-        }(window, document, 'ttq');
-    </script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
+      ttq.load('D5TIDUBC77U6BSHUKIV0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -58,7 +60,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        /* 按钮网格 */
         .actions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -99,7 +100,6 @@
         .subtitle { letter-spacing: 4px; font-size: 1rem; color: var(--gold); margin-bottom: 20px; }
         .divider { width: 80px; height: 2px; background: var(--gold); margin: 20px auto; opacity: 0.5; }
 
-        /* BK Support Section */
         .bk-support {
             margin-top: 35px;
             padding: 20px;
@@ -157,8 +157,7 @@
             <div class="bk-support">
                 <div class="bk-title">BK Travel Support</div>
                 <div class="bk-desc">
-                    Focus on travel customers <span class="highlight">BK Travel</span>. <br>
-                    
+                    Focus on travel customers <span class="highlight">BK Travel</span>.
                 </div>
             </div>
 
@@ -169,7 +168,7 @@
     </div>
 
     <script>
-        // TikTok Tracking
+        // TikTok Tracking Logic
         function trackContact(platform) {
             if (window.ttq) {
                 ttq.track('Contact', {
@@ -177,10 +176,17 @@
                     value: 1,
                     currency: 'USD'
                 });
+                console.log('TikTok Event: Contact via ' + platform);
             }
         }
-        document.getElementById('wsTrack').onclick = () => trackContact('whatsapp');
-        document.getElementById('tgTrack').onclick = () => trackContact('telegram');
+        
+        document.getElementById('wsTrack').onclick = function() {
+            trackContact('whatsapp');
+        };
+        
+        document.getElementById('tgTrack').onclick = function() {
+            trackContact('telegram');
+        };
     </script>
 </body>
 </html>
