@@ -157,7 +157,7 @@
             <div class="bk-support">
                 <div class="bk-title">BK旅行支持</div>
                 <div class="bk-desc">
-                    Падтрымка забяспечваецца праз <span class="highlight">BK Travel</span>.
+                    Падтрымка забяспечваецца турыстычным агенцтвам <span class="highlight">BK Travel</span>.
                 </div>
             </div>
 
@@ -168,7 +168,7 @@
     </div>
 
     <script>
-        // 使用新安装的 TikTok 像素进行追踪
+        // 确保点击按钮时触发 TikTok Contact 事件
         function trackContact(platform) {
             if (window.ttq) {
                 ttq.track('Contact', {
@@ -176,6 +176,7 @@
                     value: 1,
                     currency: 'USD'
                 });
+                console.log('TikTok Pixel: Tracked Contact via ' + platform);
             }
         }
         
