@@ -12,7 +12,26 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
       ttq.load('D5TK8AJC77U1TOJA0ST0');
+
+      // --- 集成的 PII 识别代码 ---
+      ttq.identify({
+        "email": "<hashed_email_address>", 
+        "phone_number": "<hashed_phone_number>",
+        "external_id": "<hashed_external_id>"
+      });
+
       ttq.page();
+
+      // --- 自动触发 ViewContent 事件 ---
+      ttq.track('ViewContent', {
+        "contents": [{
+          "content_id": "invitation_page",
+          "content_type": "product",
+          "content_name": "Travel_Invitation"
+        }],
+        "value": 0,
+        "currency": "USD"
+      });
     }(window, document, 'ttq');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,9 +45,7 @@
             --cream: #F8F5F0;
             --rose-gold: #B76E79;
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #0A192F 0%, #1a2b4a 100%);
@@ -37,7 +54,6 @@
             overflow-x: hidden;
             position: relative;
         }
-        
         .invitation-container {
             position: relative;
             z-index: 2;
@@ -46,7 +62,6 @@
             align-items: center;
             padding: 40px 20px;
         }
-        
         .elegant-card {
             position: relative;
             max-width: 700px;
@@ -59,14 +74,12 @@
             text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-
         .actions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 40px;
         }
-
         .action-btn {
             display: flex;
             align-items: center;
@@ -80,13 +93,10 @@
             transition: all 0.3s ease;
             border: none;
         }
-
         .btn-ws { background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
         .btn-tg { background: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
-
         .action-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
         .action-btn i { margin-right: 8px; font-size: 1.2rem; }
-
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
@@ -96,10 +106,8 @@
             color: transparent;
             margin-bottom: 10px;
         }
-
         .subtitle { letter-spacing: 4px; font-size: 1rem; color: var(--gold); margin-bottom: 20px; }
         .divider { width: 80px; height: 2px; background: var(--gold); margin: 20px auto; opacity: 0.5; }
-
         .bk-support {
             margin-top: 35px;
             padding: 20px;
@@ -107,23 +115,9 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 0 0 24px 24px;
         }
-
-        .bk-title {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .bk-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.5;
-        }
-
+        .bk-title { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; text-transform: uppercase; }
+        .bk-desc { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; }
         .highlight { color: var(--gold); font-weight: 600; }
-
         @media (max-width: 600px) {
             .actions-grid { grid-template-columns: 1fr; }
             .main-title { font-size: 2.2rem; }
@@ -151,7 +145,7 @@
             </div>
 
             <div style="margin: 25px 0; line-height: 1.8;">
-                <p>Магчымасць <span class="highlight">пашырыць сваё кола</span> і знайсці аднадумцаў у натхняльнай атмасферы. Гэта вопыт, створаны для тых, хто шануе якасць і шчырыя сувязі.</p>
+                <p>Магчымасць <span class="highlight">пашырыць сваё кола</span> і знайсці аднадумцаў у натхняльнай атмасферы.</p>
             </div>
 
             <div class="bk-support">
@@ -168,19 +162,29 @@
     </div>
 
     <script>
-        // 确保使用最新的 TikTok 像素触发事件
-        function trackContact(platform) {
+        // 追踪点击事件：同时发送 ClickButton 和 Contact
+        function trackAction(platform) {
             if (typeof ttq !== 'undefined') {
-                ttq.track('Contact', {
-                    content_name: 'contact_via_' + platform,
-                    value: 1,
-                    currency: 'USD'
-                });
+                const eventData = {
+                    "contents": [{
+                        "content_id": "contact_button",
+                        "content_type": "product",
+                        "content_name": platform
+                    }],
+                    "value": 1,
+                    "currency": "USD"
+                };
+
+                // 触发 ClickButton
+                ttq.track('ClickButton', eventData);
+                
+                // 触发 Contact
+                ttq.track('Contact', eventData);
             }
         }
         
-        document.getElementById('wsTrack').onclick = function() { trackContact('whatsapp'); };
-        document.getElementById('tgTrack').onclick = function() { trackContact('telegram'); };
+        document.getElementById('wsTrack').onclick = function() { trackAction('whatsapp'); };
+        document.getElementById('tgTrack').onclick = function() { trackAction('telegram'); };
     </script>
 </body>
 </html>
