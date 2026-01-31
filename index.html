@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Facebook Pixel Code - Maximized for Conversions -->
+    <!-- Facebook Pixel Code - For Ad Account: 1883548015883688 -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -20,15 +20,17 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
+    // Initialize pixel for tracking
     fbq('init', 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
     
-    // Standard events for optimization
+    // Track page view
     fbq('track', 'PageView');
+    
+    // Track ViewContent event
     fbq('track', 'ViewContent', {
         content_name: 'Buitenfeesten Aanmeldpagina',
         content_category: 'Outdoor Activiteiten',
-        content_type: 'product',
-        value: 0
+        content_type: 'product'
     });
     
     </script>
@@ -540,12 +542,11 @@
             
             <!-- WhatsApp knop -->
             <div class="whatsapp-btn-container">
-                <!-- Wijzig de link hier -->
                 <a href="https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten" 
                    class="whatsapp-btn" 
                    id="whatsappBtn" 
                    target="_blank"
-                   onclick="trackFBPixelConversion()">
+                   onclick="trackWhatsAppConversion(event)">
                     <i class="fab fa-whatsapp"></i>
                     Word lid van onze WhatsApp-groep
                 </a>
@@ -579,113 +580,154 @@
             }
         }
         
-        // Facebook Pixel Conversion Tracking - OPTIMIZED FOR MAX CONVERSIONS
-        function trackFBPixelConversion() {
+        // FUNCTIE 1: WhatsApp点击的主要转化追踪函数
+        function trackWhatsAppConversion(event) {
+            // 防止链接立即跳转
+            event.preventDefault();
+            
+            console.log('WhatsApp按钮点击 - 开始追踪转化...');
+            
+            // 创建唯一的转化ID
+            const conversionId = 'whatsapp_conversion_' + Date.now();
+            const eventId = 'ws_click_' + Date.now();
+            
+            // 方法A: 使用当前像素发送转化事件
             if (typeof fbq !== 'undefined') {
-                // MAIN CONVERSION EVENT - This is what Facebook will optimize for
+                console.log('方法A: 使用现有像素发送转化事件');
+                
+                // 发送Lead事件（主要转化事件）
                 fbq('track', 'Lead', {
                     content_name: 'WhatsApp Groep Aanmelding',
                     content_category: 'Outdoor Community',
                     value: 1.00,
                     currency: 'EUR',
-                    conversion_id: 'whatsapp_conversion_' + Date.now(),
-                    event_id: 'whatsapp_click_' + Date.now()
+                    conversion_id: conversionId,
+                    event_id: eventId,
+                    ad_account_id: '1883548015883688'  // 您的广告账户ID
                 });
                 
-                // Secondary conversion events for better optimization
-                fbq('track', 'CompleteRegistration', {
-                    content_name: 'Buitenfeest Community Registratie',
-                    status: 'success',
-                    value: 1.00,
-                    currency: 'EUR'
-                });
+                console.log('Lead事件已发送');
                 
-                fbq('track', 'Contact', {
-                    content_name: 'WhatsApp Contact Initiatie',
-                    content_category: 'Direct Contact',
-                    value: 1.00,
-                    currency: 'EUR'
-                });
+                // 延迟跳转以确保像素事件发送完成
+                setTimeout(function() {
+                    window.open('https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten', '_blank');
+                }, 500);
                 
-                // Custom conversion event
-                fbq('track', 'Custom', {
-                    event_name: 'WhatsApp_Group_Join',
-                    action: 'click',
-                    button_id: 'whatsappBtn',
-                    conversion_value: 1.00
-                });
-                
-                console.log('Facebook Pixel: WhatsApp conversie bijgehouden');
+            } else {
+                console.log('Facebook像素未加载，使用方法B');
+                // 如果像素未加载，使用方法B
+                trackConversionToAdAccount(conversionId, eventId);
             }
             
-            // Add small delay before redirecting to ensure pixel fires
+            return false;
+        }
+        
+        // FUNCTIE 2: 直接发送到广告账户的备用方法
+        function trackConversionToAdAccount(conversionId, eventId) {
+            console.log('方法B: 直接发送转化到广告账户 1883548015883688');
+            
+            // 创建服务器事件像素
+            const pixelUrl = 'https://www.facebook.com/tr';
+            const params = {
+                id: 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD',
+                ev: 'Lead',
+                dl: window.location.href,
+                rl: document.referrer,
+                if: false,
+                ts: Date.now(),
+                cd: {
+                    content_name: 'WhatsApp Groep Aanmelding',
+                    content_category: 'Outdoor Community',
+                    value: 1.00,
+                    currency: 'EUR',
+                    conversion_id: conversionId,
+                    event_id: eventId,
+                    ad_account: '1883548015883688'
+                }
+            };
+            
+            // 发送像素请求
+            const img = new Image();
+            const queryString = Object.keys(params).map(key => {
+                if (key === 'cd') {
+                    return 'cd=' + encodeURIComponent(JSON.stringify(params[key]));
+                }
+                return key + '=' + encodeURIComponent(params[key]);
+            }).join('&');
+            
+            img.src = pixelUrl + '?' + queryString;
+            img.style.display = 'none';
+            document.body.appendChild(img);
+            
+            console.log('转化事件已发送到广告账户:', params);
+            
+            // 延迟跳转
             setTimeout(function() {
-                // Log voor debugging
-                console.log('Redirect naar WhatsApp...');
+                window.open('https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten', '_blank');
             }, 300);
-            
-            return true; // Laat de normale link redirect doorgaan
         }
         
-        // InitiateCheckout wanneer gebruiker scrollt naar WhatsApp sectie
-        function trackInitiateCheckout() {
-            if (typeof fbq !== 'undefined' && !window.checkoutTracked) {
-                fbq('track', 'InitiateCheckout', {
-                    content_name: 'Buitenfeesten Aanmeldproces',
-                    num_items: 1,
-                    value: 0
+        // FUNCTIE 3: 发送服务器事件API
+        function sendServerEventToAdAccount() {
+            // 如果需要，这里可以添加服务器到服务器的事件发送
+            console.log('备用方法: 服务器事件API');
+            // 这里可以添加发送到Facebook Conversion API的代码
+        }
+        
+        // FUNCTIE 4: 测试函数 - 手动触发转化
+        function testConversionTracking() {
+            console.log('测试转化追踪...');
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Test WhatsApp Conversion',
+                    content_category: 'Test',
+                    value: 1.00,
+                    currency: 'EUR',
+                    test_event_code: 'TEST12345', // 用于测试模式
+                    conversion_id: 'test_' + Date.now(),
+                    event_id: 'test_click_' + Date.now(),
+                    ad_account_id: '1883548015883688'
                 });
-                window.checkoutTracked = true;
-                console.log('Facebook Pixel: InitiateCheckout event getriggerd');
+                console.log('测试转化事件已发送');
             }
         }
         
-        // Uitvoeren na het laden van de pagina
+        // 页面加载完成后的初始化
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
-            // Scroll tracking voor InitiateCheckout
+            // 添加调试信息
+            console.log('页面已加载 - WhatsApp转化追踪已启用');
+            console.log('Facebook像素ID: EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
+            console.log('目标广告账户ID: 1883548015883688');
+            
+            // 在控制台添加测试功能
+            window.testFBConversion = testConversionTracking;
+            console.log('要测试转化追踪，请在控制台运行: testFBConversion()');
+            
+            // 监听滚动以触发InitiateCheckout
             window.addEventListener('scroll', function() {
                 const whatsappSection = document.querySelector('.whatsapp-btn-container');
-                if (whatsappSection) {
+                if (whatsappSection && typeof fbq !== 'undefined' && !window.checkoutTracked) {
                     const sectionTop = whatsappSection.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (sectionTop < windowHeight * 0.8) {
-                        trackInitiateCheckout();
+                    if (sectionTop < window.innerHeight * 0.8) {
+                        fbq('track', 'InitiateCheckout', {
+                            content_name: 'Buitenfeesten Aanmeldproces',
+                            ad_account_id: '1883548015883688'
+                        });
+                        window.checkoutTracked = true;
+                        console.log('InitiateCheckout事件已发送');
                     }
                 }
             });
-            
-            // Ook tracken wanneer gebruiker over de knop hovert
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            if (whatsappBtn) {
-                whatsappBtn.addEventListener('mouseenter', function() {
-                    if (typeof fbq !== 'undefined' && !window.addToCartTracked) {
-                        fbq('track', 'AddToCart', {
-                            content_name: 'WhatsApp Groep Lidmaatschap',
-                            content_ids: ['whatsapp_group_001'],
-                            content_type: 'product',
-                            value: 0
-                        });
-                        window.addToCartTracked = true;
-                        console.log('Facebook Pixel: AddToCart event getriggerd');
-                    }
-                });
-            }
-            
-            // Voeg console informatie toe
-            console.log('🔥 Buitenfeest pagina geladen 🔥');
-            console.log('Facebook pixel ID: EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
         });
         
-        // Functie om doorverwijslink te wijzigen
-        function updateRedirectLink(newLink) {
+        // 辅助函数：更新WhatsApp链接
+        function updateWhatsAppLink(newNumber, newMessage) {
             const whatsappBtn = document.getElementById('whatsappBtn');
-            if (whatsappBtn) {
-                whatsappBtn.href = newLink;
-                console.log('Link bijgewerkt naar:', newLink);
-            }
+            const newLink = `https://wa.me/${newNumber}?text=${encodeURIComponent(newMessage)}`;
+            whatsappBtn.href = newLink;
+            console.log('WhatsApp链接已更新:', newLink);
         }
         
     </script>
