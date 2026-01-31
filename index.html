@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- TikTok Pixel Code Start - ID: D5UVTMRC77UD675HUOI0 -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+      var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var i=document.createElement("script");i.type="text/javascript",i.async=!0,i.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(i,a)};
+    
+      ttq.load('D5UVTMRC77UD675HUOI0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
     <style>
         * {
             margin: 0;
@@ -424,19 +437,6 @@
     </style>
 </head>
 <body>
-    <!-- TikTok Pixel Code Start -->
-    <script>
-    !function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t][];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-    
-      ttq.load('D5OF75JC77UALNU7LDT0');
-      ttq.page();
-    }(window, document, 'ttq');
-    </script>
-    <!-- TikTok Pixel Code End -->
-    
     <div class="party-container">
         <!-- 星空背景 -->
         <div class="stars" id="stars"></div>
@@ -523,10 +523,13 @@ var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n])
             
             <!-- WhatsApp按钮 -->
             <div class="whatsapp-btn-container">
-                <!-- 在这里修改跳转链接 -->
-                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
+                <a href="https://wa.me/14344272585?text=مرحباً! أرغب في الانضمام إلى حفلاتكم الخارجية" 
+                   class="whatsapp-btn" 
+                   id="whatsappBtn" 
+                   target="_blank"
+                   onclick="trackTikTokWhatsAppConversion(event)">
                     <i class="fab fa-whatsapp"></i>
-                    انضم إلى مجموعتنا على واتسابjoin
+                    انضم إلى مجموعتنا على واتساب
                 </a>
             </div>
         </div>
@@ -558,57 +561,194 @@ var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n])
             }
         }
         
-        // TikTok像素跟踪函数
+        // TikTok像素跟踪函数 - 优化版本
         function trackTikTokEvent(event, parameters) {
             if (typeof ttq !== 'undefined') {
                 ttq.track(event, parameters);
                 console.log('TikTok事件已跟踪:', event, parameters);
+                return true;
+            } else {
+                console.warn('TikTok像素未加载');
+                return false;
             }
+        }
+        
+        // WhatsApp点击转化追踪函数
+        function trackTikTokWhatsAppConversion(event) {
+            // 防止链接立即跳转
+            event.preventDefault();
+            
+            console.log('WhatsApp按钮点击 - 开始TikTok转化追踪...');
+            
+            // 生成唯一的事件ID
+            const eventId = 'whatsapp_click_' + Date.now();
+            
+            // 发送TikTok转化事件
+            const tracked = trackTikTokEvent('Contact', {
+                content_type: 'whatsapp_join',
+                content_id: 'whatsapp_group_registration',
+                content_name: 'انضمام مجموعة واتساب',
+                description: 'المستخدم نقر على زر الانضمام إلى واتساب',
+                value: 1.00,
+                currency: 'SAR',
+                conversion_id: eventId,
+                query: 'outdoor_party_registration'
+            });
+            
+            // 同时发送CompletePayment事件（用于转化优化）
+            trackTikTokEvent('CompletePayment', {
+                value: 1.00,
+                currency: 'SAR',
+                contents: [{
+                    content_id: 'whatsapp_group_access',
+                    content_name: 'وصول مجموعة واتساب',
+                    quantity: 1
+                }],
+                conversion_id: eventId
+            });
+            
+            // 发送SubmitForm事件
+            trackTikTokEvent('SubmitForm', {
+                content_id: 'whatsapp_registration_form',
+                content_name: 'نموذج تسجيل واتساب',
+                conversion_id: eventId
+            });
+            
+            if (tracked) {
+                console.log('TikTok转化事件已成功发送，将在500毫秒后跳转...');
+                // 延迟跳转确保像素事件发送完成
+                setTimeout(function() {
+                    window.open('https://wa.me/14344272585?text=مرحباً! أرغب في الانضمام إلى حفلاتكم الخارجية', '_blank');
+                    console.log('已跳转到WhatsApp');
+                }, 500);
+            } else {
+                console.log('TikTok像素未加载，直接跳转...');
+                // 如果像素未加载，直接跳转
+                window.open('https://wa.me/14344272585?text=مرحباً! أرغب في الانضمام إلى حفلاتكم الخارجية', '_blank');
+            }
+            
+            return false;
         }
         
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
-            // 按钮点击事件
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            whatsappBtn.addEventListener('click', function() {
-                console.log('跳转到 WhatsApp 链接');
-                // TikTok像素跟踪点击事件
-                trackTikTokEvent('Contact', {
-                    content_type: 'whatsapp_join',
-                    content_id: 'whatsapp_btn_click',
-                    description: '用户点击了WhatsApp加入按钮'
-                });
-            });
-            
             // 页面浏览事件跟踪
-            trackTikTokEvent('ViewContent', {
-                content_type: 'landing_page',
-                content_id: 'outdoor_party_page',
-                description: '用户浏览了户外派对页面'
+            setTimeout(function() {
+                trackTikTokEvent('ViewContent', {
+                    content_type: 'landing_page',
+                    content_id: 'outdoor_party_ar_page',
+                    content_name: 'صفحة حفلات خارجية - عربي',
+                    description: 'المستخدم يطلع على صفحة الحفلات الخارجية'
+                });
+                
+                // 发送AddToCart事件（当用户滚动到活动部分时）
+                trackTikTokEvent('AddToCart', {
+                    content_id: 'outdoor_activities_package',
+                    content_name: 'حزمة الأنشطة الخارجية',
+                    content_type: 'product',
+                    quantity: 1
+                });
+            }, 1000);
+            
+            // 滚动时跟踪互动
+            let scrolledToActivities = false;
+            let scrolledToWhatsApp = false;
+            
+            window.addEventListener('scroll', function() {
+                const activitiesSection = document.querySelector('.activities');
+                const whatsappSection = document.querySelector('.whatsapp-btn-container');
+                
+                if (activitiesSection && !scrolledToActivities) {
+                    const rect = activitiesSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        trackTikTokEvent('AddToWishlist', {
+                            content_id: 'outdoor_activities',
+                            content_name: 'الأنشطة الخارجية',
+                            content_type: 'product_group'
+                        });
+                        scrolledToActivities = true;
+                        console.log('用户滚动到活动区域');
+                    }
+                }
+                
+                if (whatsappSection && !scrolledToWhatsApp) {
+                    const rect = whatsappSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        trackTikTokEvent('InitiateCheckout', {
+                            content_id: 'whatsapp_group_checkout',
+                            content_name: 'الدفع للانضمام إلى واتساب',
+                            content_type: 'product'
+                        });
+                        scrolledToWhatsApp = true;
+                        console.log('用户滚动到WhatsApp区域');
+                    }
+                }
             });
             
-            // 添加一些控制台信息
+            // 添加控制台信息
             console.log('🔥 户外派对页面已加载 🔥');
-            console.log('TikTok像素ID: D5OF75JC77UALNU7LDT0');
-            console.log('当前跳转链接:', whatsappBtn.href);
+            console.log('TikTok像素ID: D5UVTMRC77UD675HUOI0');
+            console.log('页面语言: 阿拉伯语');
+            console.log('WhatsApp链接: https://wa.me/14344272585');
+            
+            // 添加测试函数到全局
+            window.testTikTokPixel = function() {
+                console.log('测试TikTok像素...');
+                trackTikTokEvent('TestEvent', {
+                    test: true,
+                    timestamp: Date.now()
+                });
+                alert('TikTok像素测试事件已发送，请检查控制台和TikTok事件管理器。');
+            };
+            
+            console.log('要测试TikTok像素，请在控制台运行: testTikTokPixel()');
         });
         
         // 修改跳转链接的函数
         function updateRedirectLink(newLink) {
             const whatsappBtn = document.getElementById('whatsappBtn');
-            whatsappBtn.href = newLink;
-            console.log('链接已更新为:', newLink);
-            
-            // 跟踪链接更新事件
-            trackTikTokEvent('Custom', {
-                action: 'link_updated',
-                new_link: newLink
-            });
+            if (whatsappBtn) {
+                const oldHref = whatsappBtn.href;
+                whatsappBtn.href = newLink;
+                whatsappBtn.onclick = function(event) {
+                    event.preventDefault();
+                    trackTikTokWhatsAppConversion(event);
+                };
+                console.log('链接已更新为:', newLink);
+                
+                // 跟踪链接更新事件
+                trackTikTokEvent('Custom', {
+                    action: 'link_updated',
+                    old_link: oldHref,
+                    new_link: newLink
+                });
+            }
         }
         
-        // 如果您想动态修改链接，可以调用 updateRedirectLink('您的新链接')
+        // 更新WhatsApp消息的函数
+        function updateWhatsAppMessage(newMessage) {
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            if (whatsappBtn) {
+                const currentUrl = new URL(whatsappBtn.href);
+                const newUrl = `https://wa.me/${currentUrl.pathname.split('/')[1]}?text=${encodeURIComponent(newMessage)}`;
+                updateRedirectLink(newUrl);
+            }
+        }
+        
+        // 更新电话号码的函数
+        function updatePhoneNumber(newNumber) {
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            if (whatsappBtn) {
+                const currentUrl = new URL(whatsappBtn.href);
+                const params = new URLSearchParams(currentUrl.search);
+                const message = params.get('text') || 'مرحباً! أرغب في الانضمام إلى حفلاتكم الخارجية';
+                const newUrl = `https://wa.me/${newNumber}?text=${encodeURIComponent(message)}`;
+                updateRedirectLink(newUrl);
+            }
+        }
+        
     </script>
 </body>  
 </html>
