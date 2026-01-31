@@ -1,190 +1,614 @@
 <!DOCTYPE html>
-<html lang="be" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эксклюзіўнае запрашэнне: Падарожжа Сустрэч</title>
-    
+    <title>الانضمام إلى حفلاتنا الخارجية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            direction: rtl;
+            min-height: 100vh;
+            background: #0a0f1c;
+        }
+        
+        /* 派对背景容器 */
+        .party-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        /* 篝火动画背景 */
+        .fire-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0f0a 0%, #0a0705 70%, #050302 100%);
+            z-index: -2;
+        }
+        
+        /* 篝火动画 */
+        .campfire {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 400px;
+            z-index: -1;
+        }
+        
+        .fire {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 300px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 120, 0, 0.9) 0%, 
+                rgba(255, 80, 0, 0.7) 20%, 
+                rgba(255, 40, 0, 0.5) 40%, 
+                rgba(255, 0, 0, 0.3) 60%, 
+                transparent 80%);
+            border-radius: 50% 50% 40% 40%;
+            animation: flicker 2s infinite alternate;
+            filter: blur(5px);
+        }
+        
+        .fire::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 200, 0, 0.8) 0%, 
+                rgba(255, 150, 0, 0.6) 40%, 
+                rgba(255, 100, 0, 0.4) 70%, 
+                transparent 90%);
+            border-radius: 50%;
+            animation: flicker2 1.5s infinite alternate;
+            filter: blur(8px);
+        }
+        
+        .logs {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 80px;
+        }
+        
+        .log {
+            position: absolute;
+            width: 200px;
+            height: 30px;
+            background: linear-gradient(to right, #5d4037, #3e2723);
+            border-radius: 5px;
+            transform-origin: center;
+        }
+        
+        .log-1 {
+            transform: rotate(45deg);
+            top: 30px;
+            left: 10px;
+        }
+        
+        .log-2 {
+            transform: rotate(-45deg);
+            top: 30px;
+            right: 10px;
+        }
+        
+        .log-3 {
+            width: 180px;
+            top: 50px;
+            left: 35px;
+        }
+        
+        /* 星星 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite alternate;
+        }
+        
+        /* 漂浮元素 - 派对氛围 */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.7;
+            animation: float var(--float-duration) infinite ease-in-out;
+        }
+        
+        .element-1 { top: 20%; left: 10%; --float-duration: 8s; }
+        .element-2 { top: 40%; right: 15%; --float-duration: 10s; }
+        .element-3 { top: 70%; left: 20%; --float-duration: 12s; }
+        .element-4 { top: 30%; right: 25%; --float-duration: 9s; }
+        .element-5 { top: 60%; left: 30%; --float-duration: 11s; }
+        
+        /* 主要内容 */
+        .main-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(10, 15, 28, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 100, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2),
+                        0 0 100px rgba(255, 60, 0, 0.1);
+            margin: 20px;
+            z-index: 10;
+            position: relative;
+            animation: glow 3s infinite alternate;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff9500, #ff3300);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(255, 80, 0, 0.5);
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+        
+        .highlight {
+            color: #ff9500;
+            font-weight: 600;
+        }
+        
+        /* 活动图标 */
+        .activities {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .activity {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+        }
+        
+        .activity-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 100, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            color: #ff9500;
+            border: 2px solid rgba(255, 100, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .activity:hover .activity-icon {
+            transform: scale(1.1);
+            background: rgba(255, 100, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 100, 0, 0.5);
+        }
+        
+        .activity-name {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* WhatsApp按钮 */
+        .whatsapp-btn-container {
+            margin: 50px 0 30px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 22px 50px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-btn i {
+            margin-left: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .whatsapp-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        /* 派对氛围文字 */
+        .party-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 30px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .party-text span {
+            color: #ff9500;
+            font-weight: 600;
+        }
+        
+        /* 动画效果 */
+        @keyframes flicker {
+            0% { 
+                transform: translateX(-50%) scale(1);
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateX(-50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes flicker2 {
+            0% { 
+                transform: translateX(-50%) scale(1);
+                opacity: 0.7;
+            }
+            100% { 
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.9;
+            }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2), 0 0 100px rgba(255, 60, 0, 0.1); }
+            100% { box-shadow: 0 20px 50px rgba(255, 80, 0, 0.4), 0 0 150px rgba(255, 60, 0, 0.2); }
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translateX(-100%); }
+            100% { transform: rotate(30deg) translateX(200%); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+                margin: 15px;
+            }
+            
+            .activities {
+                gap: 20px;
+            }
+            
+            .activity {
+                width: 100px;
+            }
+            
+            .activity-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.7rem;
+            }
+            
+            .whatsapp-btn {
+                padding: 18px 40px;
+                font-size: 1.3rem;
+            }
+            
+            .campfire {
+                width: 250px;
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .activities {
+                gap: 15px;
+            }
+            
+            .activity {
+                width: 85px;
+            }
+            
+            .activity-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .activity-name {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TikTok Pixel Code Start -->
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
     var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-      ttq.load('D5TK8AJC77U1TOJA0ST0');
-
-      // --- 集成的 PII 识别代码 ---
-      ttq.identify({
-        "email": "<hashed_email_address>", 
-        "phone_number": "<hashed_phone_number>",
-        "external_id": "<hashed_external_id>"
-      });
-
+    
+      ttq.load('D5OF75JC77UALNU7LDT0');
       ttq.page();
-
-      // --- 自动触发 ViewContent 事件 ---
-      ttq.track('ViewContent', {
-        "contents": [{
-          "content_id": "invitation_page",
-          "content_type": "product",
-          "content_name": "Travel_Invitation"
-        }],
-        "value": 0,
-        "currency": "USD"
-      });
     }(window, document, 'ttq');
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- TikTok Pixel Code End -->
     
-    <style>
-        :root {
-            --gold: #D4AF37;
-            --dark-blue: #0A192F;
-            --light-blue: #112240;
-            --cream: #F8F5F0;
-            --rose-gold: #B76E79;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0A192F 0%, #1a2b4a 100%);
-            color: var(--cream);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-        .invitation-container {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-        .elegant-card {
-            position: relative;
-            max-width: 700px;
-            width: 100%;
-            background: linear-gradient(145deg, rgba(26, 43, 74, 0.9), rgba(17, 34, 64, 0.95));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 24px;
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .actions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        .action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 10px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        .btn-ws { background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-        .btn-tg { background: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
-        .action-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .action-btn i { margin-right: 8px; font-size: 1.2rem; }
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--gold), var(--rose-gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-        }
-        .subtitle { letter-spacing: 4px; font-size: 1rem; color: var(--gold); margin-bottom: 20px; }
-        .divider { width: 80px; height: 2px; background: var(--gold); margin: 20px auto; opacity: 0.5; }
-        .bk-support {
-            margin-top: 35px;
-            padding: 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 0 0 24px 24px;
-        }
-        .bk-title { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; text-transform: uppercase; }
-        .bk-desc { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; }
-        .highlight { color: var(--gold); font-weight: 600; }
-        @media (max-width: 600px) {
-            .actions-grid { grid-template-columns: 1fr; }
-            .main-title { font-size: 2.2rem; }
-        }
-    </style>
-</head>
-<body>
-    <div class="invitation-container">
-        <div class="elegant-card">
+    <div class="party-container">
+        <!-- 星空背景 -->
+        <div class="stars" id="stars"></div>
+        
+        <!-- 篝火背景 -->
+        <div class="fire-background"></div>
+        
+        <!-- 篝火 -->
+        <div class="campfire">
+            <div class="fire"></div>
+            <div class="logs">
+                <div class="log log-1"></div>
+                <div class="log log-2"></div>
+                <div class="log log-3"></div>
+            </div>
+        </div>
+        
+        <!-- 漂浮元素 -->
+        <div class="floating-elements">
+            <div class="floating-element element-1">
+                <i class="fas fa-campground" style="color: #ff9500; font-size: 2.5rem;"></i>
+            </div>
+            <div class="floating-element element-2">
+                <i class="fas fa-music" style="color: #ff3300; font-size: 2.2rem;"></i>
+            </div>
+            <div class="floating-element element-3">
+                <i class="fas fa-utensils" style="color: #ff9500; font-size: 2.8rem;"></i>
+            </div>
+            <div class="floating-element element-4">
+                <i class="fas fa-users" style="color: #ff3300; font-size: 2.4rem;"></i>
+            </div>
+            <div class="floating-element element-5">
+                <i class="fas fa-fire" style="color: #ff9500; font-size: 2.6rem;"></i>
+            </div>
+        </div>
+        
+        <!-- 主要内容 -->
+        <div class="main-content">
+            <h1 class="title">انضم إلى رحلة اللقاءات</h1>
+            <p class="subtitle">تعرف على أصدقاء جدد في <span class="highlight">حفلات الصحراء</span> و <span class="highlight">النشاطات الخارجية</span></p>
             
-            <div class="actions-grid">
-                <a href="https://wa.me/17655566144?text=Прывітанне" class="action-btn btn-ws" id="wsTrack">
-                    <i class="fab fa-whatsapp"></i> WHATSAPP
-                </a>
-                <a href="https://t.me/Ennacos_bot" class="action-btn btn-tg" id="tgTrack">
-                    <i class="fab fa-telegram-plane"></i> TELEGRAM
-                </a>
-            </div>
-
-            <div class="header-elements">
-                <i class="fas fa-crown" style="color: var(--gold); font-size: 2rem; margin-bottom: 15px;"></i>
-                <h1 class="main-title">Падарожжа Сустрэч</h1>
-                <div class="subtitle">ЭКСКЛЮЗІЎНАЕ ЗАПРАШЭННЕ</div>
-                <div class="divider"></div>
-            </div>
-
-            <div style="margin: 25px 0; line-height: 1.8;">
-                <p>Магчымасць <span class="highlight">пашырыць сваё кола</span> і знайсці аднадумцаў у натхняльнай атмасферы.</p>
-            </div>
-
-            <div class="bk-support">
-                <div class="bk-title">BK旅行支持</div>
-                <div class="bk-desc">
-                    Падтрымка забяспечваецца праз <span class="highlight">BK Travel</span>.
+            <!-- 活动图标 -->
+            <div class="activities">
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="activity-name">حفلات النار</div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <div class="activity-name">تسلق الجبال</div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <div class="activity-name">نشاطات مائية</div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="activity-name">رحلات الشاطئ</div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-caravan"></i>
+                    </div>
+                    <div class="activity-name">تخييم الصحراء</div>
                 </div>
             </div>
-
-            <div style="margin-top: 25px;">
-                <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">© 2024 Прэміум Сустрэчы</span>
+            
+            <p class="party-text">
+                <span>مغامرات لا تنسى</span> • <span>صداقات جديدة</span> • <span>ذكريات رائعة</span><br>
+                انضم إلى مجتمعنا من محبي الطبيعة والمغامرات الخارجية
+            </p>
+            
+            <!-- WhatsApp按钮 -->
+            <div class="whatsapp-btn-container">
+                <!-- 在这里修改跳转链接 -->
+                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    انضم إلى مجموعتنا على واتسابjoin
+                </a>
             </div>
         </div>
     </div>
-
+    
     <script>
-        // 追踪点击事件：同时发送 ClickButton 和 Contact
-        function trackAction(platform) {
-            if (typeof ttq !== 'undefined') {
-                const eventData = {
-                    "contents": [{
-                        "content_id": "contact_button",
-                        "content_type": "product",
-                        "content_name": platform
-                    }],
-                    "value": 1,
-                    "currency": "USD"
-                };
-
-                // 触发 ClickButton
-                ttq.track('ClickButton', eventData);
+        // 创建星空
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
                 
-                // 触发 Contact
-                ttq.track('Contact', eventData);
+                // 随机位置和大小
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 3 + 1;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.setProperty('--duration', `${duration}s`);
+                
+                starsContainer.appendChild(star);
             }
         }
         
-        document.getElementById('wsTrack').onclick = function() { trackAction('whatsapp'); };
-        document.getElementById('tgTrack').onclick = function() { trackAction('telegram'); };
+        // TikTok像素跟踪函数
+        function trackTikTokEvent(event, parameters) {
+            if (typeof ttq !== 'undefined') {
+                ttq.track(event, parameters);
+                console.log('TikTok事件已跟踪:', event, parameters);
+            }
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            // 按钮点击事件
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            whatsappBtn.addEventListener('click', function() {
+                console.log('跳转到 WhatsApp 链接');
+                // TikTok像素跟踪点击事件
+                trackTikTokEvent('Contact', {
+                    content_type: 'whatsapp_join',
+                    content_id: 'whatsapp_btn_click',
+                    description: '用户点击了WhatsApp加入按钮'
+                });
+            });
+            
+            // 页面浏览事件跟踪
+            trackTikTokEvent('ViewContent', {
+                content_type: 'landing_page',
+                content_id: 'outdoor_party_page',
+                description: '用户浏览了户外派对页面'
+            });
+            
+            // 添加一些控制台信息
+            console.log('🔥 户外派对页面已加载 🔥');
+            console.log('TikTok像素ID: D5OF75JC77UALNU7LDT0');
+            console.log('当前跳转链接:', whatsappBtn.href);
+        });
+        
+        // 修改跳转链接的函数
+        function updateRedirectLink(newLink) {
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            whatsappBtn.href = newLink;
+            console.log('链接已更新为:', newLink);
+            
+            // 跟踪链接更新事件
+            trackTikTokEvent('Custom', {
+                action: 'link_updated',
+                new_link: newLink
+            });
+        }
+        
+        // 如果您想动态修改链接，可以调用 updateRedirectLink('您的新链接')
     </script>
-</body>
+</body>  
 </html>
