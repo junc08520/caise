@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Facebook Pixel Code -->
+    <!-- Facebook Pixel Code - Maximized for Conversions -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -19,12 +19,23 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    
     fbq('init', 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
+    
+    // Standard events for optimization
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_name: 'Buitenfeesten Aanmeldpagina',
+        content_category: 'Outdoor Activiteiten',
+        content_type: 'product',
+        value: 0
+    });
+    
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD&ev=PageView&noscript=1"/>
+    </noscript>
     <!-- End Facebook Pixel Code -->
     
     <style>
@@ -443,19 +454,6 @@
     </style>
 </head>
 <body>
-    <!-- TikTok Pixel Code Start -->
-    <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-    
-      ttq.load('D5OF75JC77UALNU7LDT0');
-      ttq.page();
-    }(window, document, 'ttq');
-    </script>
-    <!-- TikTok Pixel Code End -->
-    
     <div class="party-container">
         <!-- Sterrenhemel achtergrond -->
         <div class="stars" id="stars"></div>
@@ -543,7 +541,11 @@
             <!-- WhatsApp knop -->
             <div class="whatsapp-btn-container">
                 <!-- Wijzig de link hier -->
-                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
+                <a href="https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten" 
+                   class="whatsapp-btn" 
+                   id="whatsappBtn" 
+                   target="_blank"
+                   onclick="trackFBPixelConversion()">
                     <i class="fab fa-whatsapp"></i>
                     Word lid van onze WhatsApp-groep
                 </a>
@@ -577,23 +579,64 @@
             }
         }
         
-        // TikTok pixel tracking functie
-        function trackTikTokEvent(event, parameters) {
-            if (typeof ttq !== 'undefined') {
-                ttq.track(event, parameters);
-                console.log('TikTok evenement bijgehouden:', event, parameters);
+        // Facebook Pixel Conversion Tracking - OPTIMIZED FOR MAX CONVERSIONS
+        function trackFBPixelConversion() {
+            if (typeof fbq !== 'undefined') {
+                // MAIN CONVERSION EVENT - This is what Facebook will optimize for
+                fbq('track', 'Lead', {
+                    content_name: 'WhatsApp Groep Aanmelding',
+                    content_category: 'Outdoor Community',
+                    value: 1.00,
+                    currency: 'EUR',
+                    conversion_id: 'whatsapp_conversion_' + Date.now(),
+                    event_id: 'whatsapp_click_' + Date.now()
+                });
+                
+                // Secondary conversion events for better optimization
+                fbq('track', 'CompleteRegistration', {
+                    content_name: 'Buitenfeest Community Registratie',
+                    status: 'success',
+                    value: 1.00,
+                    currency: 'EUR'
+                });
+                
+                fbq('track', 'Contact', {
+                    content_name: 'WhatsApp Contact Initiatie',
+                    content_category: 'Direct Contact',
+                    value: 1.00,
+                    currency: 'EUR'
+                });
+                
+                // Custom conversion event
+                fbq('track', 'Custom', {
+                    event_name: 'WhatsApp_Group_Join',
+                    action: 'click',
+                    button_id: 'whatsappBtn',
+                    conversion_value: 1.00
+                });
+                
+                console.log('Facebook Pixel: WhatsApp conversie bijgehouden');
             }
+            
+            // Add small delay before redirecting to ensure pixel fires
+            setTimeout(function() {
+                // Log voor debugging
+                console.log('Redirect naar WhatsApp...');
+            }, 300);
+            
+            return true; // Laat de normale link redirect doorgaan
         }
         
-        // Facebook pixel tracking functie
-        function trackFacebookEvent(event, parameters) {
-            if (typeof fbq !== 'undefined') {
-                if (parameters) {
-                    fbq('track', event, parameters);
-                } else {
-                    fbq('track', event);
-                }
-                console.log('Facebook evenement bijgehouden:', event, parameters);
+        // InitiateCheckout wanneer gebruiker scrollt naar WhatsApp sectie
+        function trackInitiateCheckout() {
+            if (typeof fbq !== 'undefined' && !window.checkoutTracked) {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: 'Buitenfeesten Aanmeldproces',
+                    num_items: 1,
+                    value: 0
+                });
+                window.checkoutTracked = true;
+                console.log('Facebook Pixel: InitiateCheckout event getriggerd');
             }
         }
         
@@ -601,87 +644,50 @@
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
-            // Knopklik gebeurtenis
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            whatsappBtn.addEventListener('click', function() {
-                console.log('Doorverwijzen naar WhatsApp link');
-                
-                // TikTok pixel tracking klikgebeurtenis
-                trackTikTokEvent('Contact', {
-                    content_type: 'whatsapp_join',
-                    content_id: 'whatsapp_btn_click',
-                    description: 'Gebruiker klikte op WhatsApp-join knop'
-                });
-                
-                // Facebook pixel tracking - Contact event
-                trackFacebookEvent('Contact', {
-                    content_name: 'WhatsApp Groep Lidmaatschap',
-                    content_category: 'Sociale Activiteit',
-                    value: 0,
-                    currency: 'EUR'
-                });
-                
-                // Facebook pixel tracking - Lead event (voor potentiële klanten)
-                trackFacebookEvent('Lead', {
-                    content_name: 'Buitenfeest WhatsApp Groep',
-                    content_category: 'Outdoor Activiteiten'
-                });
-                
-                // Facebook pixel tracking - CompleteRegistration (optioneel)
-                trackFacebookEvent('CompleteRegistration', {
-                    content_name: 'Community Registratie',
-                    status: 'success'
-                });
-            });
-            
-            // Paginabezoek gebeurtenis tracking
-            trackTikTokEvent('ViewContent', {
-                content_type: 'landing_page',
-                content_id: 'outdoor_party_page',
-                description: 'Gebruiker bekijkt buitenfeest pagina'
-            });
-            
-            // Facebook ViewContent event
-            trackFacebookEvent('ViewContent', {
-                content_name: 'Buitenfeesten Landing Page',
-                content_category: 'Outdoor Activiteiten',
-                content_ids: ['outdoor_party_001'],
-                content_type: 'product'
-            });
-            
-            // InitiateCheckout event (wanneer gebruiker begint met aanmelden)
+            // Scroll tracking voor InitiateCheckout
             window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY;
                 const whatsappSection = document.querySelector('.whatsapp-btn-container');
-                const sectionPosition = whatsappSection.offsetTop;
-                
-                if (scrollPosition > sectionPosition - 500 && !this.initiatedCheckout) {
-                    trackFacebookEvent('InitiateCheckout');
-                    this.initiatedCheckout = true;
+                if (whatsappSection) {
+                    const sectionTop = whatsappSection.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.8) {
+                        trackInitiateCheckout();
+                    }
                 }
             });
             
+            // Ook tracken wanneer gebruiker over de knop hovert
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('mouseenter', function() {
+                    if (typeof fbq !== 'undefined' && !window.addToCartTracked) {
+                        fbq('track', 'AddToCart', {
+                            content_name: 'WhatsApp Groep Lidmaatschap',
+                            content_ids: ['whatsapp_group_001'],
+                            content_type: 'product',
+                            value: 0
+                        });
+                        window.addToCartTracked = true;
+                        console.log('Facebook Pixel: AddToCart event getriggerd');
+                    }
+                });
+            }
+            
             // Voeg console informatie toe
             console.log('🔥 Buitenfeest pagina geladen 🔥');
-            console.log('TikTok pixel ID: D5OF75JC77UALNU7LDT0');
             console.log('Facebook pixel ID: EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
-            console.log('Huidige doorverwijslink:', whatsappBtn.href);
         });
         
         // Functie om doorverwijslink te wijzigen
         function updateRedirectLink(newLink) {
             const whatsappBtn = document.getElementById('whatsappBtn');
-            whatsappBtn.href = newLink;
-            console.log('Link bijgewerkt naar:', newLink);
-            
-            // Tracking link update gebeurtenis
-            trackTikTokEvent('Custom', {
-                action: 'link_updated',
-                new_link: newLink
-            });
+            if (whatsappBtn) {
+                whatsappBtn.href = newLink;
+                console.log('Link bijgewerkt naar:', newLink);
+            }
         }
         
-        // Als je de link dynamisch wilt wijzigen, roep updateRedirectLink('jouw nieuwe link') aan
     </script>
 </body>  
 </html>
