@@ -1,45 +1,13 @@
 <!DOCTYPE html>
-<html lang="nl" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doe mee met onze buitenfeesten</title>
+    <title>الانضمام إلى حفلاتنا الخارجية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Facebook Pixel Code - For Ad Account: 1883548015883688 -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    // Initialize pixel for tracking
-    fbq('init', 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
-    
-    // Track page view
-    fbq('track', 'PageView');
-    
-    // Track ViewContent event
-    fbq('track', 'ViewContent', {
-        content_name: 'Buitenfeesten Aanmeldpagina',
-        content_category: 'Outdoor Activiteiten',
-        content_type: 'product'
-    });
-    
-    </script>
-    <noscript>
-    <img height="1" width="1" style="display:none" 
-    src="https://www.facebook.com/tr?id=EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Facebook Pixel Code -->
-    
     <style>
         * {
             margin: 0;
@@ -52,12 +20,12 @@
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
-            direction: ltr;
+            direction: rtl;
             min-height: 100vh;
             background: #0a0f1c;
         }
         
-        /* Party achtergrond container */
+        /* 派对背景容器 */
         .party-container {
             position: relative;
             min-height: 100vh;
@@ -69,7 +37,7 @@
             overflow: hidden;
         }
         
-        /* Kampvuur animatie achtergrond */
+        /* 篝火动画背景 */
         .fire-background {
             position: absolute;
             top: 0;
@@ -80,7 +48,7 @@
             z-index: -2;
         }
         
-        /* Kampvuur animatie */
+        /* 篝火动画 */
         .campfire {
             position: absolute;
             bottom: 10%;
@@ -163,7 +131,7 @@
             left: 35px;
         }
         
-        /* Sterren */
+        /* 星星 */
         .stars {
             position: absolute;
             top: 0;
@@ -180,7 +148,7 @@
             animation: twinkle var(--duration) infinite alternate;
         }
         
-        /* Zwevende elementen - Party sfeer */
+        /* 漂浮元素 - 派对氛围 */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -202,7 +170,7 @@
         .element-4 { top: 30%; right: 25%; --float-duration: 9s; }
         .element-5 { top: 60%; left: 30%; --float-duration: 11s; }
         
-        /* Hoofdinhoud */
+        /* 主要内容 */
         .main-content {
             text-align: center;
             max-width: 800px;
@@ -242,7 +210,7 @@
             font-weight: 600;
         }
         
-        /* Activiteiten iconen */
+        /* 活动图标 */
         .activities {
             display: flex;
             justify-content: center;
@@ -284,7 +252,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
-        /* WhatsApp knop */
+        /* WhatsApp按钮 */
         .whatsapp-btn-container {
             margin: 50px 0 30px;
         }
@@ -317,7 +285,7 @@
         }
         
         .whatsapp-btn i {
-            margin-right: 15px;
+            margin-left: 15px;
             font-size: 1.8rem;
         }
         
@@ -333,7 +301,7 @@
             animation: shine 3s infinite;
         }
         
-        /* Party sfeer tekst */
+        /* 派对氛围文字 */
         .party-text {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.8);
@@ -347,7 +315,7 @@
             font-weight: 600;
         }
         
-        /* Animaties */
+        /* 动画效果 */
         @keyframes flicker {
             0% { 
                 transform: translateX(-50%) scale(1);
@@ -390,7 +358,7 @@
             100% { transform: rotate(30deg) translateX(200%); }
         }
         
-        /* Responsive design */
+        /* 响应式设计 */
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
@@ -456,14 +424,27 @@
     </style>
 </head>
 <body>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t][];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t][],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    
+      ttq.load('D5OF75JC77UALNU7LDT0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
     <div class="party-container">
-        <!-- Sterrenhemel achtergrond -->
+        <!-- 星空背景 -->
         <div class="stars" id="stars"></div>
         
-        <!-- Kampvuur achtergrond -->
+        <!-- 篝火背景 -->
         <div class="fire-background"></div>
         
-        <!-- Kampvuur -->
+        <!-- 篝火 -->
         <div class="campfire">
             <div class="fire"></div>
             <div class="logs">
@@ -473,7 +454,7 @@
             </div>
         </div>
         
-        <!-- Zwevende elementen -->
+        <!-- 漂浮元素 -->
         <div class="floating-elements">
             <div class="floating-element element-1">
                 <i class="fas fa-campground" style="color: #ff9500; font-size: 2.5rem;"></i>
@@ -492,70 +473,67 @@
             </div>
         </div>
         
-        <!-- Hoofdinhoud -->
+        <!-- 主要内容 -->
         <div class="main-content">
-            <h1 class="title">Doe mee met onze ontmoetingsreizen</h1>
-            <p class="subtitle">Leer nieuwe vrienden kennen bij <span class="highlight">woestijnfeesten</span> en <span class="highlight">buitenactiviteiten</span></p>
+            <h1 class="title">انضم إلى رحلة اللقاءات</h1>
+            <p class="subtitle">تعرف على أصدقاء جدد في <span class="highlight">حفلات الصحراء</span> و <span class="highlight">النشاطات الخارجية</span></p>
             
-            <!-- Activiteiten iconen -->
+            <!-- 活动图标 -->
             <div class="activities">
                 <div class="activity">
                     <div class="activity-icon">
                         <i class="fas fa-fire"></i>
                     </div>
-                    <div class="activity-name">Kampvuurfeesten</div>
+                    <div class="activity-name">حفلات النار</div>
                 </div>
                 
                 <div class="activity">
                     <div class="activity-icon">
                         <i class="fas fa-hiking"></i>
                     </div>
-                    <div class="activity-name">Bergbeklimmen</div>
+                    <div class="activity-name">تسلق الجبال</div>
                 </div>
                 
                 <div class="activity">
                     <div class="activity-icon">
                         <i class="fas fa-swimming-pool"></i>
                     </div>
-                    <div class="activity-name">Wateractiviteiten</div>
+                    <div class="activity-name">نشاطات مائية</div>
                 </div>
                 
                 <div class="activity">
                     <div class="activity-icon">
                         <i class="fas fa-umbrella-beach"></i>
                     </div>
-                    <div class="activity-name">Stranduitjes</div>
+                    <div class="activity-name">رحلات الشاطئ</div>
                 </div>
                 
                 <div class="activity">
                     <div class="activity-icon">
                         <i class="fas fa-caravan"></i>
                     </div>
-                    <div class="activity-name">Woestijnkamperen</div>
+                    <div class="activity-name">تخييم الصحراء</div>
                 </div>
             </div>
             
             <p class="party-text">
-                <span>Onvergetelijke avonturen</span> • <span>Nieuwe vriendschappen</span> • <span>Fantastische herinneringen</span><br>
-                Sluit je aan bij onze community van natuur- en buitenavontuurliefhebbers
+                <span>مغامرات لا تنسى</span> • <span>صداقات جديدة</span> • <span>ذكريات رائعة</span><br>
+                انضم إلى مجتمعنا من محبي الطبيعة والمغامرات الخارجية
             </p>
             
-            <!-- WhatsApp knop -->
+            <!-- WhatsApp按钮 -->
             <div class="whatsapp-btn-container">
-                <a href="https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten" 
-                   class="whatsapp-btn" 
-                   id="whatsappBtn" 
-                   target="_blank"
-                   onclick="trackWhatsAppConversion(event)">
+                <!-- 在这里修改跳转链接 -->
+                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    Word lid van onze WhatsApp-groep
+                    انضم إلى مجموعتنا على واتسابjoin
                 </a>
             </div>
         </div>
     </div>
     
     <script>
-        // Maak sterrenhemel
+        // 创建星空
         function createStars() {
             const starsContainer = document.getElementById('stars');
             const starCount = 150;
@@ -564,7 +542,7 @@
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                // Willekeurige positie en grootte
+                // 随机位置和大小
                 const size = Math.random() * 3 + 1;
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
@@ -580,156 +558,57 @@
             }
         }
         
-        // FUNCTIE 1: WhatsApp点击的主要转化追踪函数
-        function trackWhatsAppConversion(event) {
-            // 防止链接立即跳转
-            event.preventDefault();
-            
-            console.log('WhatsApp按钮点击 - 开始追踪转化...');
-            
-            // 创建唯一的转化ID
-            const conversionId = 'whatsapp_conversion_' + Date.now();
-            const eventId = 'ws_click_' + Date.now();
-            
-            // 方法A: 使用当前像素发送转化事件
-            if (typeof fbq !== 'undefined') {
-                console.log('方法A: 使用现有像素发送转化事件');
-                
-                // 发送Lead事件（主要转化事件）
-                fbq('track', 'Lead', {
-                    content_name: 'WhatsApp Groep Aanmelding',
-                    content_category: 'Outdoor Community',
-                    value: 1.00,
-                    currency: 'EUR',
-                    conversion_id: conversionId,
-                    event_id: eventId,
-                    ad_account_id: '1883548015883688'  // 您的广告账户ID
-                });
-                
-                console.log('Lead事件已发送');
-                
-                // 延迟跳转以确保像素事件发送完成
-                setTimeout(function() {
-                    window.open('https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten', '_blank');
-                }, 500);
-                
-            } else {
-                console.log('Facebook像素未加载，使用方法B');
-                // 如果像素未加载，使用方法B
-                trackConversionToAdAccount(conversionId, eventId);
-            }
-            
-            return false;
-        }
-        
-        // FUNCTIE 2: 直接发送到广告账户的备用方法
-        function trackConversionToAdAccount(conversionId, eventId) {
-            console.log('方法B: 直接发送转化到广告账户 1883548015883688');
-            
-            // 创建服务器事件像素
-            const pixelUrl = 'https://www.facebook.com/tr';
-            const params = {
-                id: 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD',
-                ev: 'Lead',
-                dl: window.location.href,
-                rl: document.referrer,
-                if: false,
-                ts: Date.now(),
-                cd: {
-                    content_name: 'WhatsApp Groep Aanmelding',
-                    content_category: 'Outdoor Community',
-                    value: 1.00,
-                    currency: 'EUR',
-                    conversion_id: conversionId,
-                    event_id: eventId,
-                    ad_account: '1883548015883688'
-                }
-            };
-            
-            // 发送像素请求
-            const img = new Image();
-            const queryString = Object.keys(params).map(key => {
-                if (key === 'cd') {
-                    return 'cd=' + encodeURIComponent(JSON.stringify(params[key]));
-                }
-                return key + '=' + encodeURIComponent(params[key]);
-            }).join('&');
-            
-            img.src = pixelUrl + '?' + queryString;
-            img.style.display = 'none';
-            document.body.appendChild(img);
-            
-            console.log('转化事件已发送到广告账户:', params);
-            
-            // 延迟跳转
-            setTimeout(function() {
-                window.open('https://wa.me/14344272585?text=Hallo! Ik wil meedoen met jullie buitenfeesten', '_blank');
-            }, 300);
-        }
-        
-        // FUNCTIE 3: 发送服务器事件API
-        function sendServerEventToAdAccount() {
-            // 如果需要，这里可以添加服务器到服务器的事件发送
-            console.log('备用方法: 服务器事件API');
-            // 这里可以添加发送到Facebook Conversion API的代码
-        }
-        
-        // FUNCTIE 4: 测试函数 - 手动触发转化
-        function testConversionTracking() {
-            console.log('测试转化追踪...');
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'Test WhatsApp Conversion',
-                    content_category: 'Test',
-                    value: 1.00,
-                    currency: 'EUR',
-                    test_event_code: 'TEST12345', // 用于测试模式
-                    conversion_id: 'test_' + Date.now(),
-                    event_id: 'test_click_' + Date.now(),
-                    ad_account_id: '1883548015883688'
-                });
-                console.log('测试转化事件已发送');
+        // TikTok像素跟踪函数
+        function trackTikTokEvent(event, parameters) {
+            if (typeof ttq !== 'undefined') {
+                ttq.track(event, parameters);
+                console.log('TikTok事件已跟踪:', event, parameters);
             }
         }
         
-        // 页面加载完成后的初始化
+        // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
-            // 添加调试信息
-            console.log('页面已加载 - WhatsApp转化追踪已启用');
-            console.log('Facebook像素ID: EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
-            console.log('目标广告账户ID: 1883548015883688');
-            
-            // 在控制台添加测试功能
-            window.testFBConversion = testConversionTracking;
-            console.log('要测试转化追踪，请在控制台运行: testFBConversion()');
-            
-            // 监听滚动以触发InitiateCheckout
-            window.addEventListener('scroll', function() {
-                const whatsappSection = document.querySelector('.whatsapp-btn-container');
-                if (whatsappSection && typeof fbq !== 'undefined' && !window.checkoutTracked) {
-                    const sectionTop = whatsappSection.getBoundingClientRect().top;
-                    if (sectionTop < window.innerHeight * 0.8) {
-                        fbq('track', 'InitiateCheckout', {
-                            content_name: 'Buitenfeesten Aanmeldproces',
-                            ad_account_id: '1883548015883688'
-                        });
-                        window.checkoutTracked = true;
-                        console.log('InitiateCheckout事件已发送');
-                    }
-                }
+            // 按钮点击事件
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            whatsappBtn.addEventListener('click', function() {
+                console.log('跳转到 WhatsApp 链接');
+                // TikTok像素跟踪点击事件
+                trackTikTokEvent('Contact', {
+                    content_type: 'whatsapp_join',
+                    content_id: 'whatsapp_btn_click',
+                    description: '用户点击了WhatsApp加入按钮'
+                });
             });
+            
+            // 页面浏览事件跟踪
+            trackTikTokEvent('ViewContent', {
+                content_type: 'landing_page',
+                content_id: 'outdoor_party_page',
+                description: '用户浏览了户外派对页面'
+            });
+            
+            // 添加一些控制台信息
+            console.log('🔥 户外派对页面已加载 🔥');
+            console.log('TikTok像素ID: D5OF75JC77UALNU7LDT0');
+            console.log('当前跳转链接:', whatsappBtn.href);
         });
         
-        // 辅助函数：更新WhatsApp链接
-        function updateWhatsAppLink(newNumber, newMessage) {
+        // 修改跳转链接的函数
+        function updateRedirectLink(newLink) {
             const whatsappBtn = document.getElementById('whatsappBtn');
-            const newLink = `https://wa.me/${newNumber}?text=${encodeURIComponent(newMessage)}`;
             whatsappBtn.href = newLink;
-            console.log('WhatsApp链接已更新:', newLink);
+            console.log('链接已更新为:', newLink);
+            
+            // 跟踪链接更新事件
+            trackTikTokEvent('Custom', {
+                action: 'link_updated',
+                new_link: newLink
+            });
         }
         
+        // 如果您想动态修改链接，可以调用 updateRedirectLink('您的新链接')
     </script>
 </body>  
 </html>
