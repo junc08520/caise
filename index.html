@@ -8,6 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    
     <style>
         * {
             margin: 0;
@@ -566,6 +585,18 @@
             }
         }
         
+        // Facebook pixel tracking functie
+        function trackFacebookEvent(event, parameters) {
+            if (typeof fbq !== 'undefined') {
+                if (parameters) {
+                    fbq('track', event, parameters);
+                } else {
+                    fbq('track', event);
+                }
+                console.log('Facebook evenement bijgehouden:', event, parameters);
+            }
+        }
+        
         // Uitvoeren na het laden van de pagina
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
@@ -574,11 +605,32 @@
             const whatsappBtn = document.getElementById('whatsappBtn');
             whatsappBtn.addEventListener('click', function() {
                 console.log('Doorverwijzen naar WhatsApp link');
+                
                 // TikTok pixel tracking klikgebeurtenis
                 trackTikTokEvent('Contact', {
                     content_type: 'whatsapp_join',
                     content_id: 'whatsapp_btn_click',
                     description: 'Gebruiker klikte op WhatsApp-join knop'
+                });
+                
+                // Facebook pixel tracking - Contact event
+                trackFacebookEvent('Contact', {
+                    content_name: 'WhatsApp Groep Lidmaatschap',
+                    content_category: 'Sociale Activiteit',
+                    value: 0,
+                    currency: 'EUR'
+                });
+                
+                // Facebook pixel tracking - Lead event (voor potentiële klanten)
+                trackFacebookEvent('Lead', {
+                    content_name: 'Buitenfeest WhatsApp Groep',
+                    content_category: 'Outdoor Activiteiten'
+                });
+                
+                // Facebook pixel tracking - CompleteRegistration (optioneel)
+                trackFacebookEvent('CompleteRegistration', {
+                    content_name: 'Community Registratie',
+                    status: 'success'
                 });
             });
             
@@ -589,9 +641,30 @@
                 description: 'Gebruiker bekijkt buitenfeest pagina'
             });
             
+            // Facebook ViewContent event
+            trackFacebookEvent('ViewContent', {
+                content_name: 'Buitenfeesten Landing Page',
+                content_category: 'Outdoor Activiteiten',
+                content_ids: ['outdoor_party_001'],
+                content_type: 'product'
+            });
+            
+            // InitiateCheckout event (wanneer gebruiker begint met aanmelden)
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const whatsappSection = document.querySelector('.whatsapp-btn-container');
+                const sectionPosition = whatsappSection.offsetTop;
+                
+                if (scrollPosition > sectionPosition - 500 && !this.initiatedCheckout) {
+                    trackFacebookEvent('InitiateCheckout');
+                    this.initiatedCheckout = true;
+                }
+            });
+            
             // Voeg console informatie toe
             console.log('🔥 Buitenfeest pagina geladen 🔥');
             console.log('TikTok pixel ID: D5OF75JC77UALNU7LDT0');
+            console.log('Facebook pixel ID: EAAX2SnYXg5gBQh78AE4QVhJIzF4OuduWXPBypAXeFaHhfuslGQrUW2E1pUOGOZA0LXnYfdP53EIVKPXNotYnmjSxnqFUY3ADfeufHZChggZCkKTk7FaYcdaVTO9hNnbwOQlpGZCaQcspxqOBJgT20PYS8gMpkYqWH6ZAZAFZBIVGmNoyUrCzlUgROC4yJQtwm9kywZDZD');
             console.log('Huidige doorverwijslink:', whatsappBtn.href);
         });
         
