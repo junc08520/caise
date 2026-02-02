@@ -3,357 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الانضمام إلى حفلاتنا الخارجية</title>
+    <title>رحلة اللقاءات - ابدأ صداقات جديدة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Cairo', 'Poppins', sans-serif;
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            direction: rtl;
-            min-height: 100vh;
-            background: #0a0f1c;
-        }
-        
-        .party-container {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-        
-        .fire-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #1a0f0a 0%, #0a0705 70%, #050302 100%);
-            z-index: -2;
-        }
-        
-        .campfire {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 400px;
-            z-index: -1;
-        }
-        
-        .fire {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 300px;
-            background: radial-gradient(ellipse at center, 
-                rgba(255, 120, 0, 0.9) 0%, 
-                rgba(255, 80, 0, 0.7) 20%, 
-                rgba(255, 40, 0, 0.5) 40%, 
-                rgba(255, 0, 0, 0.3) 60%, 
-                transparent 80%);
-            border-radius: 50% 50% 40% 40%;
-            animation: flicker 2s infinite alternate;
-            filter: blur(5px);
-        }
-        
-        .fire::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(ellipse at center, 
-                rgba(255, 200, 0, 0.8) 0%, 
-                rgba(255, 150, 0, 0.6) 40%, 
-                rgba(255, 100, 0, 0.4) 70%, 
-                transparent 90%);
-            border-radius: 50%;
-            animation: flicker2 1.5s infinite alternate;
-            filter: blur(8px);
-        }
-        
-        .logs {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px;
-            height: 80px;
-        }
-        
-        .log {
-            position: absolute;
-            width: 200px;
-            height: 30px;
-            background: linear-gradient(to right, #5d4037, #3e2723);
-            border-radius: 5px;
-            transform-origin: center;
-        }
-        
-        .log-1 { transform: rotate(45deg); top: 30px; left: 10px; }
-        .log-2 { transform: rotate(-45deg); top: 30px; right: 10px; }
-        .log-3 { width: 180px; top: 50px; left: 35px; }
-        
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite alternate;
-        }
-        
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        
-        .floating-element {
-            position: absolute;
-            opacity: 0.7;
-            animation: float var(--float-duration) infinite ease-in-out;
-        }
-        
-        .element-1 { top: 20%; left: 10%; --float-duration: 8s; }
-        .element-2 { top: 40%; right: 15%; --float-duration: 10s; }
-        .element-3 { top: 70%; left: 20%; --float-duration: 12s; }
-        .element-4 { top: 30%; right: 25%; --float-duration: 9s; }
-        .element-5 { top: 60%; left: 30%; --float-duration: 11s; }
-        
-        .main-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 40px;
-            background: rgba(10, 15, 28, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 100, 0, 0.3);
-            box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2), 0 0 100px rgba(255, 60, 0, 0.1);
-            margin: 20px;
-            z-index: 10;
-            position: relative;
-            animation: glow 3s infinite alternate;
-        }
-        
-        .title {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #ff9500, #ff3300);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(255, 80, 0, 0.5);
-            font-weight: 800;
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-        }
-        
-        .highlight { color: #ff9500; font-weight: 600; }
-        
-        .activities {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .activity { display: flex; flex-direction: column; align-items: center; width: 120px; }
-        
-        .activity-icon {
-            width: 80px; height: 80px;
-            background: rgba(255, 100, 0, 0.2);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 15px; font-size: 2rem; color: #ff9500;
-            border: 2px solid rgba(255, 100, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .activity:hover .activity-icon {
-            transform: scale(1.1);
-            background: rgba(255, 100, 0, 0.3);
-            box-shadow: 0 0 20px rgba(255, 100, 0, 0.5);
-        }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            text-decoration: none;
-            padding: 22px 50px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .whatsapp-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
-        .whatsapp-btn i { margin-left: 15px; font-size: 1.8rem; }
-
-        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); opacity: 0.8; } 100% { transform: translateX(-50%) scale(1.1); opacity: 1; } }
-        @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
-        @keyframes glow { 0% { box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2); } 100% { box-shadow: 0 20px 50px rgba(255, 80, 0, 0.4); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        @media (max-width: 768px) {
-            .title { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
-            .whatsapp-btn { padding: 18px 40px; font-size: 1.3rem; }
-        }
-    </style>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
     var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-    
-      // تحميل البيكسل الأول
-      ttq.load('D5OF75JC77UALNU7LDT0');
-      // تحميل البيكسل الثاني (قم باستبدال YOUR_SECOND_PIXEL_ID بمعرف البيكسل الجديد)
-      ttq.load('YOUR_SECOND_PIXEL_ID'); 
+
+      // تحميل البكسل الأول
+      ttq.load('D60BSQBC77U3O6ND952G');
+      // تحميل البكسل الثاني
+      ttq.load('D60BJ3BC77U3O6ND94S0');
 
       ttq.page();
     }(window, document, 'ttq');
     </script>
-    </head>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff85a1;
+            --bg-dark: #0f0c29;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        /* خلفية متحركة */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, rgba(255, 77, 109, 0.15) 0%, transparent 70%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .heart-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(to left, #fff, var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-item i {
+            color: var(--secondary-color);
+        }
+
+        .ws-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .ws-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
 <body>
-    
-    <div class="party-container">
-        <div class="stars" id="stars"></div>
-        <div class="fire-background"></div>
-        
-        <div class="campfire">
-            <div class="fire"></div>
-            <div class="logs">
-                <div class="log log-1"></div>
-                <div class="log log-2"></div>
-                <div class="log log-3"></div>
+
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <i class="fas fa-heart heart-icon"></i>
+        <h1>رحلة اللقاءات الجميلة</h1>
+        <p>اكتشف أشخاصاً يشاركونك نفس الاهتمامات، ابدأ محادثات ممتعة وابنِ صداقات حقيقية في منطقتك اليوم!</p>
+
+        <div class="features">
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>خصوصية تامة وأمان</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-user-friends"></i>
+                <span>أصدقاء من حولك</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-comment-dots"></i>
+                <span>محادثات مباشرة فورية</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-star"></i>
+                <span>لقاءات حقيقية</span>
             </div>
         </div>
-        
-        <div class="floating-elements">
-            <div class="floating-element element-1"><i class="fas fa-campground" style="color: #ff9500; font-size: 2.5rem;"></i></div>
-            <div class="floating-element element-2"><i class="fas fa-music" style="color: #ff3300; font-size: 2.2rem;"></i></div>
-            <div class="floating-element element-3"><i class="fas fa-utensils" style="color: #ff9500; font-size: 2.8rem;"></i></div>
-        </div>
-        
-        <div class="main-content">
-            <h1 class="title">انضم إلى رحلة اللقاءات</h1>
-            <p class="subtitle">تعرف على أصدقاء جدد في <span class="highlight">حفلات الصحراء</span> و <span class="highlight">النشاطات الخارجية</span></p>
-            
-            <div class="activities">
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-fire"></i></div>
-                    <div class="activity-name">حفلات النار</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-hiking"></i></div>
-                    <div class="activity-name">تسلق الجبال</div>
-                </div>
-                <div class="activity">
-                    <div class="activity-icon"><i class="fas fa-caravan"></i></div>
-                    <div class="activity-name">تخييم الصحراء</div>
-                </div>
-            </div>
-            
-            <p class="party-text" style="margin-bottom: 30px;">
-                <span style="color: #ff9500; font-weight: 600;">مغامرات لا تنسى</span> • <span>صداقات جديدة</span> • <span>ذكريات رائعة</span>
-            </p>
-            
-            <div class="whatsapp-btn-container">
-                <a href="https://wa.me/14344272585?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    انضم إلى مجموعتنا على واتساب
-                </a>
-            </div>
-        </div>
+
+        <a href="https://wa.me/14344272585?text=أهلاً،%20أود%20الانضمام%20إلى%20رحلة%20اللقاءات" class="ws-btn" id="whatsappAction">
+            <i class="fab fa-whatsapp"></i>
+            ابدأ المحادثة الآن
+        </a>
+
+        <p class="footer-text">نحن نساعدك في العثور على شريكك المثالي أو صديقك الجديد بكل سهولة.</p>
     </div>
-    
+
     <script>
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                const size = Math.random() * 3 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.setProperty('--duration', `${Math.random() * 3 + 1}s`);
-                starsContainer.appendChild(star);
-            }
-        }
-
-        // دالة تتبع الأحداث لكلا البيكسلين
-        function trackTikTokEvent(event, parameters) {
+        // دالة إرسال الحدث لكلا البكسلين عند النقر
+        document.getElementById('whatsappAction').addEventListener('click', function() {
             if (typeof ttq !== 'undefined') {
-                ttq.track(event, parameters);
-                console.log('تم تتبع الحدث بنجاح:', event);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-            
-            // تتبع عرض الصفحة
-            trackTikTokEvent('ViewContent', {
-                content_type: 'landing_page',
-                content_id: 'outdoor_party_page'
-            });
-
-            // تتبع النقر على زر واتساب
-            document.getElementById('whatsappBtn').addEventListener('click', function() {
-                trackTikTokEvent('Contact', {
-                    content_type: 'whatsapp_join',
-                    description: 'نقر المستخدم للانضمام إلى الواتساب'
+                ttq.track('Contact', {
+                    contents: [
+                        {
+                            content_name: 'WhatsApp_Join',
+                            content_category: 'Meet_Friends'
+                        }
+                    ],
+                    value: 0,
+                    currency: 'USD'
                 });
-            });
+                console.log("TikTok Event: Contact Tracked for both pixels");
+            }
         });
+
+        // تتبع عرض الصفحة يتم تلقائياً عبر ttq.page() في الهيدر
     </script>
 </body>
 </html>
