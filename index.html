@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Outdoor Gatherings</title>
+    <title>الانضمام إلى حفلاتنا الخارجية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,11 @@
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
-            direction: ltr;
+            direction: rtl;
             min-height: 100vh;
             background: #0a0f1c;
         }
         
-        /* Party background container */
         .party-container {
             position: relative;
             min-height: 100vh;
@@ -37,7 +36,6 @@
             overflow: hidden;
         }
         
-        /* Campfire animation background */
         .fire-background {
             position: absolute;
             top: 0;
@@ -48,7 +46,6 @@
             z-index: -2;
         }
         
-        /* Campfire animation */
         .campfire {
             position: absolute;
             bottom: 10%;
@@ -113,25 +110,10 @@
             transform-origin: center;
         }
         
-        .log-1 {
-            transform: rotate(45deg);
-            top: 30px;
-            left: 10px;
-        }
+        .log-1 { transform: rotate(45deg); top: 30px; left: 10px; }
+        .log-2 { transform: rotate(-45deg); top: 30px; right: 10px; }
+        .log-3 { width: 180px; top: 50px; left: 35px; }
         
-        .log-2 {
-            transform: rotate(-45deg);
-            top: 30px;
-            right: 10px;
-        }
-        
-        .log-3 {
-            width: 180px;
-            top: 50px;
-            left: 35px;
-        }
-        
-        /* Stars */
         .stars {
             position: absolute;
             top: 0;
@@ -148,7 +130,6 @@
             animation: twinkle var(--duration) infinite alternate;
         }
         
-        /* Floating elements - Party atmosphere */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -170,7 +151,6 @@
         .element-4 { top: 30%; right: 25%; --float-duration: 9s; }
         .element-5 { top: 60%; left: 30%; --float-duration: 11s; }
         
-        /* Main content */
         .main-content {
             text-align: center;
             max-width: 800px;
@@ -179,8 +159,7 @@
             backdrop-filter: blur(10px);
             border-radius: 30px;
             border: 1px solid rgba(255, 100, 0, 0.3);
-            box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2),
-                        0 0 100px rgba(255, 60, 0, 0.1);
+            box-shadow: 0 20px 50px rgba(255, 80, 0, 0.2), 0 0 100px rgba(255, 60, 0, 0.1);
             margin: 20px;
             z-index: 10;
             position: relative;
@@ -205,12 +184,8 @@
             font-weight: 300;
         }
         
-        .highlight {
-            color: #ff9500;
-            font-weight: 600;
-        }
+        .highlight { color: #ff9500; font-weight: 600; }
         
-        /* Activity icons */
         .activities {
             display: flex;
             justify-content: center;
@@ -247,15 +222,9 @@
             box-shadow: 0 0 20px rgba(255, 100, 0, 0.5);
         }
         
-        .activity-name {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
+        .activity-name { font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); }
         
-        /* WhatsApp button */
-        .whatsapp-btn-container {
-            margin: 50px 0 30px;
-        }
+        .whatsapp-btn-container { margin: 50px 0 30px; }
         
         .whatsapp-btn {
             display: inline-flex;
@@ -275,19 +244,9 @@
             overflow: hidden;
         }
         
-        .whatsapp-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-        }
-        
-        .whatsapp-btn:active {
-            transform: translateY(-2px);
-        }
-        
-        .whatsapp-btn i {
-            margin-right: 15px;
-            font-size: 1.8rem;
-        }
+        .whatsapp-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+        .whatsapp-btn:active { transform: translateY(-2px); }
+        .whatsapp-btn i { margin-left: 15px; font-size: 1.8rem; }
         
         .whatsapp-btn::after {
             content: '';
@@ -301,7 +260,6 @@
             animation: shine 3s infinite;
         }
         
-        /* Party atmosphere text */
         .party-text {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.8);
@@ -310,38 +268,19 @@
             line-height: 1.8;
         }
         
-        .party-text span {
-            color: #ff9500;
-            font-weight: 600;
-        }
+        .party-text span { color: #ff9500; font-weight: 600; }
         
-        /* Animation effects */
         @keyframes flicker {
-            0% { 
-                transform: translateX(-50%) scale(1);
-                opacity: 0.8;
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.1);
-                opacity: 1;
-            }
+            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
         }
         
         @keyframes flicker2 {
-            0% { 
-                transform: translateX(-50%) scale(1);
-                opacity: 0.7;
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.2);
-                opacity: 0.9;
-            }
+            0% { transform: translateX(-50%) scale(1); opacity: 0.7; }
+            100% { transform: translateX(-50%) scale(1.2); opacity: 0.9; }
         }
         
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            100% { opacity: 1; }
-        }
+        @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
         
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -358,93 +297,39 @@
             100% { transform: rotate(30deg) translateX(200%); }
         }
         
-        /* Responsive design */
         @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .main-content {
-                padding: 30px 20px;
-                margin: 15px;
-            }
-            
-            .activities {
-                gap: 20px;
-            }
-            
-            .activity {
-                width: 100px;
-            }
-            
-            .activity-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.7rem;
-            }
-            
-            .whatsapp-btn {
-                padding: 18px 40px;
-                font-size: 1.3rem;
-            }
-            
-            .campfire {
-                width: 250px;
-                height: 350px;
-            }
+            .title { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
+            .main-content { padding: 30px 20px; margin: 15px; }
+            .activities { gap: 20px; }
+            .activity { width: 100px; }
+            .activity-icon { width: 70px; height: 70px; font-size: 1.7rem; }
+            .whatsapp-btn { padding: 18px 40px; font-size: 1.3rem; }
+            .campfire { width: 250px; height: 350px; }
         }
         
         @media (max-width: 480px) {
-            .title {
-                font-size: 2rem;
-            }
-            
-            .activities {
-                gap: 15px;
-            }
-            
-            .activity {
-                width: 85px;
-            }
-            
-            .activity-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            
-            .activity-name {
-                font-size: 0.9rem;
-            }
+            .title { font-size: 2rem; }
+            .activity { width: 85px; }
+            .activity-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+            .activity-name { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    <!-- TikTok Pixel Code Start -->
     <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
     var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
     
-      ttq.load('D60260JC77U5QAK8TRCG');
+      ttq.load('D5OF75JC77UALNU7LDT0');
       ttq.page();
     }(window, document, 'ttq');
     </script>
-    <!-- TikTok Pixel Code End -->
-    
     <div class="party-container">
-        <!-- Starry background -->
         <div class="stars" id="stars"></div>
-        
-        <!-- Campfire background -->
         <div class="fire-background"></div>
-        
-        <!-- Campfire -->
         <div class="campfire">
             <div class="fire"></div>
             <div class="logs">
@@ -454,160 +339,96 @@
             </div>
         </div>
         
-        <!-- Floating elements -->
         <div class="floating-elements">
-            <div class="floating-element element-1">
-                <i class="fas fa-campground" style="color: #ff9500; font-size: 2.5rem;"></i>
-            </div>
-            <div class="floating-element element-2">
-                <i class="fas fa-music" style="color: #ff3300; font-size: 2.2rem;"></i>
-            </div>
-            <div class="floating-element element-3">
-                <i class="fas fa-utensils" style="color: #ff9500; font-size: 2.8rem;"></i>
-            </div>
-            <div class="floating-element element-4">
-                <i class="fas fa-users" style="color: #ff3300; font-size: 2.4rem;"></i>
-            </div>
-            <div class="floating-element element-5">
-                <i class="fas fa-fire" style="color: #ff9500; font-size: 2.6rem;"></i>
-            </div>
+            <div class="floating-element element-1"><i class="fas fa-campground" style="color: #ff9500; font-size: 2.5rem;"></i></div>
+            <div class="floating-element element-2"><i class="fas fa-music" style="color: #ff3300; font-size: 2.2rem;"></i></div>
+            <div class="floating-element element-3"><i class="fas fa-utensils" style="color: #ff9500; font-size: 2.8rem;"></i></div>
+            <div class="floating-element element-4"><i class="fas fa-users" style="color: #ff3300; font-size: 2.4rem;"></i></div>
+            <div class="floating-element element-5"><i class="fas fa-fire" style="color: #ff9500; font-size: 2.6rem;"></i></div>
         </div>
         
-        <!-- Main content -->
         <div class="main-content">
-            <h1 class="title">Join Our Social Gathering Trips</h1>
-            <p class="subtitle">Meet new friends at <span class="highlight">desert parties</span> and <span class="highlight">outdoor activities</span></p>
+            <h1 class="title">انضم إلى رحلة اللقاءات</h1>
+            <p class="subtitle">تعرف على أصدقاء جدد في <span class="highlight">حفلات الصحراء</span> و <span class="highlight">النشاطات الخارجية</span></p>
             
-            <!-- Activity icons -->
             <div class="activities">
                 <div class="activity">
-                    <div class="activity-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div class="activity-name">Campfire Parties</div>
+                    <div class="activity-icon"><i class="fas fa-fire"></i></div>
+                    <div class="activity-name">حفلات النار</div>
                 </div>
-                
                 <div class="activity">
-                    <div class="activity-icon">
-                        <i class="fas fa-hiking"></i>
-                    </div>
-                    <div class="activity-name">Mountain Hiking</div>
+                    <div class="activity-icon"><i class="fas fa-hiking"></i></div>
+                    <div class="activity-name">تسلق الجبال</div>
                 </div>
-                
                 <div class="activity">
-                    <div class="activity-icon">
-                        <i class="fas fa-swimming-pool"></i>
-                    </div>
-                    <div class="activity-name">Water Activities</div>
+                    <div class="activity-icon"><i class="fas fa-swimming-pool"></i></div>
+                    <div class="activity-name">نشاطات مائية</div>
                 </div>
-                
                 <div class="activity">
-                    <div class="activity-icon">
-                        <i class="fas fa-umbrella-beach"></i>
-                    </div>
-                    <div class="activity-name">Beach Trips</div>
+                    <div class="activity-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <div class="activity-name">رحلات الشاطئ</div>
                 </div>
-                
                 <div class="activity">
-                    <div class="activity-icon">
-                        <i class="fas fa-caravan"></i>
-                    </div>
-                    <div class="activity-name">Desert Camping</div>
+                    <div class="activity-icon"><i class="fas fa-caravan"></i></div>
+                    <div class="activity-name">تخييم الصحراء</div>
                 </div>
             </div>
             
             <p class="party-text">
-                <span>Unforgettable Adventures</span> • <span>New Friendships</span> • <span>Amazing Memories</span><br>
-                Join our community of nature and outdoor enthusiasts
+                <span>مغامرات لا تنسى</span> • <span>صداقات جديدة</span> • <span>ذكريات رائعة</span><br>
+                انضم إلى مجتمعنا من محبي الطبيعة والمغامرات الخارجية
             </p>
             
-            <!-- WhatsApp button -->
             <div class="whatsapp-btn-container">
                 <a href="https://wa.me/16398546418?text=Hello" class="whatsapp-btn" id="whatsappBtn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    Join Our WhatsApp Group
+                    انضم إلى مجموعتنا على واتساب
                 </a>
             </div>
         </div>
     </div>
     
     <script>
-        // Create stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
             const starCount = 150;
-            
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
-                
-                // Random position and size
                 const size = Math.random() * 3 + 1;
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 const duration = Math.random() * 3 + 1;
-                
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.left = `${posX}%`;
                 star.style.top = `${posY}%`;
                 star.style.setProperty('--duration', `${duration}s`);
-                
                 starsContainer.appendChild(star);
             }
         }
         
-        // TikTok pixel tracking function
         function trackTikTokEvent(event, parameters) {
             if (typeof ttq !== 'undefined') {
                 ttq.track(event, parameters);
-                console.log('TikTok event tracked:', event, parameters);
             }
         }
         
-        // Execute after page loads
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
-            
-            // Button click event
             const whatsappBtn = document.getElementById('whatsappBtn');
             whatsappBtn.addEventListener('click', function() {
-                console.log('Redirecting to WhatsApp link');
-                // TikTok pixel track click event
                 trackTikTokEvent('Contact', {
                     content_type: 'whatsapp_join',
                     content_id: 'whatsapp_btn_click',
-                    description: 'User clicked WhatsApp join button'
+                    description: 'user_clicked_whatsapp'
                 });
             });
-            
-            // Page view event tracking
             trackTikTokEvent('ViewContent', {
                 content_type: 'landing_page',
-                content_id: 'outdoor_party_page',
-                description: 'User viewed outdoor party page'
+                content_id: 'outdoor_party_page'
             });
-            
-            // Add some console info
-            console.log('🔥 Outdoor party page loaded 🔥');
-            console.log('TikTok Pixel ID: D60260JC77U5QAK8TRCG');
-            console.log('Current redirect link:', whatsappBtn.href);
         });
-        
-        // Function to update redirect link
-        function updateRedirectLink(newLink) {
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            whatsappBtn.href = newLink;
-            console.log('Link updated to:', newLink);
-            
-            // Track link update event
-            trackTikTokEvent('Custom', {
-                action: 'link_updated',
-                new_link: newLink
-            });
-        }
-        
-        // If you want to dynamically update the link, call updateRedirectLink('your_new_link')
     </script>
-</body>  
+</body>
 </html>
