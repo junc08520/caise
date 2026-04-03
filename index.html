@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>رحلة المغامرة</title>
 
-<!-- TikTok Pixel Code Start -->
+<!-- TikTok Pixel Code -->
 <script>
 !function (w, d, t) {
   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._t=ttq._t||{},ttq._t[e]=+new Date;n=document.createElement("script");
+n.type="text/javascript";n.async=!0;n.src=r+"?sdkid="+e+"&lib="+t;
+e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
   ttq.load('D60BSQBC77U3O6ND952G');
   ttq.page();
 }(window, document, 'ttq');
 </script>
-<!-- TikTok Pixel Code End -->
 
 <style>
 body {
@@ -26,64 +26,24 @@ body {
   color: white;
   text-align: center;
 }
-
-.container {
-  padding: 30px 20px;
-}
-
-.title {
-  font-size: 26px;
-  color: #ff7a00;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #ccc;
-  margin-bottom: 30px;
-}
-
-.icons {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.icon {
-  text-align: center;
-}
-
+.container { padding: 30px 20px; }
+.title { font-size: 26px; color: #ff7a00; }
+.subtitle { color: #ccc; margin-bottom: 30px; }
+.icons { display: flex; justify-content: space-around; }
 .circle {
-  width: 60px;
-  height: 60px;
+  width: 60px; height: 60px;
   border: 2px solid #ff7a00;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  font-size: 24px;
-  color: #ff7a00;
+  display: flex; align-items: center; justify-content: center;
+  margin: auto; color: #ff7a00;
 }
-
-.middle {
-  margin: 30px 0;
-}
-
-.desc {
-  margin-top: 20px;
-  color: #aaa;
-}
-
-.highlight {
-  color: #ff7a00;
-  margin-top: 10px;
-}
-
+.middle { margin: 30px 0; }
+.highlight { color: #ff7a00; margin-top: 20px; }
+.desc { color: #aaa; }
 .btn {
   display: block;
   margin: 40px auto;
-  width: 90%;
-  max-width: 400px;
+  width: 90%; max-width: 400px;
   background: linear-gradient(90deg, #00c36f, #00e091);
   padding: 15px;
   border-radius: 30px;
@@ -94,6 +54,18 @@ body {
 }
 </style>
 
+<script>
+function goWhatsApp() {
+  // 触发 TikTok 线索事件
+  ttq.track('Contact');
+
+  // 延迟跳转，确保事件发送成功
+  setTimeout(function(){
+    window.location.href = "https://api.whatsapp.com/send/?phone=+13049719309&text=hello";
+  }, 300);
+}
+</script>
+
 </head>
 
 <body>
@@ -101,38 +73,38 @@ body {
 <div class="container">
 
   <div class="title">انطلق في رحلة المغامرة</div>
-  <div class="subtitle">تعرف على أصدقاء جدد في الرحلات والأنشطة الخارجية</div>
+  <div class="subtitle">تعرف على أصدقاء جدد في الأنشطة الخارجية</div>
 
   <div class="icons">
-    <div class="icon">
+    <div>
       <div class="circle">🏖</div>
       <div>رحلات بحرية</div>
     </div>
-    <div class="icon">
+    <div>
       <div class="circle">🏊</div>
       <div>أنشطة مائية</div>
     </div>
-    <div class="icon">
+    <div>
       <div class="circle">⛰</div>
       <div>تسلق الجبال</div>
     </div>
-    <div class="icon">
+    <div>
       <div class="circle">🔥</div>
-      <div>سهرات نار</div>
+      <div>سهرات</div>
     </div>
   </div>
 
   <div class="middle">
     <div class="circle">🏕</div>
-    <div>تخييم في الصحراء</div>
+    <div>تخييم صحراوي</div>
   </div>
 
   <div class="highlight">مغامرات لا تُنسى — أصدقاء جدد — ذكريات رائعة</div>
-  <div class="desc">انضم إلى مجتمعنا لمحبي الطبيعة والمغامرات</div>
+  <div class="desc">انضم إلى مجتمع عشاق الطبيعة</div>
 
   <!-- 按钮 -->
-  <a href="https://your-whatsapp-link" class="btn">
-    انضم إلى مجموعة WhatsApp الآن
+  <a href="javascript:void(0)" onclick="goWhatsApp()" class="btn">
+    انضم إلى WhatsApp الآن
   </a>
 
 </div>
